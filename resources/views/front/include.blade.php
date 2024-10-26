@@ -43,11 +43,11 @@
                         </button>
                         <div class="navbar-collapse collapse justify-content-end" id="navbar-collapse-toggle-1">
                             <ul class="nav navbar-nav alt-font font-weight-700">
-                                <li><a href="#home" title="Home" class="inner-link">Home</a></li>
-                                <li><a href="#about" title="About" class="inner-link">About</a></li>
-                                <li><a href="#services" title="Services" class="inner-link">Services</a></li>
+                                <li><a href="{{ url('/') }}" title="Home" class="inner-link">Home</a></li>
+                                <li><a href="#about" title="About" class="inner-link">About Reunion</a></li>
+                                <!-- <li><a href="#services" title="Services" class="inner-link">Services</a></li> -->
                                 <!-- <li><a href="#work" title="Work" class="inner-link">Work</a></li> -->
-                                <li><a href="#team" title="Team" class="inner-link">Modarator</a></li>
+                                <li><a href="#team" title="Team" class="inner-link">Admin/Modarator</a></li>
                                 <!-- <li><a href="#blog" title="Blog" class="inner-link">Blog</a></li> -->
                                 <!-- <li><a href="#clients" title="Clients" class="inner-link">Clients</a></li> -->
                                 <li><a href="#contact" title="Contact" class="inner-link">Contact</a></li>

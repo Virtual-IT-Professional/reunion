@@ -44,14 +44,25 @@
     <div class="row align-items-center mt-5">
         <div class="col-10 mx-auto">
             <div class="card card-body shadow p-4">
-                <form class="row g-3">
+                @if(Session::has('error'))
+                    <div class="alert alert-danger">
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
+                @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+                <form class="row g-3" method="POST" action="{{ route('saveStudent') }}">
+                    @csrf
                     <div class="col-12 col-md-4">
                         <label for="stdName" class="form-label">Your Name(*)</label>
-                        <input type="text" class="form-control" id="stdName" required placeholder="Example: Md Abu Yousuf">
+                        <input type="text" class="form-control" id="stdName" required placeholder="Example: Md Abu Yousuf" name="stdName">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="dept" class="form-label">Department(*)</label>
-                        <select id="dept" class="form-select" required>
+                        <select id="dept" class="form-select" required name="dept">
                             <option selected>Choose...</option>
                             <option>Civil</option>
                             <option>Electrical</option>
@@ -63,7 +74,7 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="shift" class="form-label">Shift(*)</label>
-                        <select id="shift" class="form-select" required>
+                        <select id="shift" class="form-select" required name="shift">
                             <option selected>Choose...</option>
                             <option>1st</option>
                             <option>2nd</option>
@@ -71,15 +82,15 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="phone" class="form-label">Phone/Mobile(*)</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Example: 01716-841785" required>
+                        <input type="text" class="form-control" id="phone" placeholder="Example: 01716-841785" required name="phone">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="stdMail" class="form-label">e-Mail(*)</label>
-                        <input type="email" class="form-control" id="stdMail" placeholder="Example: vitprofessional@gmail.com" required>
+                        <input type="email" class="form-control" id="stdMail" placeholder="Example: vitprofessional@gmail.com" required name="mailAddress">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="dept" class="form-label">Blood Group(*)</label>
-                        <select id="dept" class="form-select" required>
+                        <select id="dept" class="form-select" required name="blGroup">
                             <option selected>Choose...</option>
                             <option>A+</option>
                             <option>A-</option>
@@ -93,7 +104,7 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="dept" class="form-label">T-Shirt Size(*)</label>
-                        <select id="dept" class="form-select" required>
+                        <select id="dept" class="form-select" required name="tShirtSize">
                             <option selected>Choose...</option>
                             <option>S</option>
                             <option>M</option>
@@ -105,26 +116,26 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="totalJoin" class="form-label">Total Joining Without You(*)</label>
-                        <input type="number" class="form-control" id="totalJoin" placeholder="Example: 03" required>
+                        <input type="number" class="form-control" id="totalJoin" placeholder="Example: 03" required name="totalMember">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="currentAddress" class="form-label">Current Address(*)</label><br>
                         <small>(Briefly Describe Current Location)</small>
-                        <input type="text" class="form-control" id="currentAddress" placeholder="Apartment, studio, or floor" required>
+                        <input type="text" class="form-control" id="currentAddress" placeholder="Apartment, studio, or floor" required name="currentAddress">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="professionDetails" class="form-label">Profession Details</label>
                         <br><small>(Designation/Position/Company Name etc)</small>
-                        <input type="text" class="form-control" id="professionDetails" placeholder="Example: Founder-Virtual IT Professional">
+                        <input type="text" class="form-control" id="professionDetails" placeholder="Example: Founder-Virtual IT Professional" name="professionDetails">
                     </div>
                     <div class="col-12">
-                        <label for="totalJoin" class="form-label">Family/Guest Name</label></br>
+                        <label for="familyDetails" class="form-label">Family/Guest Name</label></br>
                         <small class="text-danger">(Please mention age-only for baby & relation. Must be separate by comma)</small>
-                        <input type="text" class="form-control" id="totalJoin" placeholder="Example: Tahmina Akter Wife, Orin Jahan (10) Daughter" required>
+                        <input type="text" class="form-control" id="familyDetails" placeholder="Example: Tahmina Akter Wife, Orin Jahan (10) Daughter" required name="familyDetails">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="dept" class="form-label">Payment Type(*)</label>
-                        <select id="dept" class="form-select" required>
+                        <select id="dept" class="form-select" required name="payType">
                             <option selected>Choose...</option>
                             <option>Bkash</option>
                             <option>Nagad</option>
@@ -132,11 +143,11 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="txnId" class="form-label">TXNID(*)</label>
-                        <input type="text" class="form-control" id="txnId" placeholder="Example: BJP9PG9ZVB" required>
+                        <input type="text" class="form-control" id="txnId" placeholder="Example: BJP9PG9ZVB" required name="payId">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="totalJoin" class="form-label">Total Payment Amount(*)</label>
-                        <input type="number" class="form-control" id="totalJoin" placeholder="Example: 3500" required>
+                        <input type="number" class="form-control" id="totalJoin" placeholder="Example: 3500" required name="payAmount">
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Submit</button>
