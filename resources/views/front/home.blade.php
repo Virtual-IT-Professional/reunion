@@ -141,7 +141,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ route('studentRegister') }}" class="btn btn-success">Let's Register</a>
+                    <div class="col-12 text-center"><a href="{{ route('studentRegister') }}" class="btn btn-success mt-4"><i class="fa-solid fa-right-to-bracket"></i> Let's Register</a></div>
                 </div>
             </div>
         </section>
@@ -284,6 +284,9 @@
                         <!-- end accordion -->
                     </div>
                     <div class="col cover-background md-h-500px sm-h-350px wow animate__fadeInRight" style="background:url('{{ asset('/public/front/html/') }}/images/happyFriend.jpg')"></div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center"><a href="{{ route('studentRegister') }}" class="btn btn-success my-4"><i class="fa-solid fa-right-to-bracket"></i> Let's Register</a></div>
                 </div>
             </div>
         </section>
