@@ -26,7 +26,7 @@
                         <p>Register quickly to participate in the reunion and encourage your friends too.</p>
                     </div>  
                 </div>
-            </div>
+            </div> 
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4">
                     <!-- start counter box item -->
