@@ -141,6 +141,7 @@
                             </div>
                         </div>
                     </div>
+                    <a href="{{ route('studentRegister') }}" class="btn btn-success">Let's Register</a>
                 </div>
             </div>
         </section>
