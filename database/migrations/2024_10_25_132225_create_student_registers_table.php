@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('blGroup')->nullable();
             $table->string('tShirtSize')->nullable();
             $table->string('totalAttend')->nullable();
-            $table->string('familyMemberDetails')->nullable();
+            $table->string('experience')->nullable();
             $table->string('paymentBy')->nullable();
             $table->string('paymentId')->nullable();
             $table->string('paymentAmount')->nullable();

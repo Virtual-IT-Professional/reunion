@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\studentRegister;
-use App\Models\guestRegister;
+use App\Models\geustRegister;
 
 class FrontEnd extends Controller
 {
@@ -33,6 +33,7 @@ class FrontEnd extends Controller
         $student->totalAttend           = $requ->totalMember;
         $student->currentAddress        = $requ->currentAddress;
         $student->professionDetails     = $requ->professionDetails;
+        $student->experience            = $requ->experience;
         $student->paymentBy             = $requ->payType;
         $student->paymentId             = $requ->payId;
         $student->paymentAmount         = $requ->payAmount;
@@ -42,11 +43,11 @@ class FrontEnd extends Controller
                 $guestlength = count($requ->guestName);
                 for ($i = 0; $i < $guestlength; $i++) {
                     $guest = new geustRegister();
-                    $guest->guestName = $guestName[i];
-                    $guest->guestRelation = $guestRelation[i];
+                    $guest->guestName = $requ->guestName[$i];
+                    $guest->guestRelation = $requ->guestRelation[$i];
                     $guest->linkStudent = $student->id;
-                    if(!empty($requ->guestAge[i])):
-                        $guest->guestAge = $guestAge[i];
+                    if(!empty($requ->guestAge[$i])):
+                        $guest->guestAge = $requ->guestAge[$i];
                     endif;
                     $guest->save();
                 }

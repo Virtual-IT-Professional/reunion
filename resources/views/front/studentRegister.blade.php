@@ -112,13 +112,11 @@
                     <h6 class="mb-0 fw-bold">Professional Details</h6>
                     <div class="col-12 col-md-6">
                         <label for="professionDetails" class="form-label">Profession</label>
-                        <small>(Designation/Position & Company Name)</small>
-                        <input type="text" class="form-control" id="professionDetails" placeholder="Example: Founder-Virtual IT Professional" name="professionDetails">
+                        <input type="text" class="form-control" id="professionDetails" placeholder="Designation/Position & Company Name" name="professionDetails">
                     </div>
                     <div class="col-12 col-md-6">
-                        <label for="professionDetails" class="form-label">Professional Experience</label>
-                        <small>(Web Development, Server Maintain, )</small>
-                        <input type="text" class="form-control" id="professionDetails" placeholder="Example: Founder-Virtual IT Professional" name="professionDetails">
+                        <label for="expreience" class="form-label">Professional Experience</label>
+                        <input type="text" class="form-control" id="expreience" placeholder="Web Development, Server Maintain, etc" name="expreience">
                     </div>
                     <h6 class="mb-0 fw-bold">Guest Details</h6>
                     <div class="col-12 col-md-4">
@@ -233,7 +231,7 @@
         document.getElementById("totalPayment").value = "";
         x = e.value
         for (let i = 0; i < x; i++) {
-            text = "<div class='col-12 col-md-4'><label class='text-success'>Guest Name</label><input type='text' class='form-control border-success text-success' placeholder='Example: Thamina Akter' required name='guestName[]' required></div><div class='col-12 col-md-4'><label class='text-success'>Relation</label><select class='form-control border-success text-success' name='guestRelation[]' onchange='guestRelation(this.value,"+i+")' required><option value=''>-</option><option>Spouse</option><option>Father</option><option>Mother</option><option>Brother</option><option>Sister</option><option>Son</option><option>Daughter</option><option>Other</option></select></div><div class='col-12 col-md-4'><div id='guestAge["+i+"]' style='display:none'><label class='text-success'>Guest Age</label><input onchange='paymentDetails(this.value)' type='number' class='form-control border-success text-success' placeholder='Example: 25' required name='guestAge[]' id='memberAge[]' value=''></div></div>";
+            text = "<div class='col-12 col-md-4'><label class='text-success'>Guest Name</label><input type='text' class='form-control border-success text-success' placeholder='Example: Thamina Akter' required name='guestName[]' required></div><div class='col-12 col-md-4'><label class='text-success'>Relation</label><select class='form-control border-success text-success' name='guestRelation[]' onchange='guestRelation(this.value,"+i+")' required><option value=''>-</option><option>Spouse</option><option>Father</option><option>Mother</option><option>Brother</option><option>Sister</option><option>Son</option><option>Daughter</option><option>Other</option></select></div><div class='col-12 col-md-4'><div id='guestAge["+i+"]' style='display:none'><label class='text-success'>Guest Age</label><input onchange='paymentDetails(this.value)' type='number' class='form-control border-success text-success' placeholder='Example: 25' name='guestAge[]' id='memberAge[]' value=''></div></div>";
             document.getElementById("memberList").innerHTML += text;
         }
     }
