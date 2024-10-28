@@ -2,7 +2,8 @@
 <html class="no-js" lang="en">
     <head>
         <!-- title -->
-        <title>CPI – Cumilla Polytechnic Institute Reunion</title>
+        <title>CPI – Engine's Reunion 2024 (Session10-11) 
+        </title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
@@ -42,7 +43,7 @@
                 <div class="container-lg nav-header-container">
                     <!-- start logo -->
                     <div class="col-auto ps-0">
-                        <a href="#" title="cpi reunion" class="logo"><img src="{{ asset('/public/front/html/') }}/images/logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" class="logo-dark w-100" alt="cpi reunion"><img src="{{ asset('/public/front/html/') }}/images/logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" alt="cpi reunion" class="logo-light default w-100"></a>
+                        <a href="#" title="cpi reunion" class="logo"><img src="{{ asset('/public/front/html/') }}/images/logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" class="logo-dark w-100" alt="cpi reunion"><img src="{{ asset('/public/front/html/') }}/images/logo.jpg" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" alt="cpi reunion" class="logo-light default w-100"></a>
                     </div>
                     <!-- end logo -->
                     <div class="col-auto col-lg accordion-menu pe-0">

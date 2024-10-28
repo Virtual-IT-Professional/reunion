@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('guestName')->nullable();
             $table->string('phone')->nullable();
+            $table->string('guestRelation')->nullable();
             $table->string('linkStudent')->nullable();
             $table->string('blGroup')->nullable();
             $table->string('tShirtSize')->nullable();

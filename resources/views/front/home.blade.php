@@ -19,15 +19,94 @@
         <section id="services" class="bg-light-gray wow animate__fadeIn">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-6 col-md-8 col-sm-10 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center last-paragraph-no-margin">
-                        <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-15px-bottom">CPI Engineer's Reunion 2024</h5>
+                    <div class="col-lg-10 col-12 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center last-paragraph-no-margin">
+                        <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-15px-bottom">CPI Engine's Reunion 2024</h5>
                         <span class="alt-font text-deep-pink text-medium margin-5px-bottom d-block">Session 2010-11</span>
                         <p class="mb-0">Reunion 2024 is going to be held on 25th December 2024 in the joint initiative of all departments of Comilla Polytechnic Institute for the session 2010-11. All friends of all departments of the 2010-11 session are invited to participate in the reunion.</p>
                         <p>Register quickly to participate in the reunion and encourage your friends too.</p>
                     </div>  
                 </div>
             </div> 
+            <div class="container-fluid">
+                <div class="row row-cols-1 row-cols-lg-2">
+                    <div class="col padding-seven-lr padding-six-half-tb lg-padding-five-tb lg-padding-six-lr md-padding-six-all sm-padding-50px-tb sm-padding-15px-lr wow animate__fadeInLeft">
+                        <h4 class="alt-font text-extra-dark-gray text-center text-lg-start margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom font-weight-600"><span class="font-weight-300 d-block sm-margin-15px-bottom">Here's the details related reunion.</span></h4>
+                        <!-- start accordion -->
+                        <div class="panel-group accordion-event accordion-style2" id="accordion-main" data-active-icon="fa-angle-up" data-inactive-icon="fa-angle-down">
+                            <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Where the reunion held in?</h6>
+                            <p class="fw-bold">Play ground of Cumilla Polytechnic Institute</p>
+                            <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">When (Date & Time) the reunion held in?</h6>
+                            <p class="fw-bold">25th December 2024, Friday at 9.00 AM to day long</p>
+                            <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Program Arrangement Details</h6>
+                            
+                            <ul>
+                                <li>Breakfast</li>
+                                <li>Lunch(All religions)</li>
+                                <li>Afternoon Snack</li>
+                                <li>Premium Quality Branding T-Shirt</li>
+                                <li>Branding Mug</li>
+                                <li>Cofee Corner</li>
+                                <li>Baby Feeding Zone</li>
+                                <li>Female Rest Room</li>
+                                <li>Photo Zone</li>
+                                <li>Baby Gamming Zone</li>
+                                <li>Female Guest Entertainment</li>
+                                <li>Refel Draw</li>
+                                <li>Foreighner Friends Joining(01674-779916 IMO)</li>
+                            </ul>
+                            <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Registration Fees</h6>
+                            
+                            <ul>
+                                <li><b>General:</b> 1530/- (Bkash/Nagad Charge Included)</li>
+                                <li><b>Guest/Family:</b> 1020/- (Bkash/Nagad Charge Included)</li>
+                            </ul>
+                            <p class="my-2 mt-4 fw-bold text-success">Payment System:</p>
+                            <ul>
+                                <li><b class="text-danger">Bkash:</b> 01972-006267 (Make Payment)</li>
+                                <li><b class="text-danger">Nagad:</b> 01972-006267 (Make Payment)</li>
+                            </ul>
+                            <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Registration Rules</h6>
+                            
+                            <ol>
+                                <li>Please fillup the form for one time only</li>
+                                <li>General member(Student of Session 2010-11 of CPI) joining fee 1.5K BDT</li>
+                                <li>Per guest or family member joining fees 1K BDT</li>
+                                <li>Don't need to pay the fees if you've any child/baby below 6 years.</li>
+                                <li>Below 6 years baby must be register(No fees applicable) for the reunion</li>
+                            </ol>
+                        </div>
+                        <!-- end accordion -->
+                    </div>
+                    <div class="col cover-background md-h-500px sm-h-350px wow animate__fadeInRight" style="background:url('{{ asset('/public/front/html/') }}/images/happyFriend.jpg')"></div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center"><a href="{{ route('studentRegister') }}" class="btn btn-success my-4"><i class="fa-solid fa-right-to-bracket"></i> Let's Register</a></div>
+                </div>
+            </div>
+        </section>
+        <!-- end counter section -->
+        <!-- start parallax section -->
+        <section class="parallax wow animate__fadeIn" data-parallax-background-ratio="0.3" style="background-image:url('{{ asset('/public/front/html/') }}/images/cover-2.jpg');">
+            <div class="opacity-extra-medium bg-black"></div>
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-7 col-sm-10 text-center last-paragraph-no-margin">
+                        <a class="popup-youtube" href="https://www.youtube.com/watch?v=sU3FkzUKHXU"><img src="{{ asset('/public/front/html/') }}/images/icon-play.png" class="w-130px" alt=""/></a>
+                        <h4 class="alt-font text-white-2 margin-15px-bottom sm-margin-20px-bottom">Register. Joining. Fun.</h4>
+                        <p class="text-extra-large font-weight-300 text-light-gray w-85 sm-w-100 d-inline-block margin-25px-bottom">Let's complete your register and invite your firends circle and joining the reunion. We will have a great fun for that day</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end parallax section -->
+        <!-- start accordion section -->
+        <section class="bg-light-gray border-none p-0 wow animate__fadeIn py-5">
             <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-12 text-center">
+                        <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-40px-bottom ">Registration Procedure Details</h5>
+                    </div>  
+                </div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4">
                     <!-- start counter box item -->
                     <div class="col md-padding-twelve-left md-margin-60px-bottom sm-margin-40px-bottom sm-padding-15px-left wow animate__fadeInRight">
@@ -142,151 +221,6 @@
                         </div>
                     </div>
                     <div class="col-12 text-center"><a href="{{ route('studentRegister') }}" class="btn btn-success mt-4"><i class="fa-solid fa-right-to-bracket"></i> Let's Register</a></div>
-                </div>
-            </div>
-        </section>
-        <!-- end counter section -->
-        <!-- start parallax section -->
-        <section class="parallax wow animate__fadeIn" data-parallax-background-ratio="0.3" style="background-image:url('{{ asset('/public/front/html/') }}/images/cover-2.jpg');">
-            <div class="opacity-extra-medium bg-black"></div>
-            <div class="container position-relative">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6 col-lg-7 col-sm-10 text-center last-paragraph-no-margin">
-                        <a class="popup-youtube" href="https://www.youtube.com/watch?v=sU3FkzUKHXU"><img src="{{ asset('/public/front/html/') }}/images/icon-play.png" class="w-130px" alt=""/></a>
-                        <h4 class="alt-font text-white-2 margin-15px-bottom sm-margin-20px-bottom">Register. Joining. Fun.</h4>
-                        <p class="text-extra-large font-weight-300 text-light-gray w-85 sm-w-100 d-inline-block margin-25px-bottom">Let's complete your register and invite your firends circle and joining the reunion. We will have a great fun for that day</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end parallax section -->
-        <!-- start accordion section -->
-        <section class="bg-light-gray border-none p-0 wow animate__fadeIn">
-            <div class="container-fluid">
-                <div class="row row-cols-1 row-cols-lg-2">
-                    <div class="col padding-seven-lr padding-six-half-tb lg-padding-five-tb lg-padding-six-lr md-padding-six-all sm-padding-50px-tb sm-padding-15px-lr wow animate__fadeInLeft">
-                        <h5 class="alt-font text-extra-dark-gray text-center text-lg-start margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom font-weight-600"><span class="font-weight-300 d-block sm-margin-15px-bottom">Here's the details question and answer related reunion.</span></h5>
-                        <!-- start accordion -->
-                        <div class="panel-group accordion-event accordion-style2" id="accordion-main" data-active-icon="fa-angle-up" data-inactive-icon="fa-angle-down">
-                            <!-- start tab content -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion-main" href="#collapseOne">
-                                        <div class="panel-title">
-                                            <span class="alt-font font-weight-600 text-deep-pink tab-tag">01</span>
-                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">Where the reunion held in?</span>
-                                            <i class="fa-solid fa-angle-up text-extra-dark-gray"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse show" data-bs-parent="#accordion-main">
-                                    <div class="panel-body">Play ground of Cumilla Polytechnic Institute</div>
-                                </div>
-                            </div>
-                            <!-- end tab content -->
-                            <!-- start tab content -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion-main" href="#collapseTwo">
-                                        <div class="panel-title">
-                                            <span class="alt-font font-weight-600 text-deep-pink tab-tag">02</span>
-                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">When (Date & Time) the reunion held in?</span>
-                                            <i class="fa-solid fa-angle-down text-extra-dark-gray"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" data-bs-parent="#accordion-main">
-                                    <div class="panel-body">25th December 2024, Friday at 9.00 AM to day long</div>
-                                </div>
-                            </div>
-                            <!-- end tab content -->
-                            <!-- start tab content -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion-main" href="#collapseThree">
-                                        <div class="panel-title">
-                                            <span class="alt-font font-weight-600 text-deep-pink tab-tag">03</span>
-                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">Program Arrangement Details</span>
-                                            <i class="fa-solid fa-angle-down text-extra-dark-gray"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse" data-bs-parent="#accordion-main">
-                                    <div class="panel-body">
-                                        <ol class="list-group list-group-numbered border-0">
-                                            <li class="list-group-item">Breakfast</li>
-                                            <li class="list-group-item">Lunch(All religions)</li>
-                                            <li class="list-group-item">Afternoon Snack</li>
-                                            <li class="list-group-item">Premium Quality Branding T-Shirt</li>
-                                            <li class="list-group-item">Branding Mug</li>
-                                            <li class="list-group-item">Cofee Corner</li>
-                                            <li class="list-group-item">Baby Feeding Zone</li>
-                                            <li class="list-group-item">Female Rest Room</li>
-                                            <li class="list-group-item">Photo Zone</li>
-                                            <li class="list-group-item">Baby Gamming Zone</li>
-                                            <li class="list-group-item">Female Guest Entertainment</li>
-                                            <li class="list-group-item">Refel Draw</li>
-                                            <li class="list-group-item">Foreighner Friends Joining(01674-779916 IMO)</li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end tab content --><!-- start tab content -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion-main" href="#collapseFour">
-                                        <div class="panel-title">
-                                            <span class="alt-font font-weight-600 text-deep-pink tab-tag">04</span>
-                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">Registration Fees</span>
-                                            <i class="fa-solid fa-angle-down text-extra-dark-gray"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div id="collapseFour" class="panel-collapse collapse" data-bs-parent="#accordion-main">
-                                    <div class="panel-body">
-                                        <ul class="list-group list-group-bullets border-0">
-                                            <li class="list-group-item"><b>General:</b> 1530/- (Bkash/Nagad Charge Included)</li>
-                                            <li class="list-group-item"><b>Guest/Family:</b> 1020/- (Bkash/Nagad Charge Included)</li>
-                                        </ul>
-                                        <p class="my-2 mt-4 fw-bold text-success">Payment System:</p>
-                                        <ul class="list-group list-group-bullets border-0">
-                                            <li class="list-group-item"><b class="text-danger">Bkash:</b> 01972-006267 (Make Payment)</li>
-                                            <li class="list-group-item"><b class="text-danger">Nagad:</b> 01972-006267 (Make Payment)</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end tab content --><!-- start tab content -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion-main" href="#collapseFive">
-                                        <div class="panel-title">
-                                            <span class="alt-font font-weight-600 text-deep-pink tab-tag">05</span>
-                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">Registration Rules</span>
-                                            <i class="fa-solid fa-angle-down text-extra-dark-gray"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div id="collapseFive" class="panel-collapse collapse" data-bs-parent="#accordion-main">
-                                    <div class="panel-body">
-                                        <ol class="list-group list-group-numbered border-0">
-                                            <li class="list-group-item">Please fillup the form for one time only</li>
-                                            <li class="list-group-item">General member(Student of Session 2010-11 of CPI) joining fee 1.5K BDT</li>
-                                            <li class="list-group-item">Per guest or family member joining fees 1K BDT</li>
-                                            <li class="list-group-item">Don't need to pay the fees if you've any child/baby below 6 years.</li>
-                                            <li class="list-group-item">Below 6 years baby must be register(No fees applicable) for the reunion</li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end tab content -->
-                        </div>
-                        <!-- end accordion -->
-                    </div>
-                    <div class="col cover-background md-h-500px sm-h-350px wow animate__fadeInRight" style="background:url('{{ asset('/public/front/html/') }}/images/happyFriend.jpg')"></div>
-                </div>
-                <div class="row">
-                    <div class="col-12 text-center"><a href="{{ route('studentRegister') }}" class="btn btn-success my-4"><i class="fa-solid fa-right-to-bracket"></i> Let's Register</a></div>
                 </div>
             </div>
         </section>
