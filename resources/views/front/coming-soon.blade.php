@@ -28,7 +28,7 @@
         <section class="p-0 bg-extra-light-gray">
             <div class="container-fluid">
                 <div class="row row-cols-1 row-cols-lg-2">
-                    <div class="col minheight-fullscreen p-0 cover-background d-none d-lg-block" style="background-image:url('{{ asset('/public/front/html/') }}/images/cpi_cover.jfif');');"></div>
+                    <div class="col minheight-fullscreen p-0 cover-background d-none d-lg-block" style="background-image:url('{{ asset('/public/front/html/') }}/images/cpi_cover.jpg');');"></div>
                     <div class="col minheight-fullscreen d-flex align-items-center bg-black p-0">                         
                         <div class="text-center padding-three-all sm-padding-15px-all w-100">
                             <div class="row">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEnd;
 
 Route::get('/', function () {
-    return view('front.coming-soon');
+    return view('front.home');
 });
 
 Route::get('/register/student',[

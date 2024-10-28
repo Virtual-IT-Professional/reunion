@@ -11,6 +11,7 @@
         <meta name="description" content="কুমিল্লা পলিটেকনিক ইনস্টিটিউট (সংক্ষেপে: সিপিআই) হচ্ছে বাংলাদেশের শীর্ষস্থানীয় প্রযুক্তি ও প্রকৌশল-সম্পর্কিত উচ্চশিক্ষা প্রতিষ্ঠান। এটি কুমিল্লা শহরের কোটবাড়ী এলাকায় অবস্থিত। কারিগরি শিক্ষা প্রসারের জন্য ১৯৬২ সালে ২৬ একর জায়গায় কুমিল্লা পলিটেকনিক ইনস্টিটিউট নামে প্রতিষ্ঠিত হয় এবং এটি প্রথম আইসিটি বেসড পলিটেকনিক ইনস্টিটিউট।">
         <!-- keywords -->
         <meta name="keywords" content="cpi, cumilla poly, polytechnic, cpi reunion, reunion cpi, cpi reunion 2010-11, reunion cpi 2010-11, cpi reunion 10-11, reunion cpi 10-11">
+        <script src="https://kit.fontawesome.com/32dcd4a478.js" crossorigin="anonymous"></script>
         <!-- favicon -->
         <link rel="shortcut icon" href="{{ asset('/public/front/html/') }}/images/favicon.png">
         <link rel="apple-touch-icon" href="{{ asset('/public/front/html/') }}/images/apple-touch-icon-57x57.png">
@@ -22,6 +23,16 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/theme-vendors.min.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/style.css" />
         <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/responsive.css" />
+        <style>
+            header a.logo img {
+                max-height: 120px;
+                width: 120px !important;
+                padding: 1.5rem;
+            }
+            .footer-logo {
+                max-height: 70px;
+            }
+        </style>
     </head>
     <body>
         <!-- start header -->
@@ -31,7 +42,7 @@
                 <div class="container-lg nav-header-container">
                     <!-- start logo -->
                     <div class="col-auto ps-0">
-                        <a href="#" title="cpi reunion" class="logo"><img src="{{ asset('/public/front/html/') }}/images/logo.jpeg" data-at2x="{{ asset('/public/front/html/') }}/images/logo.jpeg" class="logo-dark w-100" alt="cpi reunion"><img src="{{ asset('/public/front/html/') }}/images/logo.jpeg" data-at2x="{{ asset('/public/front/html/') }}/images/logo.jpeg" alt="cpi reunion" class="logo-light default w-100"></a>
+                        <a href="#" title="cpi reunion" class="logo"><img src="{{ asset('/public/front/html/') }}/images/logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" class="logo-dark w-100" alt="cpi reunion"><img src="{{ asset('/public/front/html/') }}/images/logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" alt="cpi reunion" class="logo-light default w-100"></a>
                     </div>
                     <!-- end logo -->
                     <div class="col-auto col-lg accordion-menu pe-0">
@@ -60,13 +71,52 @@
         </header>
         <!-- end header -->
          @yield('frontBody')
+         
+        
+        
+        <!-- start features section -->
+        <section class="wow animate__fadeIn border-bottom border-color-extra-light-gray">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2">
+                    <!-- start features box item -->
+                    <div class="col text-center md-margin-50px-bottom sm-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin">
+                        <i class="icon-map-pin icon-medium margin-25px-bottom sm-margin-10px-bottom"></i>
+                        <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Contact Us</div>
+                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto">401 Motteejel, Dhaka.</p>
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col text-center md-margin-50px-bottom sm-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.2s">
+                        <i class="icon-chat icon-medium margin-25px-bottom sm-margin-10px-bottom"></i>
+                        <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Let's Talk(WhatsApp)</div>
+                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto"> 01678-909091(Register)<br>01972-006267(Payment)<br> 01674-779916(Foreign)</p>
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col text-center sm-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.4s">
+                        <i class="icon-envelope icon-medium margin-25px-bottom sm-margin-10px-bottom"></i>
+                        <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">E-mail Us</div>
+                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto"><a href="mailto:support@cpireunion.com">support@cpireunion.com</a><br><a href="mailto:info@cpireunion.com">info@cpireunion.com</a></p>
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col text-center wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.6s">
+                        <i class="icon-megaphone icon-medium margin-25px-bottom sm-margin-10px-bottom"></i>
+                        <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Customer Services</div>
+                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto">Lorem Ipsum is simply dummy text of the printing.</p>
+                    </div>
+                    <!-- end features box item -->
+                </div>
+            </div>
+        </section>
+        <!-- end features section -->
         <!-- start footer --> 
         <footer class="footer-strip bg-light-gray padding-50px-tb sm-padding-30px-tb">
             <div class="container">
                 <div class="row align-items-center">
                     <!-- start logo -->
                     <div class="col-md-3 text-center text-lg-start sm-margin-20px-bottom">
-                        <a href="#"><img class="footer-logo" src="{{ asset('/public/front/html/') }}/images/logo.jpeg" data-at2x="{{ asset('/public/front/html/') }}/images/logo.jpeg" alt="cip reunion"></a>
+                        <a href="#"><img class="footer-logo" src="{{ asset('/public/front/html/') }}/images/logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" alt="cip reunion"></a>
                     </div> 
                     <!-- end logo -->
                     <!-- start copyright -->

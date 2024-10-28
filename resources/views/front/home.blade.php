@@ -1,156 +1,41 @@
 @extends('front.include')
 @section('frontBody')
 
-        <!-- start hero section -->
-        <section id="home" class="p-0 parallax mobile-height wow animate__fadeIn" data-parallax-background-ratio="0.5" style="background-image:url('https://via.placeholder.com/1920x1200');">
-            <div class="opacity-extra-medium bg-extra-dark-gray"></div>
-            <div class="container position-relative full-screen">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12 text-center">
-                        <img src="{{ asset('/public/front/html/') }}/images/text.png" alt=""/>
-                        <div class="down-section text-center"><a href="#about" class="inner-link"><i class="ti-arrow-down icon-extra-small text-white-2 bg-deep-pink padding-15px-all sm-padding-10px-all rounded-circle"></i></a></div>
-                    </div>
-                </div>
+<!-- start hero section -->
+<section id="home" class="p-0 parallax mobile-height wow animate__fadeIn" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('/public/front/html/') }}/images/cpi_cover.jpg');height:570px">
+    <div class="opacity-extra-medium bg-extra-dark-gray"></div>
+    <div class="container position-relative full-screen">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <img src="{{ asset('/public/front/html/') }}/images/text2.png" alt=""/>
+                <div class="down-section text-center"><a href="#about" class="inner-link"><i class="ti-arrow-down icon-extra-small text-white-2 bg-deep-pink padding-15px-all sm-padding-10px-all rounded-circle"></i></a></div>
             </div>
-        </section>
-        <!-- end hero section -->
-        <!-- start feature box section -->
-        <section id="about" class="wow animate__fadeIn">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <!-- start feature box item -->
-                    <div class="col-lg-8 col-md-10 text-center margin-eight-bottom sm-margin-40px-bottom">
-                        <span class="alt-font text-deep-pink text-medium margin-5px-bottom d-block">We are delivering beautiful digital products</span>
-                        <h5 class="font-weight-300 text-extra-dark-gray mb-0">We provide high quality and cost effective offshore web and software development services</h5>
-                    </div>
-                    <!-- end feature box item -->
-                </div>
-                <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 justify-content-center">
-                    <!-- start features box item -->
-                    <div class="col text-center text-md-start sm-margin-40px-bottom wow animate__fadeInUp last-paragraph-no-margin">
-                        <div class="row m-0">
-                            <div class="col-lg-3 col-md-4 ps-0 sm-no-padding-right">
-                                <i class="icon-lightbulb icon-extra-medium text-medium-gray float-none float-md-left sm-margin-15px-bottom position-relative top-minus5"></i>
-                                <span class="separator-line-verticle-large margin-ten-right bg-deep-pink float-end align-top margin-two-top d-none d-md-inline-block"></span>
-                            </div>
-                            <div class="col-lg-9 col-md-8 md-no-padding-lr">
-                                <span class="text-medium margin-four-bottom text-extra-dark-gray alt-font d-block">Digital Branding</span>
-                                <p class="w-90 lg-w-100">We can help you find the precise message to clearly speak to who you are as a company.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col text-center text-md-start sm-margin-40px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.2s">
-                        <div class="row m-0">
-                            <div class="col-lg-3 col-md-4 ps-0 sm-no-padding-right">
-                                <i class="icon-globe icon-extra-medium text-medium-gray float-none float-md-left sm-margin-15px-bottom position-relative top-minus5"></i>
-                                <span class="separator-line-verticle-large margin-ten-right bg-deep-pink float-end align-top margin-two-top d-none d-md-inline-block"></span>
-                            </div>
-                            <div class="col-lg-9 col-md-8 md-no-padding-lr">
-                                <h5 class="text-medium margin-four-bottom text-extra-dark-gray alt-font d-block">Web Interactive</h5>
-                                <p class="w-90 lg-w-100">Our websites look great, but each page has a clearly defined conversion goal.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col text-center text-md-start wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.4s">
-                        <div class="row m-0">
-                            <div class="col-lg-3 col-md-4 ps-0 sm-no-padding-right">
-                                <i class="icon-paintbrush icon-extra-medium text-medium-gray float-none float-md-left sm-margin-15px-bottom position-relative top-minus5"></i>
-                                <span class="separator-line-verticle-large margin-ten-right bg-deep-pink float-end align-top margin-two-top d-none d-md-inline-block"></span>
-                            </div>
-                            <div class="col-lg-9 col-md-8 md-no-padding-lr">
-                                <h5 class="text-medium margin-four-bottom text-extra-dark-gray alt-font d-block">Graphic Design</h5>
-                                <p class="w-90 lg-w-100">We interlace our creative with solid marketing and branding principles. A strong brand.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                </div>
-            </div>
-        </section>
-        <!-- end feature box section -->
-        <!-- start parallax section -->
-        <section class="parallax wow animate__fadeIn" data-parallax-background-ratio="0.3" style="background-image:url('https://via.placeholder.com/1920x1200');">
-            <div class="opacity-extra-medium bg-black"></div>
-            <div class="container position-relative">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6 col-lg-7 col-sm-10 text-center last-paragraph-no-margin">
-                        <a class="popup-youtube" href="https://www.youtube.com/watch?v=sU3FkzUKHXU"><img src="{{ asset('/public/front/html/') }}/images/icon-play.png" class="w-130px" alt=""/></a>
-                        <h4 class="alt-font text-white-2 margin-15px-bottom sm-margin-20px-bottom">Unique. Powerful. Creative.</h4>
-                        <p class="text-extra-large font-weight-300 text-light-gray w-85 sm-w-100 d-inline-block margin-25px-bottom">We provide high quality and cost effective offshore web and software development services.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end parallax section -->
+        </div>
+    </div>
+</section>
+<!-- end hero section -->
+
         <!-- start services section -->
         <section id="services" class="bg-light-gray wow animate__fadeIn">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-md-8 col-sm-10 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center last-paragraph-no-margin">
-                        <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-15px-bottom">Our Services</h5>
-                        <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. Lorem Ipsum has been the industry. Lorem Ipsum has been the industry's standard dummy text since.</p>
+                        <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-15px-bottom">CPI Engineer's Reunion 2024</h5>
+                        <span class="alt-font text-deep-pink text-medium margin-5px-bottom d-block">Session 2010-11</span>
+                        <p class="mb-0">Reunion 2024 is going to be held on 25th December 2024 in the joint initiative of all departments of Comilla Polytechnic Institute for the session 2010-11. All friends of all departments of the 2010-11 session are invited to participate in the reunion.</p>
+                        <p>Register quickly to participate in the reunion and encourage your friends too.</p>
                     </div>  
                 </div>
-                <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2">
-                    <!-- start services item -->
-                    <div class="col md-margin-30px-bottom xs-margin-15px-bottom wow animate__fadeInUp last-paragraph-no-margin">
-                        <div class="bg-white box-shadow-light text-center h-100 padding-eighteen-tb feature-box-8 position-relative z-index-5">
-                            <div class="d-inline-block margin-20px-bottom"><i class="icon-desktop text-white-2 icon-round-small bg-deep-pink"></i></div>
-                            <div class="alt-font text-extra-dark-gray font-weight-600 margin-10px-bottom">Sales Promotion</div>
-                            <p class="w-75 lg-w-90 mx-auto">Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.</p>
-                            <div class="feature-box-overlay bg-deep-pink"></div>
-                        </div>
-                    </div>
-                    <!-- end services item -->
-                    <!-- start services item -->
-                    <div class="col md-margin-30px-bottom xs-margin-15px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.2s">
-                        <div class="bg-white box-shadow-light text-center h-100 padding-eighteen-tb feature-box-8 position-relative z-index-5">
-                            <div class="d-inline-block margin-20px-bottom"><i class="icon-tools text-white-2 icon-round-small bg-deep-pink"></i></div>
-                            <div class="alt-font text-extra-dark-gray font-weight-600 margin-10px-bottom">SEO Marketing</div>
-                            <p class="w-75 lg-w-90 mx-auto">Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.</p>
-                            <div class="feature-box-overlay bg-deep-pink"></div>
-                        </div>
-                    </div>
-                    <!-- end services item -->
-                    <!-- start services item -->
-                    <div class="col xs-margin-15px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.4s">
-                        <div class="bg-white box-shadow-light text-center h-100 padding-eighteen-tb feature-box-8 position-relative z-index-5">
-                            <div class="d-inline-block margin-20px-bottom"><i class="icon-scissors text-white-2 icon-round-small bg-deep-pink"></i></div>
-                            <div class="alt-font text-extra-dark-gray font-weight-600 margin-10px-bottom">Strategic Planning</div>
-                            <p class="w-75 lg-w-90 mx-auto">Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.</p>
-                            <div class="feature-box-overlay bg-deep-pink"></div>
-                        </div>
-                    </div>
-                    <!-- end services item -->
-                    <!-- start services item -->
-                    <div class="col wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.6s">
-                        <div class="bg-white box-shadow-light text-center h-100 padding-eighteen-tb feature-box-8 position-relative z-index-5">
-                            <div class="d-inline-block margin-20px-bottom"><i class="icon-laptop text-white-2 icon-round-small bg-deep-pink"></i></div>
-                            <div class="alt-font text-extra-dark-gray font-weight-600 margin-10px-bottom">Product Branding </div>
-                            <p class="w-75 lg-w-90 mx-auto">Lorem Ipsum is simply text of the printing and typesetting industry. Lorem Ipsum has been standard dummy.</p>
-                            <div class="feature-box-overlay bg-deep-pink"></div>
-                        </div>
-                    </div>
-                    <!-- end services item -->
-                </div>
             </div>
-        </section>
-        <!-- end services section -->
-        <!-- start counter section -->
-        <section class="wow animate__fadeIn">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4">
                     <!-- start counter box item -->
                     <div class="col md-padding-twelve-left md-margin-60px-bottom sm-margin-40px-bottom sm-padding-15px-left wow animate__fadeInRight">
                         <div class="feature-box-5 position-relative">
-                            <i class="icon-desktop text-medium-gray icon-extra-medium top-6"></i>
+                            <i class="fa-solid fa-users text-medium-gray icon-extra-medium top-6"></i>
                             <div class="feature-content">
                                 <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="350" data-speed="2000">350</h6>
-                                <span class="text-small text-uppercase position-relative top-minus4">Happy Clients</span>
+                                <span class="text-small text-uppercase position-relative top-minus4">General Member</span>
                             </div>
                         </div>
                     </div>
@@ -158,10 +43,10 @@
                     <!-- start counter box item -->
                     <div class="col md-padding-twelve-left md-margin-60px-bottom sm-margin-40px-bottom sm-padding-15px-left wow animate__fadeInRight" data-wow-delay="0.2s">
                         <div class="feature-box-5 position-relative">
-                            <i class="icon-camera text-medium-gray icon-extra-medium top-6"></i>
+                            <i class="fa-light fa-user-group-crown text-medium-gray icon-extra-medium top-6"></i>
                             <div class="feature-content">
                                 <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="780" data-speed="2000">780</h6>
-                                <span class="text-small text-uppercase position-relative top-minus4">Photo Capture</span>
+                                <span class="text-small text-uppercase position-relative top-minus4">Guest Joining</span>
                             </div>
                         </div>
                     </div>
@@ -169,10 +54,10 @@
                     <!-- start counter box item -->
                     <div class="col md-padding-twelve-left xs-margin-40px-bottom sm-padding-15px-left wow animate__fadeInRight" data-wow-delay="0.4s">
                         <div class="feature-box-5 position-relative">
-                            <i class="icon-laptop text-medium-gray icon-extra-medium top-6"></i>
+                            <i class="fa-solid fa-user-graduate text-medium-gray icon-extra-medium top-6"></i>
                             <div class="feature-content">
                                 <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="850" data-speed="2000">850</h6>
-                                <span class="text-small text-uppercase position-relative top-minus4">Work Completed</span>
+                                <span class="text-small text-uppercase position-relative top-minus4">Today Register</span>
                             </div>
                         </div>
                     </div>
@@ -180,24 +65,106 @@
                     <!-- start counter box item -->
                     <div class="col md-padding-twelve-left sm-padding-15px-left wow animate__fadeInRight" data-wow-delay="0.6s">
                         <div class="feature-box-5 position-relative">
-                            <i class="icon-chat text-medium-gray icon-extra-medium top-6"></i>
+                            <i class="fa-light fa-user-group text-medium-gray icon-extra-medium top-6"></i>
                             <div class="feature-content">
                                 <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="650" data-speed="2000">650</h6>
-                                <span class="text-small text-uppercase position-relative top-minus4">Telephonic Talk</span>
+                                <span class="text-small text-uppercase position-relative top-minus4">Total Register</span>
                             </div>
                         </div>
                     </div>
                     <!-- end counter box item -->
                 </div>
+                <div class="row mt-5">
+                    <div class="col-12 col-md-6">
+                        <div class="card">
+                            <div class="card-header">Total Register</div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Civil</th>
+                                            <th scope="col">Electrical</th>
+                                            <th scope="col">Electronics</th>
+                                            <th scope="col">Mechanical</th>
+                                            <th scope="col">Power</th>
+                                            <th scope="col">Computer</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="7">Sorry! No data found</td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                            <td>@mdo</td>
+                                            <td>@mdo</td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="card">
+                            <div class="card-header">Top Register Department Wise</div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Civil</th>
+                                            <th scope="col">Electrical</th>
+                                            <th scope="col">Electronics</th>
+                                            <th scope="col">Mechanical</th>
+                                            <th scope="col">Power</th>
+                                            <th scope="col">Computer</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="7">Sorry! No data found</td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                            <td>@mdo</td>
+                                            <td>@mdo</td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <!-- end counter section -->
+        <!-- start parallax section -->
+        <section class="parallax wow animate__fadeIn" data-parallax-background-ratio="0.3" style="background-image:url('{{ asset('/public/front/html/') }}/images/cover-2.jpg');">
+            <div class="opacity-extra-medium bg-black"></div>
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-7 col-sm-10 text-center last-paragraph-no-margin">
+                        <a class="popup-youtube" href="https://www.youtube.com/watch?v=sU3FkzUKHXU"><img src="{{ asset('/public/front/html/') }}/images/icon-play.png" class="w-130px" alt=""/></a>
+                        <h4 class="alt-font text-white-2 margin-15px-bottom sm-margin-20px-bottom">Register. Joining. Fun.</h4>
+                        <p class="text-extra-large font-weight-300 text-light-gray w-85 sm-w-100 d-inline-block margin-25px-bottom">Let's complete your register and invite your firends circle and joining the reunion. We will have a great fun for that day</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end parallax section -->
         <!-- start accordion section -->
         <section class="bg-light-gray border-none p-0 wow animate__fadeIn">
             <div class="container-fluid">
                 <div class="row row-cols-1 row-cols-lg-2">
                     <div class="col padding-seven-lr padding-six-half-tb lg-padding-five-tb lg-padding-six-lr md-padding-six-all sm-padding-50px-tb sm-padding-15px-lr wow animate__fadeInLeft">
-                        <h5 class="alt-font text-extra-dark-gray text-center text-lg-start margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom font-weight-600"><span class="font-weight-300 d-block sm-margin-15px-bottom">We're small but impressive.</span> Hand crafted pixel perfect designs.</h5>
+                        <h5 class="alt-font text-extra-dark-gray text-center text-lg-start margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom font-weight-600"><span class="font-weight-300 d-block sm-margin-15px-bottom">Here's the details question and answer related reunion.</span></h5>
                         <!-- start accordion -->
                         <div class="panel-group accordion-event accordion-style2" id="accordion-main" data-active-icon="fa-angle-up" data-inactive-icon="fa-angle-down">
                             <!-- start tab content -->
@@ -206,13 +173,13 @@
                                     <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion-main" href="#collapseOne">
                                         <div class="panel-title">
                                             <span class="alt-font font-weight-600 text-deep-pink tab-tag">01</span>
-                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">Unique and bold website design</span>
+                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">Where the reunion held in?</span>
                                             <i class="fa-solid fa-angle-up text-extra-dark-gray"></i>
                                         </div>
                                     </a>
                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse show" data-bs-parent="#accordion-main">
-                                    <div class="panel-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                                    <div class="panel-body">Play ground of Cumilla Polytechnic Institute</div>
                                 </div>
                             </div>
                             <!-- end tab content -->
@@ -222,13 +189,13 @@
                                     <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion-main" href="#collapseTwo">
                                         <div class="panel-title">
                                             <span class="alt-font font-weight-600 text-deep-pink tab-tag">02</span>
-                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">We're ready to start now</span>
+                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">When (Date & Time) the reunion held in?</span>
                                             <i class="fa-solid fa-angle-down text-extra-dark-gray"></i>
                                         </div>
                                     </a>
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse" data-bs-parent="#accordion-main">
-                                    <div class="panel-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                                    <div class="panel-body">25th December 2024, Friday at 9.00 AM to day long</div>
                                 </div>
                             </div>
                             <!-- end tab content -->
@@ -238,370 +205,94 @@
                                     <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion-main" href="#collapseThree">
                                         <div class="panel-title">
                                             <span class="alt-font font-weight-600 text-deep-pink tab-tag">03</span>
-                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">We Deliver the highest quality</span>
+                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">Program Arrangement Details</span>
                                             <i class="fa-solid fa-angle-down text-extra-dark-gray"></i>
                                         </div>
                                     </a>
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse" data-bs-parent="#accordion-main">
-                                    <div class="panel-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                                    <div class="panel-body">
+                                        <ol class="list-group list-group-numbered border-0">
+                                            <li class="list-group-item">Breakfast</li>
+                                            <li class="list-group-item">Lunch(All religions)</li>
+                                            <li class="list-group-item">Afternoon Snack</li>
+                                            <li class="list-group-item">Premium Quality Branding T-Shirt</li>
+                                            <li class="list-group-item">Branding Mug</li>
+                                            <li class="list-group-item">Cofee Corner</li>
+                                            <li class="list-group-item">Baby Feeding Zone</li>
+                                            <li class="list-group-item">Female Rest Room</li>
+                                            <li class="list-group-item">Photo Zone</li>
+                                            <li class="list-group-item">Baby Gamming Zone</li>
+                                            <li class="list-group-item">Female Guest Entertainment</li>
+                                            <li class="list-group-item">Refel Draw</li>
+                                            <li class="list-group-item">Foreighner Friends Joining(01674-779916 IMO)</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end tab content --><!-- start tab content -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion-main" href="#collapseFour">
+                                        <div class="panel-title">
+                                            <span class="alt-font font-weight-600 text-deep-pink tab-tag">04</span>
+                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">Registration Fees</span>
+                                            <i class="fa-solid fa-angle-down text-extra-dark-gray"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse" data-bs-parent="#accordion-main">
+                                    <div class="panel-body">
+                                        <ul class="list-group list-group-bullets border-0">
+                                            <li class="list-group-item"><b>General:</b> 1530/- (Bkash/Nagad Charge Included)</li>
+                                            <li class="list-group-item"><b>Guest/Family:</b> 1020/- (Bkash/Nagad Charge Included)</li>
+                                        </ul>
+                                        <p class="my-2 mt-4 fw-bold text-success">Payment System:</p>
+                                        <ul class="list-group list-group-bullets border-0">
+                                            <li class="list-group-item"><b class="text-danger">Bkash:</b> 01972-006267 (Make Payment)</li>
+                                            <li class="list-group-item"><b class="text-danger">Nagad:</b> 01972-006267 (Make Payment)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end tab content --><!-- start tab content -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion-main" href="#collapseFive">
+                                        <div class="panel-title">
+                                            <span class="alt-font font-weight-600 text-deep-pink tab-tag">05</span>
+                                            <span class="text-extra-dark-gray sm-w-80 d-inline-block">Registration Rules</span>
+                                            <i class="fa-solid fa-angle-down text-extra-dark-gray"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div id="collapseFive" class="panel-collapse collapse" data-bs-parent="#accordion-main">
+                                    <div class="panel-body">
+                                        <ol class="list-group list-group-numbered border-0">
+                                            <li class="list-group-item">Please fillup the form for one time only</li>
+                                            <li class="list-group-item">General member(Student of Session 2010-11 of CPI) joining fee 1.5K BDT</li>
+                                            <li class="list-group-item">Per guest or family member joining fees 1K BDT</li>
+                                            <li class="list-group-item">Don't need to pay the fees if you've any child/baby below 6 years.</li>
+                                            <li class="list-group-item">Below 6 years baby must be register(No fees applicable) for the reunion</li>
+                                        </ol>
+                                    </div>
                                 </div>
                             </div>
                             <!-- end tab content -->
                         </div>
                         <!-- end accordion -->
                     </div>
-                    <div class="col cover-background md-h-500px sm-h-350px wow animate__fadeInRight" style="background:url('https://via.placeholder.com/1200x854')"></div>
+                    <div class="col cover-background md-h-500px sm-h-350px wow animate__fadeInRight" style="background:url('{{ asset('/public/front/html/') }}/images/happyFriend.jpg')"></div>
                 </div>
             </div>
         </section>
         <!-- end accordion section -->
-        <!-- start masonry portfolio section -->
-        <section id="work" class="pb-0 wow animate__fadeIn">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 col-md-8 col-sm-10 margin-eight-bottom text-center last-paragraph-no-margin md-margin-40px-bottom sm-margin-30px-bottom">
-                        <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-15px-bottom">Recent Portfolio</h5>
-                        <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. Lorem Ipsum has been the industry. Lorem Ipsum has been the industry's standard dummy text since.</p>
-                    </div>  
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <!-- start filter navigation -->
-                        <ul class="portfolio-filter nav nav-tabs justify-content-center border-0 portfolio-filter-tab-1 font-weight-600 alt-font text-uppercase text-center margin-80px-bottom text-small md-margin-40px-bottom sm-margin-20px-bottom">
-                            <li class="nav active"><a href="javascript:void(0);" data-filter="*" class="light-gray-text-link text-very-small">All</a></li>
-                            <li class="nav"><a href="javascript:void(0);" data-filter=".web" class="light-gray-text-link text-very-small">Web</a></li>
-                            <li class="nav"><a href="javascript:void(0);" data-filter=".advertising" class="light-gray-text-link text-very-small">Advertising</a></li>
-                            <li class="nav"><a href="javascript:void(0);" data-filter=".branding" class="light-gray-text-link text-very-small">Branding</a></li>
-                            <li class="nav"><a href="javascript:void(0);" data-filter=".design" class="light-gray-text-link text-very-small">Design</a></li>
-                            <li class="nav"><a href="javascript:void(0);" data-filter=".photography" class="light-gray-text-link text-very-small">Photography</a></li>
-                        </ul>                                                                           
-                        <!-- end filter navigation -->
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 filter-content overflow-hidden">
-                        <ul class="hover-option7 portfolio-wrapper grid grid-loading grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-small">
-                            <li class="grid-sizer"></li>
-                             <!-- start portfolio-item item -->
-                            <li class="grid-item web branding design wow animate__fadeInUp">
-                                <a href="single-project-page-03.html">
-                                    <figure>
-                                        <div class="portfolio-img"><img src="https://via.placeholder.com/800x650" alt=""/></div>
-                                        <figcaption>
-                                            <div class="portfolio-hover-main text-center last-paragraph-no-margin">
-                                                <div class="portfolio-hover-box align-middle">
-                                                    <div class="portfolio-hover-content position-relative">
-                                                        <span class="font-weight-600 alt-font text-uppercase margin-one-bottom d-block text-extra-dark-gray">Herbal Beauty Salon</span>
-                                                        <p class="text-medium-gray text-uppercase text-extra-small">Branding and Identity</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <!-- end portfolio item -->
-                            <!-- start portfolio item -->
-                            <li class="grid-item web branding design photography wow animate__fadeInUp" data-wow-delay="0.4s">
-                                <a href="single-project-page-04.html">
-                                    <figure>
-                                        <div class="portfolio-img"><img src="https://via.placeholder.com/800x650" alt=""/></div>
-                                        <figcaption>
-                                            <div class="portfolio-hover-main text-center last-paragraph-no-margin">
-                                                <div class="portfolio-hover-box align-middle">
-                                                    <div class="portfolio-hover-content position-relative">
-                                                        <span class="font-weight-600 alt-font text-uppercase margin-one-bottom d-block text-extra-dark-gray">Tailoring Interior</span>
-                                                        <p class="text-medium-gray text-uppercase text-extra-small">Branding and Brochure</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <!-- end portfolio item -->
-                           <!-- start portfolio item -->
-                            <li class="grid-item advertising branding photography wow animate__fadeInUp" data-wow-delay="0.4s">
-                                <a href="single-project-page-05.html">
-                                    <figure>
-                                        <div class="portfolio-img"><img src="https://via.placeholder.com/800x650" alt=""/></div>
-                                        <figcaption>
-                                            <div class="portfolio-hover-main text-center last-paragraph-no-margin">
-                                                <div class="portfolio-hover-box align-middle">
-                                                    <div class="portfolio-hover-content position-relative">
-                                                        <span class="font-weight-600 alt-font text-uppercase margin-one-bottom d-block text-extra-dark-gray">Pixflow Studio</span>
-                                                        <p class="text-medium-gray text-uppercase text-extra-small">Branding and Identity</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <!-- end portfolio item -->
-                             <!-- start portfolio item -->
-                            <li class="grid-item web advertising design wow animate__fadeInUp" data-wow-delay="0.6s">
-                                <a href="single-project-page-01.html">
-                                    <figure>
-                                        <div class="portfolio-img"><img src="https://via.placeholder.com/800x650" alt=""/></div>
-                                        <figcaption>
-                                            <div class="portfolio-hover-main text-center last-paragraph-no-margin">
-                                                <div class="portfolio-hover-box align-middle">
-                                                    <div class="portfolio-hover-content position-relative">
-                                                        <span class="font-weight-600 alt-font text-uppercase margin-one-bottom d-block text-extra-dark-gray">Designblast Inc</span>
-                                                        <p class="text-medium-gray text-uppercase text-extra-small">Web and Photography</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <!-- end portfolio item -->                            
-                            <!-- start portfolio item -->
-                            <li class="grid-item web branding design wow animate__fadeInUp">
-                                <a href="single-project-page-02.html">
-                                    <figure>
-                                        <div class="portfolio-img"><img src="https://via.placeholder.com/800x650" alt=""/></div>
-                                        <figcaption>
-                                            <div class="portfolio-hover-main text-center last-paragraph-no-margin">
-                                                <div class="portfolio-hover-box align-middle">
-                                                    <div class="portfolio-hover-content position-relative">
-                                                        <span class="font-weight-600 alt-font text-uppercase margin-one-bottom d-block text-extra-dark-gray">HardDot Stone</span>
-                                                        <p class="text-medium-gray text-uppercase text-extra-small">Branding and Identity</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <!-- end portfolio item -->
-                             <!-- start portfolio item -->
-                            <li class="grid-item web advertising branding design photography wow animate__fadeInUp" data-wow-delay="0.2s">
-                                <a href="single-project-page-03.html">
-                                    <figure>
-                                        <div class="portfolio-img"><img src="https://via.placeholder.com/800x650" alt=""/></div>
-                                        <figcaption>
-                                            <div class="portfolio-hover-main text-center last-paragraph-no-margin">
-                                                <div class="portfolio-hover-box align-middle">
-                                                    <div class="portfolio-hover-content position-relative">
-                                                        <span class="font-weight-600 alt-font text-uppercase margin-one-bottom d-block text-extra-dark-gray">Educamp School</span>
-                                                        <p class="text-medium-gray text-uppercase text-extra-small">Branding and Identity</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <!-- end portfolio item -->
-                            <!-- start portfolio item -->
-                            <li class="grid-item web advertising branding design photography wow animate__fadeInUp" data-wow-delay="0.4s">
-                                <a href="single-project-page-04.html">
-                                    <figure>
-                                        <div class="portfolio-img"><img src="https://via.placeholder.com/800x650" alt=""/></div>
-                                        <figcaption>
-                                            <div class="portfolio-hover-main text-center last-paragraph-no-margin">
-                                                <div class="portfolio-hover-box align-middle">
-                                                    <div class="portfolio-hover-content position-relative">
-                                                        <span class="font-weight-600 alt-font text-uppercase margin-one-bottom d-block text-extra-dark-gray">Third Eye Glasses</span>
-                                                        <p class="text-medium-gray text-uppercase text-extra-small">Branding and Brochure</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <!-- end portfolio item -->
-                            <!-- start portfolio item -->
-                            <li class="grid-item web advertising branding design wow animate__fadeInUp" data-wow-delay="0.6s">
-                                <a href="single-project-page-05.html">
-                                    <figure>
-                                        <div class="portfolio-img"><img src="https://via.placeholder.com/800x650" alt=""/></div>
-                                        <figcaption>
-                                            <div class="portfolio-hover-main text-center last-paragraph-no-margin">
-                                                <div class="portfolio-hover-box align-middle">
-                                                    <div class="portfolio-hover-content position-relative">
-                                                        <span class="font-weight-600 alt-font text-uppercase margin-one-bottom d-block text-extra-dark-gray">Violator Series</span>
-                                                        <p class="text-medium-gray text-uppercase text-extra-small">Web and Photography</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end masonry portfolio section -->
-        <!-- start progress bar section -->
-        <section class="wow animate__fadeIn">
-            <div class="container">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-lg-6 col-md-10 padding-nine-right text-center text-lg-start md-padding-15px-right md-padding-30px-bottom wow animate__fadeIn last-paragraph-no-margin">
-                        <h6 class="text-extra-dark-gray font-weight-600 w-90 alt-font md-w-100">We provide high quality and cost effective services.</h6>
-                        <p class="w-90 margin-30px-bottom md-w-100">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. Lorem Ipsum has been the industry. Lorem Ipsum has been the industry's standard dummy text since. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                    </div>
-                    <div class="col-lg-6 col-md-10 text-center margin-30px-top wow animate__fadeIn">
-                        <!-- start progress bar item -->
-                        <div class="progress progress-step-style-01 bg-transparent-black-very-light margin-55px-bottom">
-                            <span class="progress-title text-extra-small text-uppercase text-dark-gray">Jquery - 4 years Experience</span>
-                            <div class="progress-bar bg-extra-dark-gray" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-                            <span class="progress-bar-percent text-small">92%</span>
-                        </div>
-                        <!-- end progress bar item -->
-                        <!-- start  progress bar item -->
-                        <div class="progress progress-step-style-01 bg-transparent-black-very-light margin-55px-bottom">
-                            <span class="progress-title text-extra-small text-uppercase text-dark-gray">Wordpress - 6 years Experience</span>
-                            <div class="progress-bar bg-extra-dark-gray" role="progressbar" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100"></div>
-                            <span class="progress-bar-percent text-small">97%</span>
-                        </div>
-                        <!-- end progress bar item -->
-                        <!-- start  progress bar item -->
-                        <div class="progress progress-step-style-01 bg-transparent-black-very-light margin-55px-bottom">
-                            <span class="progress-title text-extra-small text-uppercase text-dark-gray">HTML5 - 5 years Experience</span>
-                            <div class="progress-bar bg-extra-dark-gray" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                            <span class="progress-bar-percent text-small">98%</span>
-                        </div>
-                        <!-- end progress bar item -->
-                        <!-- start  progress bar item -->
-                        <div class="progress progress-step-style-01 bg-transparent-black-very-light">
-                            <span class="progress-title text-extra-small text-uppercase text-dark-gray">Photography - 6 years Experience</span>
-                            <div class="progress-bar bg-extra-dark-gray" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-                            <span class="progress-bar-percent text-small">92%</span>
-                        </div>
-                        <!-- end progress bar item -->
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end progress bar section -->
-        <!-- start section -->
-        <section class="p-0 wow animate__fadeIn bg-extra-dark-gray">
-            <div class="container-fluid">
-                <div class="row row-cols-1 row-cols-lg-2">
-                    <div class="col d-flex align-items-center justify-content-center md-h-500px sm-h-350px cover-background wow animate__fadeInLeft" style="background-image: url('https://via.placeholder.com/960x850');">
-                        <div class="opacity-extra-medium bg-extra-dark-gray"></div>
-                        <div class="position-relative bg-deep-pink w-50 text-center text-white-2 padding-ten-all z-index-5 xl-w-70 sm-w-85 sm-padding-twelve-tb sm-padding-five-lr">
-                            <span class="special-char-medium text-white-2 absolute-middle-center top-0 fa-solid fa-quote-left"></span>
-                            <h6 class="font-weight-300 mb-0">We design brand, digital experience & marketing campaigns that engage the right customers.</h6>
-                        </div>
-                    </div>
-                    <div class="col d-flex align-items-center justify-content-center text-center text-lg-start wow animate__fadeInRight last-paragraph-no-margin">
-                        <div class="padding-fifteen-all xl-padding-thirteen-all lg-padding-ten-all md-padding-90px-all sm-no-padding-lr sm-padding-40px-tb w-100">
-                            <span class="text-medium margin-10px-bottom d-block alt-font">We create premium designs and technology</span>
-                            <h4 class="alt-font text-light-gray">A digital studio crafting beautiful experiences.</h4>
-                            <p class="text-extra-large w-85 xl-w-100">We always stay on the cutting edge of digital, so that our clients maintain their competitive advantage online.</p>
-                            <p class="w-85 xl-w-100">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. Lorem Ipsum has been the industry. Lorem Ipsum is simply dummy text of the printing and industry. Lorem Ipsum has been the industry's standard dummy text ever since. Lorem Ipsum has been the industry. Lorem Ipsum is simply dummy text.</p>
-                            <a href="home-creative-small-business.html" class="btn btn-small margin-35px-top btn-white">Start Your Business</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-        <!-- start full width feature box section -->
-        <section class="p-0 wow animate__fadeIn">
-            <div class="container-fluid">
-                <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 feature-box-14 border-top border-color-light-gray">
-                    <!-- start feature box item -->
-                    <div class="col text-center d-flex align-items-center last-paragraph-no-margin wow animate__fadeInRight p-0">
-                        <div class="padding-fifteen-all md-padding-50px-all sm-padding-30px-all w-100">
-                            <h2 class="text-light-gray alt-font letter-spacing-minus-3 mb-0">01</h2>
-                            <span class="d-block alt-font text-medium text-extra-dark-gray margin-15px-top margin-10px-bottom sm-margin-5px-bottom">Discussion of the Idea</span>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text.</p>
-                        </div>
-                    </div>
-                    <!-- end feature box item -->
-                    <!-- start feature box item -->
-                    <div class="col text-center d-flex align-items-center last-paragraph-no-margin wow animate__fadeInRight p-0" data-wow-delay="0.2s">
-                        <div class="padding-fifteen-all md-padding-50px-all sm-padding-30px-all w-100">
-                            <h2 class="text-light-gray alt-font letter-spacing-minus-3 mb-0">02</h2>
-                            <span class="d-block alt-font text-medium text-extra-dark-gray margin-15px-top margin-10px-bottom sm-margin-5px-bottom">Elaboration of the Core</span>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text.</p>
-                        </div>
-                    </div>
-                    <!-- end feature box item -->
-                    <!-- start feature box item -->
-                    <div class="col text-center d-flex align-items-center last-paragraph-no-margin wow animate__fadeInRight p-0" data-wow-delay="0.4s">
-                        <div class="padding-fifteen-all md-padding-50px-all sm-padding-30px-all w-100">
-                            <h2 class="text-light-gray alt-font letter-spacing-minus-3 mb-0">03</h2>
-                            <span class="d-block alt-font text-medium text-extra-dark-gray margin-15px-top margin-10px-bottom sm-margin-5px-bottom">Handcrafted Templates</span>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text.</p>
-                        </div>
-                    </div>
-                    <!-- end feature box item -->
-                    <!-- start feature box item -->
-                    <div class="col text-center d-flex align-items-center last-paragraph-no-margin wow animate__fadeInRight p-0" data-wow-delay="0.6s">
-                        <div class="padding-fifteen-all md-padding-50px-all sm-padding-30px-all w-100">
-                            <h2 class="text-light-gray alt-font letter-spacing-minus-3 mb-0">04</h2>
-                            <span class="d-block alt-font text-medium text-extra-dark-gray margin-15px-top margin-10px-bottom sm-margin-5px-bottom">Testing for Perfection</span>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text.</p>
-                        </div>
-                    </div>
-                    <!-- start feature box item -->
-                </div>
-            </div>
-        </section>
-        <!-- end full width feature box section -->
-        <!-- start parallax section -->
-        <section class="parallax wow animate__fadeIn " data-parallax-background-ratio="0.6" style="background-image:url('https://via.placeholder.com/1920x1200');">
-            <div class="opacity-medium bg-extra-dark-gray"></div>
-            <div class="container position-relative z-index-2">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-md-10 text-center margin-seven-bottom sm-margin-40px-bottom">
-                        <h4 class="alt-font text-light-gray w-90 mx-auto">Powerful Website Builder</h4>
-                        <p class="text-large w-85 md-w-100 font-weight-300 mx-auto mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                    </div>
-                </div>
-                <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2">
-                    <!-- start feature box item -->
-                    <div class="col text-center feature-box-9 sm-h-200px wow animate__zoomIn">
-                        <i class="icon-edit icon-large margin-20px-bottom text-deep-pink"></i>
-                        <p class="alt-font text-medium text-light-gray md-w-80 mx-md-auto sm-w-100">Creative Elements</p>
-                        <div class="text-bottom-line border-color-deep-pink"></div>
-                    </div>
-                    <!-- end feature box item -->
-                    <!-- start feature box item -->
-                    <div class="col text-center feature-box-9 sm-h-200px wow animate__zoomIn" data-wow-delay="0.2s">
-                        <i class="icon-tools-2 icon-large margin-20px-bottom text-deep-pink"></i>
-                        <p class="alt-font text-medium text-light-gray md-w-80 mx-md-auto sm-w-100">Unique Shortcodes</p>
-                        <div class="text-bottom-line border-color-deep-pink"></div>
-                    </div>
-                    <!-- end feature box item -->
-                    <!-- start feature box item -->
-                    <div class="col text-center feature-box-9 sm-h-200px wow animate__zoomIn" data-wow-delay="0.4s">
-                        <i class="icon-expand icon-large margin-20px-bottom text-deep-pink"></i>
-                        <p class="alt-font text-medium text-light-gray md-w-80 mx-md-auto sm-w-100">Unlimited Layouts</p>
-                        <div class="text-bottom-line border-color-deep-pink"></div>
-                    </div>
-                    <!-- end feature box item -->
-                    <!-- start feature box item -->
-                    <div class="col text-center feature-box-9 sm-h-200px wow animate__zoomIn" data-wow-delay="0.6s">
-                        <i class="icon-scissors icon-large margin-20px-bottom text-deep-pink"></i>
-                        <p class="alt-font text-medium text-light-gray md-w-80 mx-md-auto sm-w-100">Shortcode Panel</p>
-                        <div class="text-bottom-line border-color-deep-pink"></div>
-                    </div>
-                    <!-- end feature box item -->
-                </div>
-            </div>
-        </section>
-        <!-- end parallax section -->
         <!-- start team section -->
         <section id="team" class="wow animate__fadeIn">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-md-8 col-sm-10 margin-eight-bottom text-center last-paragraph-no-margin md-margin-40px-bottom sm-margin-30px-bottom">
-                        <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-15px-bottom">Creative People</h5>
+                        <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-15px-bottom">Working Team</h5>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. Lorem Ipsum has been the industry. Lorem Ipsum has been the industry's standard dummy text since.</p>
                     </div>  
                 </div>
@@ -613,8 +304,8 @@
                                 <img src="https://via.placeholder.com/700x892" alt="">
                                 <div class="team-overlay bg-deep-pink"></div>
                                 <div class="team-member-position text-center margin-25px-top">
-                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Herman Miller</div>
-                                    <div class="text-extra-small text-uppercase text-medium-gray">Co-Founder / Design</div>
+                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Dipu Dewan</div>
+                                    <div class="text-extra-small text-uppercase text-medium-gray">Organizer</div>
                                 </div>
                             </div>
                             <figcaption>
@@ -637,7 +328,7 @@
                                 <img src="https://via.placeholder.com/700x892" alt="">
                                 <div class="team-overlay bg-deep-pink"></div>
                                 <div class="team-member-position text-center margin-25px-top">
-                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Jeremy Dupont</div>
+                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Moftasim Billah Nahid</div>
                                     <div class="text-extra-small text-uppercase text-medium-gray">Creative Director</div>
                                 </div>
                             </div>
@@ -661,7 +352,7 @@
                                 <img src="https://via.placeholder.com/700x892" alt="">
                                 <div class="team-overlay bg-deep-pink"></div>
                                 <div class="team-member-position text-center margin-25px-top">
-                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Sara Smith</div>
+                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Faruk Hossain Faysal</div>
                                     <div class="text-extra-small text-uppercase text-medium-gray">Creative Studio Head</div>
                                 </div>
                             </div>
@@ -685,7 +376,7 @@
                                 <img src="https://via.placeholder.com/700x892" alt="">
                                 <div class="team-overlay bg-deep-pink"></div>
                                 <div class="team-member-position text-center margin-25px-top">
-                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Bill Gardner</div>
+                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Mirajur Rahman Tuhin</div>
                                     <div class="text-extra-small text-uppercase text-medium-gray">Co-Founder / Design</div>
                                 </div>
                             </div>
@@ -706,88 +397,7 @@
             </div>
         </section>
         <!-- end team section -->
-        <!-- start blog section -->
-        <section id="blog" class="bg-light-gray wow animate__fadeIn">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 col-md-8 col-sm-10 margin-eight-bottom text-center last-paragraph-no-margin md-margin-40px-bottom sm-margin-30px-bottom">
-                        <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-15px-bottom">Recent Blog</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. Lorem Ipsum has been the industry. Lorem Ipsum has been the industry's standard dummy text since.</p>
-                    </div>  
-                </div>
-                <div class="row">
-                    <div class="col-12 blog-content">
-                        <ul class="blog-masonry blog-wrapper grid grid-loading grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col blog-post-style5 gutter-large">
-                            <li class="grid-sizer"></li>
-                            <!-- start post item --> 
-                            <li class="grid-item last-paragraph-no-margin wow animate__fadeInUp">
-                                <div class="blog-post">
-                                    <div class="blog-post-images overflow-hidden">
-                                        <a href="blog-post-layout-01.html">
-                                            <img src="https://via.placeholder.com/900x650" alt="">
-                                        </a>
-                                        <div class="blog-categories bg-white text-uppercase text-extra-small alt-font"><a href="blog-grid.html">Graphic Design</a></div>
-                                    </div>
-                                    <div class="post-details padding-35px-all bg-white md-padding-20px-all">
-                                        <div class="blog-hover-color"></div>
-                                        <a href="blog-post-layout-01.html" class="alt-font post-title text-medium text-extra-dark-gray w-90 d-block lg-w-100 margin-5px-bottom">I like the body. I like to design everything to do with the body.</a>
-                                        <div class="author">
-                                            <span class="text-medium-gray text-uppercase text-extra-small d-inline-block">by <a href="blog-masonry.html" class="text-medium-gray">Jay Benjamin</a>&nbsp;&nbsp;|&nbsp;&nbsp;20 April 2017</span>
-                                        </div>
-                                        <div class="separator-line-horrizontal-full bg-medium-gray margin-seven-tb lg-margin-four-tb"></div>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum standard dummy...</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end post item --> 
-                            <!-- start post item --> 
-                            <li class="grid-item last-paragraph-no-margin wow animate__fadeInUp" data-wow-delay="0.2s">
-                                <div class="blog-post">
-                                    <div class="blog-post-images overflow-hidden">
-                                        <a href="blog-post-layout-02.html">
-                                            <img src="https://via.placeholder.com/900x650" alt="">
-                                        </a>
-                                        <div class="blog-categories bg-white text-uppercase text-extra-small alt-font"><a href="blog-grid.html">Graphic Design</a></div>
-                                    </div>
-                                    <div class="post-details padding-35px-all bg-white md-padding-20px-all">
-                                        <div class="blog-hover-color"></div>
-                                        <a href="blog-post-layout-02.html" class="alt-font post-title text-medium text-extra-dark-gray w-90 d-block lg-w-100 margin-5px-bottom">Recognizing the need is the primary condition for design.</a>
-                                        <div class="author">
-                                            <span class="text-medium-gray text-uppercase text-extra-small d-inline-block">by <a href="blog-masonry.html" class="text-medium-gray">Herman Miller</a>&nbsp;&nbsp;|&nbsp;&nbsp;20 April 2017</span>
-                                        </div>
-                                        <div class="separator-line-horrizontal-full bg-medium-gray margin-seven-tb lg-margin-four-tb"></div>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum standard dummy...</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end post item --> 
-                            <!-- start post item --> 
-                            <li class="grid-item last-paragraph-no-margin wow animate__fadeInUp" data-wow-delay="0.4s">
-                                <div class="blog-post">
-                                    <div class="blog-post-images overflow-hidden">
-                                        <a href="blog-post-layout-03.html">
-                                            <img src="https://via.placeholder.com/900x650" alt="">
-                                        </a>
-                                        <div class="blog-categories bg-white text-uppercase text-extra-small alt-font"><a href="blog-grid.html">Web Design</a></div>
-                                    </div>
-                                    <div class="post-details padding-35px-all bg-white md-padding-20px-all">
-                                        <div class="blog-hover-color"></div>
-                                        <a href="blog-post-layout-03.html" class="alt-font post-title text-medium text-extra-dark-gray w-90 d-block lg-w-100 margin-5px-bottom">Styles come and go. Design is a language, not a style.</a>
-                                        <div class="author">
-                                            <span class="text-medium-gray text-uppercase text-extra-small d-inline-block">by <a href="blog-masonry.html" class="text-medium-gray">Jeremy Dupont</a>&nbsp;&nbsp;|&nbsp;&nbsp;20 April 2017</span>
-                                        </div>
-                                        <div class="separator-line-horrizontal-full bg-medium-gray margin-seven-tb lg-margin-four-tb"></div>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum standard dummy...</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end post item --> 
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end blog section -->
+       
         <!-- start clients slider section  -->
         <section id="clients" class="parallax wow animate__fadeIn" data-parallax-background-ratio="0.4" style="background-image:url('https://via.placeholder.com/1920x1200');">
             <div class="opacity-medium bg-extra-dark-gray"></div>
@@ -812,112 +422,4 @@
             </div>
         </section>
         <!-- end clients slider section -->
-        <!-- start review section -->
-        <section class="wow animate__fadeIn">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 col-md-8 col-sm-10 margin-eight-bottom text-center last-paragraph-no-margin md-margin-40px-bottom sm-margin-30px-bottom">
-                        <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-15px-bottom">What People Say</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. Lorem Ipsum has been the industry. Lorem Ipsum has been the industry's standard dummy text since.</p>
-                    </div>  
-                </div>
-                <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 justify-content-center">
-                    <!-- start testimonial item -->
-                    <div class="col text-center sm-margin-40px-bottom wow animate__fadeInRight last-paragraph-no-margin">
-                        <img src="https://via.placeholder.com/149x149" class="rounded-circle w-30 margin-30px-bottom" alt=""/>
-                        <p class="w-90 mx-auto md-w-100">Their team are easy to work with and helped me make amazing websites in a short amount of time. Thanks guys for all your hard work.</p>
-                        <i class="fa-solid fa-quote-left icon-small text-deep-pink d-block margin-30px-top margin-15px-bottom"></i>
-                        <span class="text-extra-dark-gray font-weight-600 text-small text-uppercase d-block line-height-10 alt-font">Shoko Mugikura</span>
-                        <span class="text-light-gray2 text-extra-small text-uppercase text-medium-gray">Design Manager</span>
-                    </div>
-                    <!-- end testimonial item -->
-                    <!-- start testimonial item -->
-                    <div class="col text-center sm-margin-40px-bottom wow animate__fadeInRight last-paragraph-no-margin" data-wow-delay="0.2s">
-                        <img src="https://via.placeholder.com/149x149" class="rounded-circle w-30 margin-30px-bottom" alt=""/>
-                        <p class="w-90 mx-auto md-w-100">Trust us we looked for a very long time and wasted thousands of dollars testing other teams, freelancers, and outsource companies.</p>
-                        <i class="fa-solid fa-quote-left icon-small text-deep-pink d-block margin-30px-top margin-15px-bottom"></i>
-                        <span class="text-extra-dark-gray font-weight-600 text-small text-uppercase d-block line-height-10 alt-font">Alexander Smith</span>
-                        <span class="text-light-gray2 text-extra-small text-uppercase text-medium-gray">Co Founder / CEO</span>
-                    </div>
-                    <!-- end testimonial item -->
-                    <!-- start testimonial item -->
-                    <div class="col text-center wow animate__fadeInRight last-paragraph-no-margin" data-wow-delay="0.4s">
-                        <img src="https://via.placeholder.com/149x149" class="rounded-circle w-30 margin-30px-bottom" alt=""/>
-                        <p class="w-90 mx-auto md-w-100">This is an excellent company! I personally enjoyed the energy and the professional support the whole team gave to us into creating website.</p>
-                        <i class="fa-solid fa-quote-left icon-small text-deep-pink d-block margin-30px-top margin-15px-bottom"></i>
-                        <span class="text-extra-dark-gray font-weight-600 text-small text-uppercase d-block line-height-10 alt-font">Lindsay Swanson</span>
-                        <span class="text-light-gray2 text-extra-small text-uppercase text-medium-gray">Creative Director</span>
-                    </div>
-                    <!-- start testimonial item -->
-                </div>
-            </div>
-        </section>
-        <!-- end review section -->
-        <!-- start contact section -->
-        <section id="contact" class="wow animate__fadeIn p-0 bg-extra-dark-gray">
-            <div class="container-fluid">
-                <div class="row row-cols-1 row-cols-lg-2">
-                    <div class="col cover-background md-h-550px sm-h-350px wow animate__fadeIn" style="background: url(https://via.placeholder.com/1200x854)"></div>
-                    <div class="col padding-five-tb padding-six-lr md-padding-eleven-all text-center sm-padding-15px-lr wow animate__fadeIn">
-                        <div class="text-medium-gray alt-font text-small text-uppercase margin-5px-bottom">Fill out the form and we'll be in touch soon!</div>
-                        <h5 class="margin-55px-bottom text-white-2 alt-font font-weight-600 text-uppercase md-margin-30px-bottom sm-margin-15px-bottom">Ready to request a quote?</h5>
-                        <div>
-                            <form id="contact-form-2" action="email-templates/contact-form.php" method="post">
-                                <div class="row justify-content-center">
-                                    <div class="col-12 wow animate__fadeIn text-center">
-                                        <div class="form-results d-none"></div>
-                                        <input type="text" name="name" id="name" placeholder="Name*" class="input-border-bottom required">
-                                        <input type="email" name="email" id="email" placeholder="E-mail*" class="input-border-bottom required">
-                                        <input type="text" id="subject" name="subject" placeholder="Subject" class="input-border-bottom">
-                                        <textarea name="comment" id="comment" placeholder="Your Message" class="input-border-bottom"></textarea>
-                                        <button id="contact-us-button-2" type="submit" class="btn btn-small btn-deep-pink margin-30px-top sm-margin-three-top submit">send message</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end contact section -->
-        <!-- start features section -->
-        <section class="wow animate__fadeIn border-bottom border-color-extra-light-gray">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2">
-                    <!-- start features box item -->
-                    <div class="col text-center md-margin-50px-bottom sm-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin">
-                        <i class="icon-map-pin icon-medium margin-25px-bottom sm-margin-10px-bottom"></i>
-                        <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Visit Our Office</div>
-                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto">401 Broadway, 24th Floor New York, NY 10013.</p>
-                        <a href="contact-us-classic-02.html" class="margin-15px-top text-decoration-line-through-deep-pink d-inline-block text-uppercase text-deep-pink text-small sm-no-margin-top">GET DIRECTION</a>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col text-center md-margin-50px-bottom sm-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.2s">
-                        <i class="icon-chat icon-medium margin-25px-bottom sm-margin-10px-bottom"></i>
-                        <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Let's Talk</div>
-                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto">Phone: 1-800-222-000<br>Fax: 1-800-222-002</p>
-                        <a href="contact-us-classic.html" class="margin-15px-top text-decoration-line-through-deep-pink d-inline-block text-uppercase text-deep-pink text-small sm-no-margin-top">call us</a>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col text-center sm-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.4s">
-                        <i class="icon-envelope icon-medium margin-25px-bottom sm-margin-10px-bottom"></i>
-                        <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">E-mail Us</div>
-                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto"><a href="mailto:info@yourdomain.com">info@yourdomain.com</a><br><a href="mailto:hr@yourdomain.com">hr@yourdomain.com</a></p>
-                        <a href="contact-us-classic-02.html" class="margin-15px-top text-decoration-line-through-deep-pink d-inline-block text-uppercase text-deep-pink text-small sm-no-margin-top">send e-mail</a>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col text-center wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.6s">
-                        <i class="icon-megaphone icon-medium margin-25px-bottom sm-margin-10px-bottom"></i>
-                        <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Customer Services</div>
-                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto">Lorem Ipsum is simply dummy text of the printing.</p>
-                        <a href="contact-us-classic-02.html" class="margin-15px-top text-decoration-line-through-deep-pink d-inline-block text-uppercase text-deep-pink text-small sm-no-margin-top">open ticket</a>
-                    </div>
-                    <!-- end features box item -->
-                </div>
-            </div>
-        </section>
-        <!-- end features section -->
 @endsection

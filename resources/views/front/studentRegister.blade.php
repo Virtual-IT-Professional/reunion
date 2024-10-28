@@ -1,46 +1,22 @@
 @extends('front.include')
-@section('frontBody')<!-- start hero section -->
-        <section id="home" class="p-0 parallax mobile-height wow animate__fadeIn" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('/public/front/html/') }}/images/cpi_cover.jfif');">
-            <div class="opacity-extra-medium bg-extra-dark-gray"></div>
-            <div class="container position-relative full-screen">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12 text-center">
-                        <img src="{{ asset('/public/front/html/') }}/images/text2.png" alt=""/>
-                        <div class="down-section text-center"><a href="#about" class="inner-link"><i class="ti-arrow-down icon-extra-small text-white-2 bg-deep-pink padding-15px-all sm-padding-10px-all rounded-circle"></i></a></div>
-                    </div>
-                </div>
+@section('frontBody')
+
+<!-- start hero section -->
+<section id="home" class="p-0 parallax mobile-height wow animate__fadeIn" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('/public/front/html/') }}/images/cpi_cover.jpg');height:570px">
+    <div class="opacity-extra-medium bg-extra-dark-gray"></div>
+    <div class="container position-relative full-screen">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <img src="{{ asset('/public/front/html/') }}/images/text2.png" alt=""/>
+                <div class="down-section text-center"><a href="#about" class="inner-link"><i class="ti-arrow-down icon-extra-small text-white-2 bg-deep-pink padding-15px-all sm-padding-10px-all rounded-circle"></i></a></div>
             </div>
-        </section>
-        <!-- end hero section -->
+        </div>
+    </div>
+</section>
+<!-- end hero section -->
 <div class="container p-4">
     <div class="row align-items-center my-3 mb-4">
         <h2 class="display-6 fw-bold text-center">Reunion Registration Form</h2>
-        <div class="col-12 col-md-5 mx-auto">
-            <p class="fw-bold h6 my-4">Registration Fee</p>
-            <ol class="list-group list-group-numbered">
-                <li class="list-group-item"><b>General:</b> 1530 BDT(Including Vat)</li>
-                <li class="list-group-item"><b>Family Member/Guest:</b> 1000 BDT(Including Vat)</li>
-            </ol>
-            <p><small class="text-success">*Don't need to register below 6 years baby</small></p>
-            <p class="fw-bold h6 my-2">Payment Procedure</p>
-            <ul class="list-group list-group-numbered">
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                    <div class="fw-bold">Bkash</div>
-                    01972-006267
-                    </div>
-                    <span class="badge text-bg-primary rounded-pill">Make Payment</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                    <div class="fw-bold">Nagad</div>
-                    01972-006267
-                    </div>
-                    <span class="badge text-bg-primary rounded-pill">Make Payment</span>
-                </li>
-            </ul>
-        </div>
-    </div>
     <div class="row align-items-center mt-5">
         <div class="col-10 mx-auto">
             <div class="card card-body shadow p-4">
@@ -115,23 +91,34 @@
                         </select>
                     </div>
                     <div class="col-12 col-md-4">
+                        <label for="currentAddress" class="form-label">Current Address(*)</label>
+                        <input type="text" class="form-control" id="currentAddress" placeholder="Briefly Describe Current Location" required name="currentAddress">
+                    </div>
+                    <div class="col-12 col-md-4">
                         <label for="totalJoin" class="form-label">Total Joining Without You(*)</label>
-                        <input type="number" class="form-control" id="totalJoin" placeholder="Example: 03" required name="totalMember">
+                        <select name="totalMember" onchange="totMember(this)" id="totalJoin" class="form-control">
+                            <option value="">-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
                     </div>
-                    <div class="col-12 col-md-6">
-                        <label for="currentAddress" class="form-label">Current Address(*)</label><br>
-                        <small>(Briefly Describe Current Location)</small>
-                        <input type="text" class="form-control" id="currentAddress" placeholder="Apartment, studio, or floor" required name="currentAddress">
-                    </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-12"><div class="row" id="memberList"></div></div>
+                    <div class="col-12">
                         <label for="professionDetails" class="form-label">Profession Details</label>
-                        <br><small>(Designation/Position/Company Name etc)</small>
+                        <small>(Designation/Position & Company Name)</small>
                         <input type="text" class="form-control" id="professionDetails" placeholder="Example: Founder-Virtual IT Professional" name="professionDetails">
                     </div>
-                    <div class="col-12">
-                        <label for="familyDetails" class="form-label">Family/Guest Name</label></br>
-                        <small class="text-danger">(Please mention age-only for baby & relation. Must be separate by comma)</small>
-                        <input type="text" class="form-control" id="familyDetails" placeholder="Example: Tahmina Akter Wife, Orin Jahan (10) Daughter" required name="familyDetails">
+                    <div class="col-12 col-md-4">
+                        <label for="totalPayment" class="form-label">Total Payment Amount(*)</label>
+                        <input type="number" class="form-control" id="totalPayment" placeholder="Example: 3500" required name="payAmount">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="dept" class="form-label">Payment Type(*)</label>
@@ -145,10 +132,6 @@
                         <label for="txnId" class="form-label">TXNID(*)</label>
                         <input type="text" class="form-control" id="txnId" placeholder="Example: BJP9PG9ZVB" required name="payId">
                     </div>
-                    <div class="col-12 col-md-4">
-                        <label for="totalJoin" class="form-label">Total Payment Amount(*)</label>
-                        <input type="number" class="form-control" id="totalJoin" placeholder="Example: 3500" required name="payAmount">
-                    </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
@@ -158,3 +141,39 @@
     </div>
 </div>
 @endsection
+<script>
+    function totMember(e){
+        document.getElementById("memberList").innerHTML = "";
+        document.getElementById("totalPayment").value = "";
+        x = e.value
+        for (let i = 0; i < x; i++) {
+            text = "<div class='col-12 col-md-4'><label class='text-success'>Guest Name</label><input type='text' class='form-control border-success text-success' placeholder='Example: Thamina Akter' required name='guestName[]'></div><div class='col-12 col-md-4'><label class='text-success'>Relation</label><select class='form-control border-success text-success' name='guestRelation[]'><option value=''>-</option><option>Spouse</option><option>Father</option><option>Mother</option><option>Brother</option><option>Sister</option><option>Son</option><option>Daughter</option><option>Other</option></select></div><div class='col-12 col-md-4'><label class='text-success'>Guest Age</label><input onchange='paymentDetails(this.value)' type='number' class='form-control border-success text-success' placeholder='Example: 25' required name='guestAge[]' id='memberAge[]' value=''></div>";
+            document.getElementById("memberList").innerHTML += text;
+        }
+    }
+    function sum(x,y){
+        a = x;
+        b = y;
+        c = Number(a)+Number(b);
+        return Number(c);
+    }
+
+    // function paymentDetails(e){
+    //     // document.getElementById("totalPayment").value = "";
+    //     totId = document.querySelectorAll('#memberAge').length;
+    //     payment = document.getElementById("totalPayment").value;
+    //     // alert (totId)
+    //     // i =0;
+    //     idNo = document.querySelector("#memberAge");
+    //     for (let i = 0; i <= totId; i++){
+    //         return alert(idNo+=i);
+    //         if(e>6){
+    //             var totPayment = sum(payment,1000);
+    //             document.getElementById("totalPayment").value = totPayment;
+    //         }else{
+    //             document.getElementById("totalPayment").value = payment;
+    //         }
+    //     }
+        
+    // }
+</script>
