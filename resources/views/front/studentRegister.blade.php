@@ -97,12 +97,12 @@
                         <label for="tShirtSize" class="form-label">T-Shirt Size(*)</label>
                         <select id="tShirtSize" class="form-select" required name="tShirtSize">
                             <option selected>Choose...</option>
-                            <option>S</option>
-                            <option>M</option>
-                            <option>L</option>
-                            <option>XL</option>
-                            <option>2XL</option>
-                            <option>3XL</option>
+                            <option>S &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Chest-36 X Length-26 INCH]</option>
+                            <option>M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Chest-38 X Length-27 INCH]</option>
+                            <option>L &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Chest-40 X Length-28 INCH]</option>
+                            <option>XL  &nbsp;&nbsp;&nbsp;&nbsp;[Chest-42 X Length-29 INCH]</option>
+                            <option>2XL &nbsp;[Chest-44 X Length-30 INCH]</option>
+                            <option>3XL &nbsp;[Chest-46 X Length-31 INCH]</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-4">
