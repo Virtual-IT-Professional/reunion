@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEnd;
+use App\Http\Controllers\AdminPanel;
 
 Route::get('/', function () {
     return view('front.home');
@@ -27,10 +28,10 @@ Route::post('/register/student/confirm',[
 //     'as'    => 'studentRegister'
 // ]);
 
-// Route::get('/',[
-//     'uses'  => ,
-//     'as'    => 
-// ]);
+Route::get('/backoffice/modarator/home',[
+    AdminPanel::class,
+    'home'
+])->name('modaratorHome');
 
 // Route::get('/',[
 //     'uses'  => ,
