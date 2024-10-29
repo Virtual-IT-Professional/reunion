@@ -19,7 +19,8 @@
         <div class="col-12 text-center">
             <h2 class="display-6 fw-bold">Reunion Registration Form</h2>
             <!-- Button trigger modal -->
-            <a class="fw-bold btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Program Details</a>
+            <a class="fw-bold btn btn-success" data-bs-toggle="modal" data-bs-target="#programDetails"><i class="fa-sharp fa-light fa-memo-circle-info"></i> Program Details</a>
+            <a class="fw-bold btn btn-primary" data-bs-toggle="modal" data-bs-target="#tShirtDetails"><i class="fa-sharp fa-solid fa-shirt"></i> T-Shirt Details</a>
         </div>
     </div>
     <div class="row align-items-center mt-5">
@@ -40,19 +41,18 @@
                     <h6 class="mb-0 fw-bold">Personal Details</h6>
                     <div class="col-12 col-md-4">
                         <label for="stdName" class="form-label">Your Name(*)</label>
-                        <input type="text" class="form-control" id="stdName" required placeholder="Example: Md Abu Yousuf" name="stdName">
+                        <input type="text" class="form-control" id="stdName" required placeholder="Enter fullname" name="stdName">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="dept" class="form-label">Department(*)</label>
                         <select id="dept" class="form-select" required name="dept">
                             <option selected>Choose...</option>
-                            <option>Civil-A</option>
-                            <option>Civil-B</option>
-                            <option>Electrical</option>
-                            <option>Mechanical</option>
-                            <option>Power</option>
-                            <option>Eelectronics</option>
-                            <option>Computer</option>
+                            <option>Civil Technology</option>
+                            <option>Electrical Technology</option>
+                            <option>Mechanical Technology</option>
+                            <option>Power Technology</option>
+                            <option>Eelectronics Technology</option>
+                            <option>Computer Technology</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-4">
@@ -65,11 +65,11 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="phone" class="form-label">Phone/Mobile(*)</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Example: 01716-841785" required name="phone">
+                        <input type="text" class="form-control" id="phone" placeholder="Enter a valid phone no" required name="phone">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="stdMail" class="form-label">e-Mail(*)</label>
-                        <input type="email" class="form-control" id="stdMail" placeholder="Example: vitprofessional@gmail.com" required name="mailAddress">
+                        <input type="email" class="form-control" id="stdMail" placeholder="Enter and active email" required name="mailAddress">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="gender" class="form-label">Gender(*)</label>
@@ -112,11 +112,11 @@
                     <h6 class="mb-0 fw-bold">Professional Details</h6>
                     <div class="col-12 col-md-6">
                         <label for="professionDetails" class="form-label">Profession</label>
-                        <input type="text" class="form-control" id="professionDetails" placeholder="Designation/Position & Company Name" name="professionDetails">
+                        <input type="text" class="form-control" id="professionDetails" placeholder="Position & Company" name="professionDetails">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="expreience" class="form-label">Professional Experience</label>
-                        <input type="text" class="form-control" id="expreience" placeholder="Web Development, Server Maintain, etc" name="expreience">
+                        <input type="text" class="form-control" id="expreience" placeholder="Experience details please" name="expreience">
                     </div>
                     <h6 class="mb-0 fw-bold">Guest Details</h6>
                     <div class="col-12 col-md-4">
@@ -141,7 +141,7 @@
                     <h6 class="mb-0 fw-bold">Payment Details</h6>
                     <div class="col-12 col-md-4">
                         <label for="totalPayment" class="form-label">Total Amount(*)</label>
-                        <input type="number" class="form-control" id="totalPayment" placeholder="Example: 3500" required name="payAmount">
+                        <input type="number" class="form-control" id="totalPayment" placeholder="Enter payment amount" required name="payAmount">
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="dept" class="form-label">Payment Method(*)</label>
@@ -155,22 +155,22 @@
                         <label for="txnId" class="form-label">TXNID(*)</label>
                         <input type="text" class="form-control" id="txnId" placeholder="Example: BJP9PG9ZVB" required name="payId">
                     </div>
-                    <div class="col-12 mt-0" id="paymentNumber"></div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
+                    <div class="col-12 mt-4" id="paymentNumber"></div>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade main model mt-5" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Program Details -->
+<div class="modal fade main model mt-5" id="programDetails" tabindex="-1" role="dialog" aria-labelledby="programDetailsModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl mt-5" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Program Details</h5>
+        <h5 class="modal-title" id="programDetailsModalLabel">Program Details</h5>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -220,6 +220,68 @@
                     <li>Raffle Draw (Attractive Gift)</li>
                     <li>Gettings Video Message Display About Ex Engineers from Foreigners Friends(01674-779916 Imo,WhatsApp, Viber)</li>
                 </ul>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal T-Shirt Details -->
+<div class="modal fade main model mt-5" id="tShirtDetails" tabindex="-1" role="dialog" aria-labelledby="tShirtDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered mt-5" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tShirtDetailsModalLabel">T-Shirt Details</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <p>*All size details here are inch</p>
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <th>Sizes</th>
+                        <th>Chest</th>
+                        <th>Length</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>S</td>
+                            <td>36</td>
+                            <td>26</td>
+                        </tr>
+                        <tr>
+                            <td>M</td>
+                            <td>38</td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>L</td>
+                            <td>40</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td>XL</td>
+                            <td>42</td>
+                            <td>29</td>
+                        </tr>
+                        <tr>
+                            <td>2XL</td>
+                            <td>44</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>3XL</td>
+                            <td>46</td>
+                            <td>31</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
       </div>

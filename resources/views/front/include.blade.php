@@ -42,6 +42,9 @@
             .footer-logo {
                 max-height: 70px;
             }
+            .topHeader{
+                font-size: 17px !important;
+            }
         </style>
     </head>
     <body>

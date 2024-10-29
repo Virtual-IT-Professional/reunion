@@ -19,9 +19,9 @@
         <section id="services" class="bg-light-gray wow animate__fadeIn">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-10 col-12 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center last-paragraph-no-margin">
+                    <div class="col-lg-10 col-12 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center last-paragraph-no-margin topHeader">
                         <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-15px-bottom">CPI Engineer's Reunion 2024</h5>
-                        <span class="alt-font text-deep-pink text-medium margin-5px-bottom d-block">Session 2010-11</span>
+                        <h6 class="alt-font text-deep-pink margin-5px-bottom d-block mb-3">Session 2010-11</h6>
                         <p class="mb-0">Reunion 2024 is going to be held on 25th December 2024 in the joint initiative of all departments of Comilla Polytechnic Institute for the session 2010-11. All friends of all departments of the 2010-11 session are invited to participate in the reunion.</p>
                         <p>Register quickly to participate in the reunion and encourage your friends too.</p>
                     </div>  
@@ -53,7 +53,7 @@
                                     <li>Fun Zone for Kids</li>
                                     <li>Guest Female/Entertainment for Woman</li>
                                     <li>Raffle Draw (Attractive Gift)</li>
-                                    <li>Gettings Video Message Display About Ex Engineers from Foreigners Friends(01674-779916 Imo,WhatsApp, Viber)</li>
+                                    <li>Gettings Video Message Display About Ex Engineers from Foreigners Friends(01926-139346 Imo,WhatsApp, Viber)</li>
                                 </ul>
                                 <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Registration Fees</h6>
                                 
@@ -70,8 +70,8 @@
                                 
                                 <ol>
                                     <li>Fill The Form for Only Once Even If There Are Multiple Guests</li>
-                                    <li>General Member(Student of Session 2010-11 of CPI) joining fee 1500 BDT</li>
-                                    <li>Per Guest Member Joining Fees 1000 BDT</li>
+                                    <li>General Member(Student of Session 2010-11 of CPI) joining fee 1530 BDT</li>
+                                    <li>Per Guest Member Joining Fees 1020 BDT</li>
                                     <li>6 Years of Age Own Children Must Register, Don't Need to Below 6 Years</li>
                                 </ol>
                             </div>
