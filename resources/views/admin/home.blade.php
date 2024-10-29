@@ -12,7 +12,7 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('/public/admin/velzon/html/default/') }}/assets/images/favicon.ico">
-
+ 
     <!-- Layout config Js -->
     <script src="{{ asset('/public/admin/velzon/html/default/') }}/assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
