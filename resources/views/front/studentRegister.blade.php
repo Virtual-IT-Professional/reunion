@@ -167,7 +167,7 @@
 
 <!-- Modal -->
 <div class="modal fade main model mt-5" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg mt-5" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl mt-5" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Program Details</h5>
@@ -176,47 +176,52 @@
         </button>
       </div>
       <div class="modal-body">
-            <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Where the reunion held in?</h6>
-            <p class="fw-bold">Play ground of Cumilla Polytechnic Institute</p>
-            <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">When (Date & Time) the reunion held in?</h6>
-            <p class="fw-bold">25th December 2024, Friday at 9.00 AM to day long</p>
-            <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Program Arrangement Details</h6>
-            
-            <ul>
-                <li>Breakfast</li>
-                <li>Lunch(All religions)</li>
-                <li>Afternoon Snack</li>
-                <li>Premium Quality Branding T-Shirt</li>
-                <li>Branding Mug</li>
-                <li>Cofee Corner</li>
-                <li>Baby Feeding Zone</li>
-                <li>Female Rest Room</li>
-                <li>Photo Zone</li>
-                <li>Baby Gamming Zone</li>
-                <li>Female Guest Entertainment</li>
-                <li>Refel Draw</li>
-                <li>Foreighner Friends Joining(01674-779916 IMO)</li>
-            </ul>
-            <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Registration Fees</h6>
-            
-            <ul>
-                <li><b>General:</b> 1530/- (Bkash/Nagad Charge Included)</li>
-                <li><b>Guest/Family:</b> 1020/- (Bkash/Nagad Charge Included)</li>
-            </ul>
-            <p class="my-2 mt-4 fw-bold text-success">Payment System:</p>
-            <ul>
-                <li><b class="text-danger">Bkash:</b> 01972-006267 (Make Payment)</li>
-                <li><b class="text-danger">Nagad:</b> 01972-006267 (Make Payment)</li>
-            </ul>
-            <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Registration Rules</h6>
-            
-            <ol>
-                <li>Please fillup the form for one time only</li>
-                <li>General member(Student of Session 2010-11 of CPI) joining fee 1.5K BDT</li>
-                <li>Per guest or family member joining fees 1K BDT</li>
-                <li>Don't need to pay the fees if you've any child/baby below 6 years.</li>
-                <li>Below 6 years baby must be register(No fees applicable) for the reunion</li>
-            </ol>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Reunion Venue</h6>
+                <p class="fw-bold">Play Ground of Cumilla Polytechnic Institute</p>
+                <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Reunion Will Held</h6>
+                <p class="fw-bold">25th December 2024, Wednesday at 8.30 AM to Day Long</p>
+                <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Registration Fees</h6>
+                
+                <ul>
+                    <li><b>Participate:</b> 1530/- (Bkash/Nagad Charge Included)</li>
+                    <li><b>Guest:</b> 1020/- (Bkash/Nagad Charge Included)</li>
+                </ul>
+                <p class="my-2 mt-4 fw-bold text-success">Payment System:</p>
+                <ul>
+                    <li><b class="text-danger">Bkash:</b> 01972-006267 (Merchant Make Payment)</li>
+                    <li><b class="text-danger">Nagad:</b> 01972-006267 (Merchant Make Payment)</li>
+                </ul>
+                <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Registration Rules</h6>
+                
+                <ol>
+                    <li>Fill The Form for Only Once Even If There Are Multiple Guests</li>
+                    <li>General Member(Student of Session 2010-11 of CPI) joining fee 1500 BDT</li>
+                    <li>Per Guest Member Joining Fees 1000 BDT</li>
+                    <li>6 Years of Age Own Children Must Register, Don't Need to Below 6 Years</li>
+                </ol>
+            </div>
+            <div class="col-12 col-md-6">
+                <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Program Arrangement Details</h6>
+                
+                <ul>
+                    <li>Breakfast(Premium Package)</li>
+                    <li>Lunch(Premium Package for Any Religion)</li>
+                    <li>Evening Snacks</li>
+                    <li>Premium Quality Branded T-Shirt(Polo)</li>
+                    <li>Souvenir Mog(Branded)</li>
+                    <li>Coffee Corner</li>
+                    <li>Baby Feeding Zone</li>
+                    <li>Female Rest Room</li>
+                    <li>Photo Zone</li>
+                    <li>Fun Zone for Kids</li>
+                    <li>Guest Female/Entertainment for Woman</li>
+                    <li>Raffle Draw (Attractive Gift)</li>
+                    <li>Gettings Video Message Display About Ex Engineers from Foreigners Friends(01674-779916 Imo,WhatsApp, Viber)</li>
+                </ul>
+            </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
@@ -244,9 +249,9 @@
 
     function payNumber(e){
         if(e === 'Bkash'){
-            document.getElementById("paymentNumber").innerHTML = "<h6>`bKash` payment via USSD:</h6><ul><li>Go to your bKash Mobile Menu by dialing *247#</li><li>Choose “Payment”</li><li>Enter the Merchant bKash Account Number you want to pay to(01972-006267)</li><li>Enter the amount you want to pay(Don't need to pay less then 6 years baby)</li><li>Enter Reference(CPI 10-11)</li><li>Now enter your bKash Mobile Menu PIN to confirm</li><li>Done! You will receive confirmation SMS at the end of payment</li></ul> <h6>‘bKash’ payment via app:</h6><ul><li>Login to bKash App</li><li>Click the Payment button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount(Don't need to pay less then 6 years baby)</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>";
+            document.getElementById("paymentNumber").innerHTML = "<h6>`bKash` payment via USSD:</h6><ul><li>Dial *247#</li><li>Choose “Payment”</li><li>Enter the Merchant bKash Account Number(01972-006267)</li><li>Enter the amount</li><li>Enter Reference(CPI 10-11)</li><li>Type PIN</li><li>Done! You will receive confirmation SMS at the end of payment</li></ul> <h6>‘bKash’ payment via app:</h6><ul><li>Login to bKash App</li><li>Click the Payment button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>";
         }else if(e === 'Nagad'){
-            document.getElementById("paymentNumber").innerHTML = "<h6>‘Nagad’ payment via USSD:</h6><ul><li>Dial *167#</li><li>Press 4 from the menu to select payment</li><li>Tyoe The Marchand Account Number(01972-006267)</li><li>Type The Amount(Don't need to pay less then 6 years baby)</li><li>Type the counter number(Put 0)</li><li>Type The Reference(CPI 10-11)</li><li>Type PIN</li><li>Receive confirmation SMS at the end of payment</li></ul> <h6>‘Nagad’ payment via app:</h6><ul><li>Login to Nagad App</li><li>Click the Merchant Pay button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount(Don't need to pay less then 6 years baby)</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>";
+            document.getElementById("paymentNumber").innerHTML = "<h6>‘Nagad’ payment via USSD:</h6><ul><li>Dial *167#</li><li>Select payment</li><li>Tyoe The Marchand Account Number(01972-006267)</li><li>Type The Amount</li><li>Type the counter number(Put 0)</li><li>Type The Reference(CPI 10-11)</li><li>Type PIN</li><li>Receive confirmation SMS at the end of payment</li></ul> <h6>‘Nagad’ payment via app:</h6><ul><li>Login to Nagad App</li><li>Click the Merchant Pay button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>";
         }else{
             document.getElementById("paymentNumber").innerHTML = "";
         }

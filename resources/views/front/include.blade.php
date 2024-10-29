@@ -2,12 +2,12 @@
 <html class="no-js" lang="en">
     <head>
         <!-- title -->
-        <title>CPI – Engine's Reunion 2024 (Session10-11) 
+        <title>CPI – Engineer's Reunion 2024 (Session10-11) 
         </title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
-        <meta name="author" content="ThemeZaa">
+        <meta name="author" content="Virtual IT Professional">
         <!-- description -->
         <meta name="description" content="কুমিল্লা পলিটেকনিক ইনস্টিটিউট (সংক্ষেপে: সিপিআই) হচ্ছে বাংলাদেশের শীর্ষস্থানীয় প্রযুক্তি ও প্রকৌশল-সম্পর্কিত উচ্চশিক্ষা প্রতিষ্ঠান। এটি কুমিল্লা শহরের কোটবাড়ী এলাকায় অবস্থিত। কারিগরি শিক্ষা প্রসারের জন্য ১৯৬২ সালে ২৬ একর জায়গায় কুমিল্লা পলিটেকনিক ইনস্টিটিউট নামে প্রতিষ্ঠিত হয় এবং এটি প্রথম আইসিটি বেসড পলিটেকনিক ইনস্টিটিউট।">
         <!-- keywords -->
@@ -24,7 +24,16 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/theme-vendors.min.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/style.css" />
         <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/responsive.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
         <style>
+            body{
+                font-family: "Red Hat Display", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
+            }
             header a.logo img {
                 max-height: 120px;
                 width: 120px !important;
@@ -43,7 +52,7 @@
                 <div class="container-lg nav-header-container">
                     <!-- start logo -->
                     <div class="col-auto ps-0">
-                        <a href="#" title="cpi reunion" class="logo"><img src="{{ asset('/public/front/html/') }}/images/logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" class="logo-dark w-100" alt="cpi reunion"><img src="{{ asset('/public/front/html/') }}/images/logo.jpg" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" alt="cpi reunion" class="logo-light default w-100"></a>
+                        <a href="#" title="cpi reunion" class="logo"><img src="{{ asset('/public/front/html/') }}/images/logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" class="logo-dark w-100" alt="cpi reunion"><img src="{{ asset('/public/front/html/') }}/images/light-logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/light-logo.png" alt="cpi reunion" class="logo-light default w-100"></a>
                     </div>
                     <!-- end logo -->
                     <div class="col-auto col-lg accordion-menu pe-0">
@@ -57,8 +66,8 @@
                             <ul class="nav navbar-nav alt-font font-weight-700">
                                 <li><a href="{{ url('/') }}" title="Home" class="inner-link">Home</a></li>
                                 <li><a href="#about" title="About" class="inner-link">About Reunion</a></li>
-                                <!-- <li><a href="#services" title="Services" class="inner-link">Services</a></li> -->
-                                <!-- <li><a href="#work" title="Work" class="inner-link">Work</a></li> -->
+                                <li><a href="{{ route('studentRegister') }}" title="Services" class="inner-link">Register</a></li>
+                                <li><a href="#work" title="Work" class="inner-link">Details Community List</a></li>
                                 <li><a href="#team" title="Team" class="inner-link">Admin/Modarator</a></li>
                                 <!-- <li><a href="#blog" title="Blog" class="inner-link">Blog</a></li> -->
                                 <!-- <li><a href="#clients" title="Clients" class="inner-link">Clients</a></li> -->
@@ -90,7 +99,7 @@
                     <div class="col text-center md-margin-50px-bottom sm-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.2s">
                         <i class="icon-chat icon-medium margin-25px-bottom sm-margin-10px-bottom"></i>
                         <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Let's Talk(WhatsApp)</div>
-                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto"> 01678-909091(Register)<br>01972-006267(Payment)<br> 01674-779916(Foreign)</p>
+                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto"> 01678-909091(Register)<br>01972-006267(Payment)<br> 01926-139346(Foreign)</p>
                     </div>
                     <!-- end features box item -->
                     <!-- start features box item -->
@@ -122,17 +131,16 @@
                     <!-- end logo -->
                     <!-- start copyright -->
                     <div class="col-md-6 text-center text-small alt-font sm-margin-10px-bottom">
-                        &copy; {{ date('Y') }} CPI Reunion is Proudly Powered by <a href="http://www.virtualitprofessional.com" target="_blank" title="Virtual IT Professional">Virtual IT Professional</a>.
+                        &copy; {{ date('Y') }} CPI Reunion All Rights Reserverd. Website Developed by <a href="#" target="_blank" title="Virtual IT Professional">Virtual IT Professional</a>
                     </div>
                     <!-- end copyright -->
                     <!-- start social media -->
                     <div class="col-md-3 text-center text-lg-end">
                         <div class="social-icon-style-8 d-inline-block align-middle">
                             <ul class="small-icon mb-0">
-                                <li><a class="facebook text-black" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-                                <li><a class="twitter text-black" href="https://twitter.com/" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                                <li><a class="google text-black" href="https://plus.google.com" target="_blank"><i class="fa-brands fa-google-plus-g"></i></a></li>
-                                <li><a class="dribbble text-black" href="https://dribbble.com/" target="_blank"><i class="fa-brands fa-dribbble me-0" aria-hidden="true"></i></a></li>
+                                <li><a class="facebook text-black" href="https://www.facebook.com/CPIEngineersReunion/" target="_blank"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+                                <li><a class="twitter text-danger" href="https://youtube.com/@CPIEngineersReunion" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                                <li><a class="google text-black" href="https://chat.whatsapp.com/DQtyZrlSFRUE65AsStZAE0" target="_blank"><i class="fa-brands fa-square-whatsapp"></i></a></li>
                             </ul>
                         </div>
                     </div>
