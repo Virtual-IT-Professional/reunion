@@ -58,8 +58,8 @@
                                 </div>
                                 <!-- end row -->
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Welcome Back !</h5>
-                                    <p class="text-muted">Sign in to continue to admin panel.</p>
+                                    <h5 class="text-primary">Super Admin !</h5>
+                                    <p class="text-muted">Sign Up a modarator.</p>
                                 </div>
                                 @if(Session::has('success'))
                                 <div class="alert alert-success">
@@ -72,11 +72,49 @@
                                 </div>
                                 @endif
                                 <div class="p-2 mt-4">
-                                    <form method="POST" action="{{ route('confirmAdminLogin') }}">
+                                    <form method="POST" action="{{ route('confirmAdminSignup') }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter username" name="emailAddress">
+                                            <label for="fullName" class="form-label">Name</label>
+                                            <input type="text" class="form-control" id="fullName" placeholder="Enter admin fullname" name="fullName">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="dept" class="form-label">Department(*)</label>
+                                            <select id="dept" class="form-select" required name="dept">
+                                                <option selected>Choose...</option>
+                                                <option>Civil Technology</option>
+                                                <option>Electrical Technology</option>
+                                                <option>Mechanical Technology</option>
+                                                <option>Power Technology</option>
+                                                <option>Eelectronics Technology</option>
+                                                <option>Computer Technology</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="shift" class="form-label">Shift(*)</label>
+                                            <select id="shift" class="form-select" required name="shift">
+                                                <option selected>Choose...</option>
+                                                <option>1st</option>
+                                                <option>2nd</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="adminRule" class="form-label">Rules(*)</label>
+                                            <select id="adminRule" class="form-select" required name="adminRule">
+                                                <option value="" selected>Choose...</option>
+                                                <option>Admin</option>
+                                                <option>Modarator</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="session" class="form-label">Batch/Session</label>
+                                            <input type="text" class="form-control" id="session" name="batch" placeholder="Enter admin batch/session">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="username" class="form-label">User ID/Email</label>
+                                            <input type="email" class="form-control" id="username" placeholder="Enter admin email" required name="emailAddress">
                                         </div>
 
                                         <div class="mb-3">
@@ -87,8 +125,16 @@
                                             </div>
                                         </div>
 
+                                        <div class="mb-3">
+                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                <label for="confirmPass" class="form-label">Confirm Password</label>
+                                                <input type="password" class="form-control pe-5 password-input" placeholder="Confirm password" id="confirmPass" name="confirmPass">
+                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                            </div>
+                                        </div>
+
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Login In</button>
+                                            <button class="btn btn-success w-100" type="submit">Sign Up</button>
                                         </div>
                                     </form>
                                 </div>

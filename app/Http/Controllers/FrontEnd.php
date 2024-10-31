@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\studentRegister;
 use App\Models\geustRegister;
+use App\Models\adminPanel;
+use Hash;
 
 class FrontEnd extends Controller
 {
@@ -18,6 +20,57 @@ class FrontEnd extends Controller
     
     public function adminLogin(){
         return view('front.adminSignin');
+    }
+
+    public function confirmAdminLogin(Request $requ){
+        $chk = adminPanel::where(['emailAddress'=>$requ->emailAddress])->first();
+        if(!empty($chk)):
+            $chkPass = Hash::check($requ->password,$chk->password);
+            if($chkPass):
+                // return $chk->adminType;
+                $requ->session()->regenerate();
+                if($chk->adminType == 'Admin'):
+                    $requ->session()->put('superAdmin', $chk->id);
+                endif;
+                if($chk->adminType == 'Modarator'):
+                    $requ->session()->put('modarator', $chk->id);
+                endif;
+                return redirect(route('adminHome'));
+            else:
+                return back()->with('error','Sorry! Wrong password provide');
+            endif;
+        else:
+            return back()->with('error','Sorry! No admin rule found with your query');
+        endif;
+    }
+    
+    public function adminSignup(){
+        return view('front.adminSignup');
+    }
+
+    public function confirmAdminSignup(Request $requ){
+        $chk = adminPanel::where(['emailAddress'=>$requ->emailAddress])->first();
+        if(!empty($chk)):
+            return back()->with('error','Sorry! Admin profile already exist');
+        else:
+            if($requ->password != $requ->confirmPass):
+                return back()->with('error','Password does not match correctly');
+            endif;
+            $admin = new adminPanel();
+            $admin->adminName       = $requ->fullName;
+            $admin->emailAddress    = $requ->emailAddress;
+            $admin->department      = $requ->dept;
+            $admin->shift           = $requ->shift;
+            $admin->adminType       = $requ->adminRule;
+            $admin->batchSession    = $requ->batch;
+            $hashPass = Hash::make($requ->password);
+            $admin->password        = $hashPass;
+            if($admin->save()):
+                return back()->with('success','Profile created successfully');
+            else:
+                return back()->with('error','Profile created failed');
+            endif;
+        endif;
     }
 
     public function saveStudent(Request $requ){
@@ -72,5 +125,13 @@ class FrontEnd extends Controller
     
     public function contact(){
         return view('front.home');
+    }
+
+    public function logout(){
+        Session()->invalidate();
+        Session()->regenerateToken();
+        Session()->flush();
+
+        return redirect(route('adminLogin'))->with('error','Logout successful');
     }
 }

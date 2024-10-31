@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\studentRegister;
+// use App\Http\Middleware\Modarator;
+use Middleware;
 
 class AdminPanel extends Controller
 {

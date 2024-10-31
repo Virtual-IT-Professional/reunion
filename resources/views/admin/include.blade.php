@@ -41,7 +41,7 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box horizontal-logo">
-                    <a href="{{ route('modaratorHome') }}" class="logo logo-dark">
+                    <a href="{{ url('/') }}" class="logo logo-dark" target="_blank">
                         <span class="logo-sm">
                             <img src="{{ asset('/public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                         </span>
@@ -50,7 +50,7 @@
                         </span>
                     </a>
 
-                    <a href="{{ route('modaratorHome') }}" class="logo logo-light">
+                    <a href="{{ url('/') }}" class="logo logo-light" target="_blank">
                         <span class="logo-sm">
                             <img src="{{ asset('/public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                         </span>
@@ -118,7 +118,7 @@
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <!-- Dark Logo-->
-                <a href="{{ route('modaratorHome') }}" class="logo logo-dark">
+                <a href="{{ url('/') }}" class="logo logo-dark" target="_blank">
                     <span class="logo-sm">
                         <img src="{{ asset('/public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                     </span>
@@ -127,7 +127,7 @@
                     </span>
                 </a>
                 <!-- Light Logo-->
-                <a href="{{ route('modaratorHome') }}" class="logo logo-light">
+                <a href="{{ url('/') }}" class="logo logo-light" target="_blank">
                     <span class="logo-sm">
                         <img src="{{ asset('/public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                     </span>
@@ -148,10 +148,11 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="{{ route('modaratorHome') }}">
-                                <i class="ri-dashboard-2-line"></i>Dashboard
+                            <a class="nav-link menu-link" href="{{ route('adminHome') }}">
+                                <i class="ri-dashboard-2-line"></i> <span data-key="t-apps">Dashboard</span>
                             </a>
-                        </li> <!-- end Dashboard Menu -->
+                        </li>
+                        <!-- end Dashboard Menu -->
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
                                 <i class="ri-apps-2-line"></i> <span data-key="t-apps">Registration</span>
@@ -169,6 +170,18 @@
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                        @if(Session::has('superAdmin')):
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ route('adminSignup') }}">
+                                <i class="fa-solid fa-user-vneck"></i> <span data-key="t-apps">Create Profile</span>
+                            </a>
+                        </li>
+                        @endif
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ route('logout') }}">
+                                <i class="fa-regular fa-left-from-bracket"></i> <span data-key="t-apps">Logout</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
