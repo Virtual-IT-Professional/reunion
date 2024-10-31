@@ -15,6 +15,10 @@ class FrontEnd extends Controller
     public function studentRegister(){
         return view('front.studentRegister');
     }
+    
+    public function adminLogin(){
+        return view('front.adminSignin');
+    }
 
     public function saveStudent(Request $requ){
         $chk = studentRegister::where(['phone'=>$requ->phone,'emailAddress'=>$requ->mailAddress,'status'=>'PendingVerify'])->first();

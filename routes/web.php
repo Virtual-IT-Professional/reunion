@@ -18,6 +18,16 @@ Route::post('/register/student/confirm',[
     'saveStudent'
 ])->name('saveStudent');
 
+Route::get('/control/login',[
+    FrontEnd::class,
+    'adminLogin'
+])->name('adminLogin');
+
+Route::post('/control/login/confirm',[
+    FrontEnd::class,
+    'confirmAdminLogin'
+])->name('confirmAdminLogin');
+
 // Route::get('/register/geust',[
 //     'uses'  => 'FrontEnd@studentRegister',
 //     'as'    => 'studentRegister'
@@ -28,12 +38,33 @@ Route::post('/register/student/confirm',[
 //     'as'    => 'studentRegister'
 // ]);
 
-Route::get('/backoffice/modarator/home',[
+// Admin panel routes details
+Route::get('/backoffice/admin/home',[
     AdminPanel::class,
     'home'
 ])->name('modaratorHome');
 
-// Route::get('/',[
-//     'uses'  => ,
-//     'as'    => 
-// ]);
+
+Route::get('/backoffice/admin/pendingStudent',[
+    AdminPanel::class,
+    'pendingList'
+])->name('pendingList');
+
+Route::get('/backoffice/admin/register/verified',[
+    AdminPanel::class,
+    'verifiedList'
+])->name('verifiedList');
+
+Route::get('/backoffice/admin/register/rejected',[
+    AdminPanel::class,
+    'rejectedList'
+])->name('rejectedList');
+
+Route::get('/backoffice/admin/register/accept/{id}',[
+    AdminPanel::class,
+    'acceptRegister'
+])->name('acceptRegister');
+Route::get('/backoffice/admin/register/reject/{id}',[
+    AdminPanel::class,
+    'rejectRegister'
+])->name('rejectRegister');

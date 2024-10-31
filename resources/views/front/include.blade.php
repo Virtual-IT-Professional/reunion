@@ -15,9 +15,9 @@
         <script src="https://kit.fontawesome.com/32dcd4a478.js" crossorigin="anonymous"></script>
         <!-- favicon -->
         <link rel="shortcut icon" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
-        <link rel="apple-touch-icon" href="{{ asset('/public/front/html/') }}/images/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/public/front/html/') }}/images/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/public/front/html/') }}/images/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" href="{{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
         <!-- style sheets and font icons  -->
         <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/bootsnav.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/font-icons.min.css">
