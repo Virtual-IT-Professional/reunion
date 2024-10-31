@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <title>CPI Reunion || @yield('adminTitle')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
+    <meta content="CPI Reunion Admin Panel" name="description" />
+    <meta content="Virtual IT Professional" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('/public/admin/velzon/html/default/') }}/assets/images/favicon-cpi.png">
 
