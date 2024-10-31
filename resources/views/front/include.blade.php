@@ -15,7 +15,7 @@
         <script src="https://kit.fontawesome.com/32dcd4a478.js" crossorigin="anonymous"></script>
         <!-- favicon -->
         <link rel="shortcut icon" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
-        <link rel="apple-touch-icon" href="{{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
+        <link rel="apple-touch-icon" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
         <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
         <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
         <!-- style sheets and font icons  -->
