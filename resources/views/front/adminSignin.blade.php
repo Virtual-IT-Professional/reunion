@@ -8,7 +8,7 @@
     <meta content="Reunion 2024 is going to be held on 25th December 2024 in the joint initiative of all departments of Comilla Polytechnic Institute for the session 2010-11." name="description" />
     <meta content="Virtua IT Professional" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
+    <link rel="shortcut icon" href="{{ asset('front/html/') }}/images/favicon-cpi.png">
 
     <!-- Layout config Js -->
     <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/js/layout.js"></script>
