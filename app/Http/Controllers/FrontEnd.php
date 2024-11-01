@@ -47,6 +47,10 @@ class FrontEnd extends Controller
     public function adminSignup(){
         return view('front.adminSignup');
     }
+    
+    public function thankyou(){
+        return view('front.thankYouPage');
+    }
 
     public function confirmAdminSignup(Request $requ){
         $chk = adminPanel::where(['emailAddress'=>$requ->emailAddress])->first();
@@ -109,7 +113,7 @@ class FrontEnd extends Controller
                     $guest->save();
                 }
             endif;
-            return back()->with('success','Thanks! Your details submitted successfully. Please wait till verify by admin panel. You will received a confirmation mail/message to your email/phone');
+            return redirect(route('thankyou'))->with('success','Thanks! Your details submitted successfully. Please wait till verify by admin panel. You will received a confirmation mail/message to your email/phone');
         else:
             return back()->with('error','Sorry! There was an error. Please try later');
         endif;

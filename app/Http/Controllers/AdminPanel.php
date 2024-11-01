@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\studentRegister;
-// use App\Http\Middleware\Modarator;
+use App\Mail\RegisterVerify;
 use Middleware;
+use Mail;
 
 class AdminPanel extends Controller
 {
@@ -33,6 +34,14 @@ class AdminPanel extends Controller
         if(!empty($student)):
             $student->status = 'Verified';
             if($student->save()):
+                $email = $student->emailAddress;
+         
+                $body = [
+                    'name'=>$student->studentName,
+                    'url_a'=>'https://www.cpireunion.com/',
+                ];
+         
+                Mail::to($email)->send(new RegisterVerify($body));
                 return back()->with('success','Data updated successfully');
             else:
                 return back()->with('error','There was an error. Please try later');

@@ -13,6 +13,11 @@ Route::get('/register/student',[
     'studentRegister'
 ])->name('studentRegister');
 
+Route::get('/thankyou',[
+    FrontEnd::class,
+    'thankyou'
+])->name('thankyou');
+
 Route::post('/register/student/confirm',[
     FrontEnd::class,
     'saveStudent'
