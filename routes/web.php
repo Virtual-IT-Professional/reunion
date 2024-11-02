@@ -85,6 +85,12 @@ Route::middleware(['modarator','superAdmin'])->group(function(){
         AdminPanel::class,
         'acceptRegister'
     ])->name('acceptRegister');
+
+    Route::get('/backoffice/admin/student/view/{id}',[
+        AdminPanel::class,
+        'viewPerticipate'
+    ])->name('viewPerticipate');
+
     Route::get('/backoffice/admin/register/reject/{id}',[
         AdminPanel::class,
         'rejectRegister'

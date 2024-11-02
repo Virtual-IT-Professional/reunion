@@ -16,8 +16,12 @@
                 @endif
                 <div class="row">
                     <div class="col-8 col-md-5 mx-auto">
-                        <a class="fw-bold btn btn-success my-2" href="{{ url('/') }}">Back to Home</a>
-                        <a class="fw-bold btn btn-danger my-2" href="{{ route('studentRegister') }}">Go back Register</a>
+                        <a class="fw-bold btn btn-success my-2" href="{{ url('/') }}">
+                            Back to Home
+                        </a>
+                        <a class="fw-bold btn btn-danger my-2" href="{{ route('studentRegister') }}">
+                            Go back Register
+                        </a>
                     </div>
                 </div>
             </div>

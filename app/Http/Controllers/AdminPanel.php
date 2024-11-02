@@ -19,6 +19,11 @@ class AdminPanel extends Controller
         return view('admin.pendingList',['pendingList'=>$pendingList]);
     }
 
+    public function viewPerticipate($id){
+        $student = studentRegister::find($id);
+        return view('admin.viewPerticipate',['student'=>$student]);
+    }
+
     public function verifiedList(){
         $verifiedList = studentRegister::where(['status'=>'Verified'])->orderBy('id','DESC')->get();
         return view('admin.verifiedList',['verifiedList'=>$verifiedList]);
