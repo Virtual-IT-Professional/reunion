@@ -121,8 +121,8 @@
                     <h6 class="mb-0 fw-bold">Guest Details</h6>
                     <div class="col-12 col-md-4">
                         <label for="totalJoin" class="form-label">Number of Guest(*)</label>
-                        <select name="totalMember" id="totalGuest" class="form-control">
-                            <option value="0">0</option>
+                        <select name="totalMember" onchange="totMember(this)" id="totalJoin" class="form-control">
+                            <option value="">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -141,14 +141,14 @@
                     <h6 class="mb-0 fw-bold">Payment Details</h6>
                     <div class="col-12 col-md-4">
                         <label for="totalPayment" class="form-label">Total Amount(*)</label>
-                        <input type="number" class="form-control" id="totalPayment" placeholder="Enter payment amount" required name="payAmount" readonly>
+                        <input type="number" class="form-control" id="totalPayment" placeholder="Enter payment amount" required name="payAmount">
                     </div>
                     <div class="col-12 col-md-4">
-                        <label for="paymentMethod" class="form-label">Payment Method(*)</label>
-                        <select id="paymentMethod" class="form-select" required name="payType">
+                        <label for="dept" class="form-label">Payment Method(*)</label>
+                        <select id="dept" class="form-select" onchange='payNumber(this.value)' required name="payType">
                             <option selected>Choose...</option>
-                            <option value="1">Bkash</option>
-                            <option value="2">Nagad</option>
+                            <option>Bkash</option>
+                            <option>Nagad</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-4">
@@ -158,12 +158,7 @@
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                    <div class="col-12 mt-4" id="bkashPaymentNumber">
-                        <h6>`bKash` payment via USSD:</h6><ul><li>Dial *247#</li><li>Choose “Payment”</li><li>Enter the Merchant bKash Account Number(01972-006267)</li><li>Enter the amount</li><li>Enter Reference(CPI 10-11)</li><li>Type PIN</li><li>Done! You will receive confirmation SMS at the end of payment</li></ul> <h6>‘bKash’ payment via app:</h6><ul><li>Login to bKash App</li><li>Click the Payment button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>
-                    </div>
-                    <div class="col-12 mt-4" id="nagadPaymentNumber">
-                        <h6>‘Nagad’ payment via USSD:</h6><ul><li>Dial *167#</li><li>Select payment</li><li>Tyoe The Marchand Account Number(01972-006267)</li><li>Type The Amount</li><li>Type the counter number(Put 0)</li><li>Type The Reference(CPI 10-11)</li><li>Type PIN</li><li>Receive confirmation SMS at the end of payment</li></ul> <h6>‘Nagad’ payment via app:</h6><ul><li>Login to Nagad App</li><li>Click the Merchant Pay button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>
-                    </div>
+                    <div class="col-12 mt-4" id="paymentNumber"></div>
                 </form>
             </div>
         </div>
@@ -297,105 +292,58 @@
   </div>
 </div>
 @endsection
-
-@section('scripts')
 <script>
-
-    $(document).ready(function() {
-        // Hide payment options initially
-        $("#bkashPaymentNumber").addClass('d-none');
-        $("#nagadPaymentNumber").addClass('d-none');
-
-        $('#totalGuest').on('change', function() {
-            // Get totalGuest value
-            const totalGuest = parseInt($(this).val());
-
-            // Check if totalGuest is a valid number
-            if (!isNaN(totalGuest) && totalGuest > 0) {
-                let member = ""; // Initialize an empty string to accumulate HTML
-                $("#memberList").empty();
-                for (let i = 0; i < totalGuest; i++) {
-                    member += `
-                        <div class='col-12 col-md-4'>
-                            <label class='text-success'>${ i+1 }. Guest Name</label>
-                            <input type='text' class='form-control border-success text-success' placeholder='Enter name' required name='guestName[]'>
-                        </div>
-                        <div class='col-12 col-md-4'>
-                            <label class='text-success'>Relation</label>
-                            <select class='form-control border-success text-success' name='guestRelation[]' onchange='guestRelation(${i})' required>
-                                <option value=''>-</option>
-                                <option value="Spouse">Spouse</option>
-                                <option value="Father">Father</option>
-                                <option value="Mother">Mother</option>
-                                <option value="Brother">Brother</option>
-                                <option value="Sister">Sister</option>
-                                <option value="Son">Son</option>
-                                <option value="Daughter">Daughter</option>
-                                <option value="Other">Other</option>
-                            </select>
-                             <input type='hidden' name='guestCharge[]' id='guestCharge${i}' value='' />  
-                        </div>
-                        <div class='col-12 col-md-4'>
-                            <div id='guestAge${i}' style='display:none'>
-                                <label class='text-success'>Guest Age</label>
-                                <input type='text' class='form-control border-success text-success' placeholder='25' name='guestAge[]' id='memberAge${i}' oninput='calculateGuestCharge(${i})' value=''>
-                            </div>
-                        </div>
-                    `;
-                }
-
-                // Append all accumulated HTML at once to #memberList
-                $("#memberList").append(member);
-            }
-        });
-
-        // Event handler for payment method selection
-        $('#paymentMethod').on('change', function() {
-            const paymentMethod = $(this).val();
-            
-            if (paymentMethod == 1) {
-                $("#bkashPaymentNumber").removeClass("d-none").addClass("d-block");
-                $("#nagadPaymentNumber").addClass('d-none');
-            } else if (paymentMethod == 2) {
-                $("#bkashPaymentNumber").addClass('d-none');
-                $("#nagadPaymentNumber").removeClass('d-none').addClass("d-block");
-            } else {
-                $("#bkashPaymentNumber").addClass('d-none');
-                $("#nagadPaymentNumber").addClass('d-none');
-            }
-        });
-    });
-
-    // Show/hide age input based on relation selection
-    function guestRelation(index) {
-        const relation = $(`select[name='guestRelation[]']`).eq(index).val();
-        if (relation === "Son" || relation === "Daughter") {
-            $(`#guestAge${index}`).show();
-            $(`#guestCharge${index}`).val(0); 
-        } else {
-            $(`#guestAge${index}`).hide();
-            $(`#guestCharge${index}`).val(1020); 
+    function totMember(e){
+        document.getElementById("memberList").innerHTML = "";
+        document.getElementById("totalPayment").value = "";
+        x = e.value
+        for (let i = 0; i < x; i++) {
+            text = "<div class='col-12 col-md-4'><label class='text-success'>Guest Name</label><input type='text' class='form-control border-success text-success' placeholder='Example: Thamina Akter' required name='guestName[]' required></div><div class='col-12 col-md-4'><label class='text-success'>Relation</label><select class='form-control border-success text-success' name='guestRelation[]' onchange='guestRelation(this.value,"+i+")' required><option value=''>-</option><option>Spouse</option><option>Father</option><option>Mother</option><option>Brother</option><option>Sister</option><option>Son</option><option>Daughter</option><option>Other</option></select></div><div class='col-12 col-md-4'><div id='guestAge["+i+"]' style='display:none'><label class='text-success'>Guest Age</label><input onchange='paymentDetails(this.value)' type='number' class='form-control border-success text-success' placeholder='Example: 25' name='guestAge[]' id='memberAge[]' value=''></div></div>";
+            document.getElementById("memberList").innerHTML += text;
         }
-        updateTotalPayment();
+    }
+    function sum(x,y){
+        a = x;
+        b = y;
+        c = Number(a)+Number(b);
+        return Number(c);
     }
 
-    // Calculate guest charge based on age
-    function calculateGuestCharge(index) {
-        const age = parseInt($(`#memberAge${index}`).val());
-        const charge = (age <= 6) ? 0 : 1020;
-        $(`#guestCharge${index}`).val(charge);
-        updateTotalPayment();
+    function payNumber(e){
+        if(e === 'Bkash'){
+            document.getElementById("paymentNumber").innerHTML = "<h6>`bKash` payment via USSD:</h6><ul><li>Dial *247#</li><li>Choose “Payment”</li><li>Enter the Merchant bKash Account Number(01972-006267)</li><li>Enter the amount</li><li>Enter Reference(CPI 10-11)</li><li>Type PIN</li><li>Done! You will receive confirmation SMS at the end of payment</li></ul> <h6>‘bKash’ payment via app:</h6><ul><li>Login to bKash App</li><li>Click the Payment button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>";
+        }else if(e === 'Nagad'){
+            document.getElementById("paymentNumber").innerHTML = "<h6>‘Nagad’ payment via USSD:</h6><ul><li>Dial *167#</li><li>Select payment</li><li>Tyoe The Marchand Account Number(01972-006267)</li><li>Type The Amount</li><li>Type the counter number(Put 0)</li><li>Type The Reference(CPI 10-11)</li><li>Type PIN</li><li>Receive confirmation SMS at the end of payment</li></ul> <h6>‘Nagad’ payment via app:</h6><ul><li>Login to Nagad App</li><li>Click the Merchant Pay button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>";
+        }else{
+            document.getElementById("paymentNumber").innerHTML = "";
+        }
     }
 
-    // Function to calculate and update the total payment
-    function updateTotalPayment() {
-        let totalCharge = 0;
-        $("input[name='guestCharge[]']").each(function() {
-            const charge = parseInt($(this).val()) || 0; // Convert to integer or 0 if NaN
-            totalCharge += charge;
-        }); 
-        const finalCharge = parseInt(totalCharge + 1530);
-        $("#totalPayment").val(finalCharge);
+    function guestRelation(e,f){
+        var x = document.getElementById("guestAge["+f+"]");
+        if(e==='Son' || e==='Daughter'){
+            x.style.display = "block";
+        }else{
+            x.style.display = "none";
+        }
     }
+
+    // function paymentDetails(e){
+    //     // document.getElementById("totalPayment").value = "";
+    //     totId = document.querySelectorAll('#memberAge').length;
+    //     payment = document.getElementById("totalPayment").value;
+    //     // alert (totId)
+    //     // i =0;
+    //     idNo = document.querySelector("#memberAge");
+    //     for (let i = 0; i <= totId; i++){
+    //         return alert(idNo+=i);
+    //         if(e>6){
+    //             var totPayment = sum(payment,1000);
+    //             document.getElementById("totalPayment").value = totPayment;
+    //         }else{
+    //             document.getElementById("totalPayment").value = payment;
+    //         }
+    //     }
+        
+    // }
 </script>
-@endsection

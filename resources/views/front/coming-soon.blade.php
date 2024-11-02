@@ -12,29 +12,29 @@
         <!-- keywords -->
         <meta name="keywords" content="cpi, cumilla poly, polytechnic, cpi reunion, reunion cpi, cpi reunion 2010-11, reunion cpi 2010-11, cpi reunion 10-11, reunion cpi 10-11">
         <!-- favicon -->
-        <link rel="shortcut icon" href="{{ asset('/public/front/html/') }}/images/favicon.png">
-        <link rel="apple-touch-icon" href="{{ asset('/public/front/html/') }}/images/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/public/front/html/') }}/images/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/public/front/html/') }}/images/apple-touch-icon-114x114.png">
+        <link rel="shortcut icon" href="{{ asset('front/html/') }}/images/favicon.png">
+        <link rel="apple-touch-icon" href="{{ asset('front/html/') }}/images/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('front/html/') }}/images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front/html/') }}/images/apple-touch-icon-114x114.png">
         <!-- style sheets and font icons  -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/bootsnav.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/font-icons.min.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/theme-vendors.min.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/responsive.css" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/html/') }}/css/bootsnav.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/html/') }}/css/font-icons.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/html/') }}/css/theme-vendors.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/html/') }}/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/html/') }}/css/responsive.css" />
     </head>
     <body>   
         <!-- start countdown section -->
         <section class="p-0 bg-extra-light-gray">
             <div class="container-fluid">
                 <div class="row row-cols-1 row-cols-lg-2">
-                    <div class="col minheight-fullscreen p-0 cover-background d-none d-lg-block" style="background-image:url('{{ asset('/public/front/html/') }}/images/cpi_cover.jpg');');"></div>
+                    <div class="col minheight-fullscreen p-0 cover-background d-none d-lg-block" style="background-image:url('{{ asset('front/html/') }}/images/cpi_cover.jpg');');"></div>
                     <div class="col minheight-fullscreen d-flex align-items-center bg-black p-0">                         
                         <div class="text-center padding-three-all sm-padding-15px-all w-100">
                             <div class="row">
                                 <div class="col-3 mx-auto">
                                     <div class="margin-nine-bottom md-margin-50px-bottom sm-margin-15px-bottom">
-                                        <img src="{{ asset('/public/front/html/') }}/images/logo.jpeg" data-at2x="{{ asset('/public/front/html/') }}/images/logo.jpeg" alt="cpi reunion" />
+                                        <img src="{{ asset('front/html/') }}/images/logo.jpeg" data-at2x="{{ asset('front/html/') }}/images/logo.jpeg" alt="cpi reunion" />
                                     </div>
                                 </div>
                             </div>
@@ -64,12 +64,12 @@
         <a class="scroll-top-arrow" href="javascript:void(0);"><i class="ti-arrow-up"></i></a>
         <!-- end scroll to top  -->
         <!-- javascript -->
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/bootsnav.js"></script>
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/jquery.nav.js"></script>
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/hamburger-menu.js"></script>
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/theme-vendors.min.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/bootsnav.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/jquery.nav.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/hamburger-menu.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/theme-vendors.min.js"></script>
         <!-- setting -->
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/main.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/main.js"></script>
     </body>
 </html>

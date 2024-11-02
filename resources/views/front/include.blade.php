@@ -14,16 +14,16 @@
         <meta name="keywords" content="cpi, cumilla poly, polytechnic, cpi reunion, reunion cpi, cpi reunion 2010-11, reunion cpi 2010-11, cpi reunion 10-11, reunion cpi 10-11">
         <script src="https://kit.fontawesome.com/32dcd4a478.js" crossorigin="anonymous"></script>
         <!-- favicon -->
-        <link rel="shortcut icon" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
-        <link rel="apple-touch-icon" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/public/front/html/') }}/images/favicon-cpi.png">
+        <link rel="shortcut icon" href="{{ asset('front/html/') }}/images/favicon-cpi.png">
+        <link rel="apple-touch-icon" href="{{ asset('front/html/') }}/images/favicon-cpi.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('front/html/') }}/images/favicon-cpi.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('front/html/') }}/images/favicon-cpi.png">
         <!-- style sheets and font icons  -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/bootsnav.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/font-icons.min.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/theme-vendors.min.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('/public/front/html/') }}/css/responsive.css" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/html/') }}/css/bootsnav.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/html/') }}/css/font-icons.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/html/') }}/css/theme-vendors.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/html/') }}/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('front/html/') }}/css/responsive.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -55,7 +55,7 @@
                 <div class="container-lg nav-header-container">
                     <!-- start logo -->
                     <div class="col-auto ps-0">
-                        <a href="#" title="cpi reunion" class="logo"><img src="{{ asset('/public/front/html/') }}/images/logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" class="logo-dark w-100" alt="cpi reunion"><img src="{{ asset('/public/front/html/') }}/images/light-logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/light-logo.png" alt="cpi reunion" class="logo-light default w-100"></a>
+                        <a href="#" title="cpi reunion" class="logo"><img src="{{ asset('front/html/') }}/images/logo.png" data-at2x="{{ asset('front/html/') }}/images/logo.png" class="logo-dark w-100" alt="cpi reunion"><img src="{{ asset('front/html/') }}/images/light-logo.png" data-at2x="{{ asset('front/html/') }}/images/light-logo.png" alt="cpi reunion" class="logo-light default w-100"></a>
                     </div>
                     <!-- end logo -->
                     <div class="col-auto col-lg accordion-menu pe-0">
@@ -129,7 +129,7 @@
                 <div class="row align-items-center">
                     <!-- start logo -->
                     <div class="col-md-3 text-center text-lg-start sm-margin-20px-bottom">
-                        <a href="#"><img class="footer-logo" src="{{ asset('/public/front/html/') }}/images/logo.png" data-at2x="{{ asset('/public/front/html/') }}/images/logo.png" alt="cip reunion"></a>
+                        <a href="#"><img class="footer-logo" src="{{ asset('front/html/') }}/images/logo.png" data-at2x="{{ asset('front/html/') }}/images/logo.png" alt="cip reunion"></a>
                     </div> 
                     <!-- end logo -->
                     <!-- start copyright -->
@@ -156,12 +156,13 @@
         <a class="scroll-top-arrow" href="javascript:void(0);"><i class="ti-arrow-up"></i></a>
         <!-- end scroll to top  -->
         <!-- javascript -->
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/bootsnav.js"></script>
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/jquery.nav.js"></script>
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/hamburger-menu.js"></script>
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/theme-vendors.min.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/bootsnav.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/jquery.nav.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/hamburger-menu.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/theme-vendors.min.js"></script>
         <!-- setting -->
-        <script type="text/javascript" src="{{ asset('/public/front/html/') }}/js/main.js"></script>
+        <script type="text/javascript" src="{{ asset('front/html/') }}/js/main.js"></script>
+        @yield('scripts')
     </body>
 </html>
