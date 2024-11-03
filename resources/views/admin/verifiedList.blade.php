@@ -49,7 +49,7 @@ Verified Student
                                         <a href="{{ route('rejectRegister',['id'=>$verify->id]) }}" onclick="alert('Are you sure to reject/cancel the register? It can not be undone')" class="btn btn-danger btn-sm my-1">
                                             <i class="fa-sharp fa-regular fa-circle-xmark"></i>
                                         </a>
-                                        <a href="{{ route('viewPerticipate',['id'=>$verify->id]) }}" class="btn btn-success btn-sm my-1">
+                                        <a href="#" class="btn btn-success btn-sm my-1">
                                             <i class="fa-sharp fa-light fa-eye"></i>
                                         </a> 
                                     </td>
