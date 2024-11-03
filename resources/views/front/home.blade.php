@@ -2,12 +2,12 @@
 @section('frontBody')
 
 <!-- start hero section -->
-<section id="home" class="p-0 parallax mobile-height wow animate__fadeIn" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('front/html/') }}/images/cpi_cover.jpg');height:570px">
+<section id="home" class="p-0 parallax mobile-height wow animate__fadeIn" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('public/front/html/') }}/images/cpi_cover.jpg');height:570px">
     <div class="opacity-extra-medium bg-extra-dark-gray"></div>
     <div class="container position-relative full-screen">
         <div class="row h-100 align-items-center">
             <div class="col-12 text-center">
-                <img src="{{ asset('front/html/') }}/images/text2.png" alt=""/>
+                <img src="{{ asset('public/front/html/') }}/images/text2.png" alt=""/>
                 <div class="down-section text-center"><a href="#about" class="inner-link"><i class="ti-arrow-down icon-extra-small text-white-2 bg-deep-pink padding-15px-all sm-padding-10px-all rounded-circle"></i></a></div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <img src="{{ asset('front/html/') }}/images/permission.jpg" style="min-height:550px" alt="" class="w-100">
+                        <img src="{{ asset('public/front/html/') }}/images/permission.jpg" style="min-height:550px" alt="" class="w-100">
                     </div>
                 </div>
                 <div class="row">
@@ -89,12 +89,12 @@
         </section>
         <!-- end counter section -->
         <!-- start parallax section -->
-        <section class="parallax wow animate__fadeIn" data-parallax-background-ratio="0.3" style="background-image:url('{{ asset('front/html/') }}/images/cover-2.jpg');">
+        <section class="parallax wow animate__fadeIn" data-parallax-background-ratio="0.3" style="background-image:url('{{ asset('public/front/html/') }}/images/cover-2.jpg');">
             <div class="opacity-extra-medium bg-black"></div>
             <div class="container position-relative">
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-7 col-sm-10 text-center last-paragraph-no-margin">
-                        <a class="popup-youtube" href="https://www.youtube.com/watch?v=R-r-M7QiOCA"><img src="{{ asset('front/html/') }}/images/icon-play.png" class="w-130px" alt=""/></a>
+                        <a class="popup-youtube" href="https://www.youtube.com/watch?v=R-r-M7QiOCA"><img src="{{ asset('public/front/html/') }}/images/icon-play.png" class="w-130px" alt=""/></a>
                         <h4 class="alt-font text-white-2 margin-15px-bottom sm-margin-20px-bottom">Register. Joining. Fun.</h4>
                         <p class="text-extra-large font-weight-300 text-light-gray w-85 sm-w-100 d-inline-block margin-25px-bottom">Let's complete your register and invite your firends circle and joining the reunion. We will have a great fun for that day</p>
                     </div>
@@ -346,14 +346,14 @@
                 <div class="row">    
                     <div class="swiper white-move" data-slider-options='{ "slidesPerView":"1", "loop":true, "autoplay":{"delay":3000 }, "stopOnLastSlide":true, "disableOnInteraction":false, "keyboard":true, "mousewheel":false, "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "pagination": { "el": ".swiper-pagination", "clickable": true }, "breakpoints":{ "768":{ "slidesPerView":"3" },"992":{ "slidesPerView":"3" }, "1200":{ "slidesPerView":"4" } } }'>
                         <div class="swiper-wrapper">
-                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('front/html/') }}/images/clients-logo1.png" alt=""></div><!-- end slider item -->
-                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('front/html/') }}/images/clients-logo2.png" alt=""></div><!-- end slider item -->
-                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('front/html/') }}/images/clients-logo3.png" alt=""></div><!-- end slider item -->
-                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('front/html/') }}/images/clients-logo4.png" alt=""></div><!-- end slider item -->
-                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('front/html/') }}/images/clients-logo1.png" alt=""></div><!-- end slider item -->
-                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('front/html/') }}/images/clients-logo2.png" alt=""></div><!-- end slider item -->
-                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('front/html/') }}/images/clients-logo3.png" alt=""></div><!-- end slider item -->
-                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('front/html/') }}/images/clients-logo4.png" alt=""></div><!-- end slider item -->
+                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('public/front/html/') }}/images/clients-logo1.png" alt=""></div><!-- end slider item -->
+                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('public/front/html/') }}/images/clients-logo2.png" alt=""></div><!-- end slider item -->
+                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('public/front/html/') }}/images/clients-logo3.png" alt=""></div><!-- end slider item -->
+                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('public/front/html/') }}/images/clients-logo4.png" alt=""></div><!-- end slider item -->
+                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('public/front/html/') }}/images/clients-logo1.png" alt=""></div><!-- end slider item -->
+                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('public/front/html/') }}/images/clients-logo2.png" alt=""></div><!-- end slider item -->
+                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('public/front/html/') }}/images/clients-logo3.png" alt=""></div><!-- end slider item -->
+                            <!-- start slider item --><div class="swiper-slide text-center"><img src="{{ asset('public/front/html/') }}/images/clients-logo4.png" alt=""></div><!-- end slider item -->
                         </div>
                         <!-- start swiper pagination -->
                          <!-- <div class="swiper-pagination swiper-pagination-white"></div> --> 

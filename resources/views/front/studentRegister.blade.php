@@ -2,12 +2,12 @@
 @section('frontBody')
 
 <!-- start hero section -->
-<section id="home" class="p-0 parallax mobile-height wow animate__fadeIn" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('front/html/') }}/images/cpi_cover.jpg');height:570px">
+<section id="home" class="p-0 parallax mobile-height wow animate__fadeIn" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('public/front/html/') }}/images/cpi_cover.jpg');height:570px">
     <div class="opacity-extra-medium bg-extra-dark-gray"></div>
     <div class="container position-relative full-screen">
         <div class="row h-100 align-items-center">
             <div class="col-12 text-center">
-                <img src="{{ asset('front/html/') }}/images/text2.png" alt=""/>
+                <img src="{{ asset('public/front/html/') }}/images/text2.png" alt=""/>
                 <div class="down-section text-center"><a href="#about" class="inner-link"><i class="ti-arrow-down icon-extra-small text-white-2 bg-deep-pink padding-15px-all sm-padding-10px-all rounded-circle"></i></a></div>
             </div>
         </div>
@@ -393,7 +393,7 @@
         $("input[name='guestCharge[]']").each(function() {
             const charge = parseInt($(this).val()) || 0; // Convert to integer or 0 if NaN
             totalCharge += charge;
-        }); 
+        });
         const finalCharge = parseInt(totalCharge + 1530);
         $("#totalPayment").val(finalCharge);
     }
