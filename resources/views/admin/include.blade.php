@@ -8,20 +8,20 @@
     <meta content="CPI Reunion Admin Panel" name="description" />
     <meta content="Virtual IT Professional" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('admin/velzon/html/default/') }}/assets/images/favicon-cpi.png">
+    <link rel="shortcut icon" href="{{ asset('public/admin/velzon/html/default/') }}/assets/images/favicon-cpi.png">
 
     <script src="https://kit.fontawesome.com/32dcd4a478.js" crossorigin="anonymous"></script>
  
     <!-- Layout config Js -->
-    <script src="{{ asset('admin/velzon/html/default/') }}/assets/js/layout.js"></script>
+    <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
-    <link href="{{ asset('admin/velzon/html/default/') }}/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/admin/velzon/html/default/') }}/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="{{ asset('admin/velzon/html/default/') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/admin/velzon/html/default/') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="{{ asset('admin/velzon/html/default/') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/admin/velzon/html/default/') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
-    <link href="{{ asset('admin/velzon/html/default/') }}/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/admin/velzon/html/default/') }}/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
     <style>
         .table > tbody > tr > td {
             vertical-align: middle;
@@ -43,19 +43,19 @@
                 <div class="navbar-brand-box horizontal-logo">
                     <a href="{{ url('/') }}" class="logo logo-dark" target="_blank">
                         <span class="logo-sm">
-                            <img src="{{ asset('admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                            <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ asset('admin/velzon/html/default/') }}/assets/images/adminLogo.png" class="p-2" alt="" height="80">
+                            <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo.png" class="p-2" alt="" height="80">
                         </span>
                     </a>
 
                     <a href="{{ url('/') }}" class="logo logo-light" target="_blank">
                         <span class="logo-sm">
-                            <img src="{{ asset('admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                            <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ asset('admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                            <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                         </span>
                     </a>
                 </div>
@@ -90,7 +90,7 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="{{ asset('admin/velzon/html/default/') }}/assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user" src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/users/avatar-1.jpg" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Anna Adame</span>
                                 <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
@@ -120,19 +120,19 @@
                 <!-- Dark Logo-->
                 <a href="{{ url('/') }}" class="logo logo-dark" target="_blank">
                     <span class="logo-sm">
-                        <img src="{{ asset('admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                        <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('admin/velzon/html/default/') }}/assets/images/adminLogo.png" class="p-2" alt="" height="80">
+                        <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo.png" class="p-2" alt="" height="80">
                     </span>
                 </a>
                 <!-- Light Logo-->
                 <a href="{{ url('/') }}" class="logo logo-light" target="_blank">
                     <span class="logo-sm">
-                        <img src="{{ asset('admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                        <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
+                        <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -264,21 +264,21 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="{{ asset('admin/velzon/html/default/') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('admin/velzon/html/default/') }}/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="{{ asset('admin/velzon/html/default/') }}/assets/libs/node-waves/waves.min.js"></script>
-    <script src="{{ asset('admin/velzon/html/default/') }}/assets/libs/feather-icons/feather.min.js"></script>
-    <script src="{{ asset('admin/velzon/html/default/') }}/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="{{ asset('admin/velzon/html/default/') }}/assets/js/plugins.js"></script>
+    <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/libs/node-waves/waves.min.js"></script>
+    <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/js/plugins.js"></script>
 
     <!-- apexcharts -->
-    <script src="{{ asset('admin/velzon/html/default/') }}/assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/libs/apexcharts/apexcharts.min.js"></script>
 
     <!-- projects js -->
-    <script src="{{ asset('admin/velzon/html/default/') }}/assets/js/pages/dashboard-projects.init.js"></script>
+    <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/js/pages/dashboard-projects.init.js"></script>
 
     <!-- App js -->
-    <script src="{{ asset('admin/velzon/html/default/') }}/assets/js/app.js"></script>
+    <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/js/app.js"></script>
 </body>
 
 </html>
