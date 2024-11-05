@@ -45,11 +45,7 @@ Reject Student
                                     <td class="align-middle text-center">{{ $reject->totalAttend  }}</td>
                                     <td class="align-middle text-center">{{ $reject->paymentBy }}</td>
                                     <td class="align-middle text-center">{{ $reject->paymentId  }}</td>
-                                    <td class="align-middle text-center">
-                                        <a href="{{ route('acceptRegister',['id'=>$reject->id]) }}" onclick="alert('Are you sure, you accept the data?')" class="btn btn-success btn-sm my-1">
-                                            <i class="fa-solid fa-badge-check"></i>
-                                        </a> 
-                                    </td>
+                                    <td class="align-middle text-center">-</td>
                                 </tr>
                             @php
                                 $x++;

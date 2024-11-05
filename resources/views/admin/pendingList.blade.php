@@ -44,7 +44,7 @@ Pending Student
                                     <td class="align-middle text-center">{{ $pending->department  }}</td>
                                     <td class="align-middle text-center">{{ $pending->shift  }}</td>
                                     <td class="align-middle text-center">{{ $pending->totalAttend  }}</td>
-                                    <td class="align-middle text-center">{{ $pending->paymentBy }}</td>
+                                    <td class="align-middle text-center">@if($pending->paymentBy==1) Bkash @endif @if($pending->paymentBy==2) Nagad @endif</td>
                                     <td class="align-middle text-center">{{ $pending->paymentAmount  }}</td>
                                     <td class="align-middle text-center">{{ $pending->paymentId  }}</td>
                                     <td class="align-middle text-center">
@@ -54,6 +54,9 @@ Pending Student
                                         <a href="{{ route('rejectRegister',['id'=>$pending->id]) }}" onclick="alert('Are you sure to reject/cancel the register? It can not be undone')" class="btn btn-danger btn-sm my-1">
                                             <i class="fa-sharp fa-regular fa-circle-xmark"></i>
                                         </a>
+                                        <a href="{{ route('viewPerticipate',['id'=>$pending->id]) }}" class="btn btn-success btn-sm my-1">
+                                            <i class="fa-sharp fa-light fa-eye"></i>
+                                        </a> 
                                     </td>
                                 </tr>
                             @php

@@ -27,8 +27,9 @@ Verified Student
                         <th>Department</th>
                         <th>Shift</th>
                         <th>Total Participat</th>
+                        <th>Payment By</th>
+                        <th>Payment By</th>
                         <th>Date Verify</th>
-                        <th>Verified By</th>
                         <th>Action</th>
                     </thead>
                     <thead>
@@ -43,13 +44,11 @@ Verified Student
                                     <td class="align-middle text-center">{{ $verify->department  }}</td>
                                     <td class="align-middle text-center">{{ $verify->shift  }}</td>
                                     <td class="align-middle text-center">{{ $verify->totalAttend  }}</td>
-                                    <td class="align-middle text-center">{{ $verify->paymentBy }}</td>
+                                    <td class="align-middle text-center">@if($verify->paymentBy==1) Bkash @endif @if($verify->paymentBy==2) Nagad @endif</td>
                                     <td class="align-middle text-center">{{ $verify->paymentId  }}</td>
+                                    <td class="align-middle text-center">{{ $verify->updated_by  }}</td>
                                     <td class="align-middle text-center">
-                                        <a href="{{ route('rejectRegister',['id'=>$verify->id]) }}" onclick="alert('Are you sure to reject/cancel the register? It can not be undone')" class="btn btn-danger btn-sm my-1">
-                                            <i class="fa-sharp fa-regular fa-circle-xmark"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-success btn-sm my-1">
+                                        <a href="{{ route('viewPerticipate',['id'=>$verify->id]) }}" class="btn btn-success btn-sm my-1">
                                             <i class="fa-sharp fa-light fa-eye"></i>
                                         </a> 
                                     </td>
