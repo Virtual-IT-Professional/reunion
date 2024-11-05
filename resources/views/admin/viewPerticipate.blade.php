@@ -110,7 +110,7 @@ Verified Student
                                         $guestList = \App\Models\geustRegister::where(['linkStudent'=>$student->id])->get();
                                         $x = 1;
                                     @endphp
-                                    @if(!empty($guestList))
+                                    @if(!empty($guestList) && count($guestList)>0)
                                     @foreach($guestList as $guest)
                                     <h3 class="h4">Guest {{ $x }}</h3>
                                     <div class="row">
@@ -159,7 +159,7 @@ Verified Student
                                         <div class="col-lg-6 col-12">
                                             <div class="mb-3">
                                                 <label class="fw-bold" for="firstnameInput" class="form-label">Payment Type</label>
-                                                <div>{{ $student->paymentBy }}</div>
+                                                <div>@if($student->paymentBy==1) Bkash @endif @if($student->paymentBy==2) Nagad @endif</div>
                                             </div>
                                         </div>
                                         <!--end col-->

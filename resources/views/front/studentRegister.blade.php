@@ -155,6 +155,10 @@
                         <label for="txnId" class="form-label">TXNID(*)</label>
                         <input type="text" class="form-control" id="txnId" placeholder="Example: BJP9PG9ZVB" required name="payId">
                     </div>
+                    <div class="col-12 col-md-4">
+                        <label for="avatar" class="form-label">Picture(300x300)</label>
+                        <input type="file" class="form-control" id="avatar" required name="avatar">
+                    </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
@@ -311,7 +315,7 @@
             const totalGuest = parseInt($(this).val());
 
             // Check if totalGuest is a valid number
-            if (!isNaN(totalGuest) && totalGuest > 0) {
+            if (!isNaN(totalGuest)) {
                 let member = ""; // Initialize an empty string to accumulate HTML
                 $("#memberList").empty();
                 for (let i = 0; i < totalGuest; i++) {
