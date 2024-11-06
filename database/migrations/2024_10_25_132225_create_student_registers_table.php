@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->string('comment')->nullable();
             $table->string('password')->nullable();
-            $table->string('politicalProblem')->nullable();
+            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }

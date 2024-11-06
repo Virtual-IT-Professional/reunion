@@ -36,7 +36,16 @@
                         {{ Session::get('success') }}
                     </div>
                 @endif
-                <form class="row g-3" method="POST" action="{{ route('saveStudent') }}">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form class="row g-3" method="POST" action="{{ route('saveStudent') }}" enctype="multipart/form-data">
                     @csrf
                     <h6 class="mb-0 fw-bold">Personal Details</h6>
                     <div class="col-12 col-md-4">

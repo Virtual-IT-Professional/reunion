@@ -99,6 +99,14 @@ class FrontEnd extends Controller
         $student->paymentId             = $requ->payId;
         $student->paymentAmount         = $requ->payAmount;
         $student->status = 'PendingVerify';
+        request()->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:300',
+        ]);
+        if(!empty($requ->avatar)):
+            $imageName = time().'.'.request()->avatar->getClientOriginalExtension();
+            request()->avatar->move(public_path('upload/student'), $imageName);
+            $student->avatar = $imageName;
+        endif;
         if($student->save()):
             if($requ->totalMember>0):
                 $guestlength = count($requ->guestName);
