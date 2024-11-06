@@ -100,7 +100,7 @@ class FrontEnd extends Controller
         $student->paymentAmount         = $requ->payAmount;
         $student->status = 'PendingVerify';
         request()->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:300',
+            'file' => 'mimes:jpeg,png,jpg,gif,svg|max:300',
         ]);
         if(!empty($requ->avatar)):
             $imageName = time().'.'.request()->avatar->getClientOriginalExtension();

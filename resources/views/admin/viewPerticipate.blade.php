@@ -18,6 +18,15 @@ Verified Student
                                     </div>
                                 </div>
                                 <div class="card-body p-4">
+                                    <div class="row mb-4">
+                                        <div class="col-md-2 col-4">
+                                            @if(!empty($student->avatar))
+                                            <img src="{{ asset('public/upload/student/') }}/{{ $student->avatar }}" alt="{{ $student->studentName }}" class="w-100 img-thumbnail rounded-0">
+                                            @else
+                                            <img src="{{ asset('public/upload/') }}/avatar.png" alt="{{ $student->studentName }}" class="w-100 img-thumbnail rounded-0">
+                                            @endif
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-6">
                                             <div class="mb-3">
@@ -186,6 +195,16 @@ Verified Student
                                         <!--end col-->
                                     </div>
                                     <!--end row-->
+                                    <div class="row">
+                                        <div class="col-md-12 col-6">
+                                            <a href="{{ route('acceptRegister',['id'=>$student->id]) }}" onclick="alert('Are you sure, you verify the data?')" class="btn btn-success my-1">
+                                                    <i class="fa-solid fa-badge-check"></i> Accept & Confirm
+                                                </a> 
+                                            <a href="{{ route('rejectRegister',['id'=>$student->id]) }}" onclick="alert('Are you sure, you verify the data?')" class="btn btn-danger my-1">
+                                                    <i class="fa-solid fa-circle-xmark"></i> Deny & Reject
+                                                </a> 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             @else
