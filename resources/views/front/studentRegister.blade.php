@@ -48,6 +48,12 @@
                 <form class="row g-3" method="POST" action="{{ route('saveStudent') }}" enctype="multipart/form-data">
                     @csrf
                     <h6 class="mb-0 fw-bold">Personal Details</h6>
+                    <div class="row  mt-4">
+                        <div class="col-12 col-md-4">
+                            <label for="avatar" class="form-label fw-bold">Picture (Passport Size)</label>
+                            <input type="file" class="form-control" id="avatar" required name="avatar">
+                        </div>
+                    </div>
                     <div class="col-12 col-md-4">
                         <label for="stdName" class="form-label">Your Name(*)</label>
                         <input type="text" class="form-control" id="stdName" required placeholder="Enter fullname" name="stdName">
@@ -163,10 +169,6 @@
                     <div class="col-12 col-md-4">
                         <label for="txnId" class="form-label">TXNID(*)</label>
                         <input type="text" class="form-control" id="txnId" placeholder="Example: BJP9PG9ZVB" required name="payId">
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <label for="avatar" class="form-label">Picture(300x300)</label>
-                        <input type="file" class="form-control" id="avatar" required name="avatar">
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Submit</button>

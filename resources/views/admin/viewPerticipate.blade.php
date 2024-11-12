@@ -189,7 +189,7 @@ Verified Student
                                         <div class="col-lg-6 col-12">
                                             <div class="mb-3">
                                                 <label class="fw-bold" for="emailInput" class="form-label">Verified Date</label>
-                                                <div>@if($student->status=='PendingVerify') Payment Not Verify @else {{ $guest->guestAge }} @endif</div>
+                                                <div>@if($student->status=='PendingVerify') Payment Not Verify @else {{ \Carbon\Carbon::parse($student->updated_at)->format('d/m/Y') }} @endif</div>
                                             </div>
                                         </div>
                                         <!--end col-->
