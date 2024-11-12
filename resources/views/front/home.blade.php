@@ -169,12 +169,12 @@
                                             <th scope="col">Department</th>
                                             <th scope="col">Shift</th>
                                             <th scope="col">Registration Date</th>
-                                            <th scope="col">Verified Data</th>
+                                            <th scope="col">Verified Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
-                                            $verifiedList = \App\Models\studentRegister::where(['status'=>'Verified'])->orderby('id','DESC');
+                                            $verifiedList = \App\Models\studentRegister::where(['status'=>'Verified'])->orderby('id','DESC')->get();
                                         @endphp
                                         @if(!empty($verifiedList))
                                             @php
