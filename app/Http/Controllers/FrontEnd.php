@@ -7,6 +7,7 @@ use App\Models\studentRegister;
 use App\Models\geustRegister;
 use App\Models\adminPanel;
 use Hash;
+use Session;
 
 class FrontEnd extends Controller
 {
@@ -19,7 +20,10 @@ class FrontEnd extends Controller
     }
     
     public function adminLogin(){
+        if(Session::has('modarator') || Session::has('superAdmin')):
+        else:
         return view('front.adminSignin');
+        endif;
     }
 
     public function confirmAdminLogin(Request $requ){
