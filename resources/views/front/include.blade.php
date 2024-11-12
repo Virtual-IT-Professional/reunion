@@ -27,6 +27,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <!-- Include DataTables CSS and JS -->
+ 
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+  
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  
+        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
         <style>
             body{
                 font-family: "Red Hat Display", sans-serif;
@@ -152,11 +159,14 @@
             </div>
         </footer>
         <!-- end footer -->
+         <script>
+            $(document).ready( function () {
+                $('#dataTable').DataTable();
+            } );
+         </script>
         <!-- start scroll to top -->
         <a class="scroll-top-arrow" href="javascript:void(0);"><i class="ti-arrow-up"></i></a>
         <!-- end scroll to top  -->
-        <!-- javascript -->
-        <script type="text/javascript" src="{{ asset('public/front/html/') }}/js/jquery.min.js"></script>
         <script type="text/javascript" src="{{ asset('public/front/html/') }}/js/bootsnav.js"></script>
         <script type="text/javascript" src="{{ asset('public/front/html/') }}/js/jquery.nav.js"></script>
         <script type="text/javascript" src="{{ asset('public/front/html/') }}/js/hamburger-menu.js"></script>

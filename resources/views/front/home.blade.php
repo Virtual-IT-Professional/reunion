@@ -157,67 +157,47 @@
                     <!-- end counter box item -->
                 </div>
                 <div class="row mt-5">
-                    <div class="col-12 col-md-6">
+                    <div class="col-10 mx-auto">
                         <div class="card">
                             <div class="card-header">Total Register</div>
                             <div class="card-body">
-                                <table class="table">
+                                <table class="table" id="dataTable">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Civil</th>
-                                            <th scope="col">Electrical</th>
-                                            <th scope="col">Electronics</th>
-                                            <th scope="col">Mechanical</th>
-                                            <th scope="col">Power</th>
-                                            <th scope="col">Computer</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Department</th>
+                                            <th scope="col">Shift</th>
+                                            <th scope="col">Registration Date</th>
+                                            <th scope="col">Verified Data</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $verifiedList = \App\Models\studentRegister::where(['status'=>'Verified'])->orderby('id','DESC');
+                                        @endphp
+                                        @if(!empty($verifiedList))
+                                            @php
+                                                $x = 1;
+                                            @endphp
+                                            @foreach($verifiedList as $verified)
+                                            <tr>
+                                                <th scope="row">{{ $x }}</th>
+                                                <td>{{ $verified->fullName }}</td>
+                                                <td>{{ $verified->dept }}</td>
+                                                <td>{{ $verified->shift }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($verified->created_at)->format('d/m/Y') }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($verified->updated_at)->format('d/m/Y') }}</td>
+                                            </tr>
+                                            @php
+                                                $x++;
+                                            @endphp
+                                            @endforeach
+                                        @else
                                         <tr>
                                             <td colspan="7">Sorry! No data found</td>
                                         </tr>
-                                        <!-- <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                        </tr> -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="card">
-                            <div class="card-header">Top Register Department Wise</div>
-                            <div class="card-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Civil</th>
-                                            <th scope="col">Electrical</th>
-                                            <th scope="col">Electronics</th>
-                                            <th scope="col">Mechanical</th>
-                                            <th scope="col">Power</th>
-                                            <th scope="col">Computer</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="7">Sorry! No data found</td>
-                                        </tr>
-                                        <!-- <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                        </tr> -->
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
