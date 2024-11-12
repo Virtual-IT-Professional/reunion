@@ -196,13 +196,18 @@ Verified Student
                                     </div>
                                     <!--end row-->
                                     <div class="row">
-                                        <div class="col-md-12 col-6">
+                                        <div class="col-12">
+                                            @if($student->status == 'PendingVerify')
                                             <a href="{{ route('acceptRegister',['id'=>$student->id]) }}" onclick="alert('Are you sure, you verify the data?')" class="btn btn-success my-1">
                                                     <i class="fa-solid fa-badge-check"></i> Accept & Confirm
                                                 </a> 
                                             <a href="{{ route('rejectRegister',['id'=>$student->id]) }}" onclick="alert('Are you sure, you verify the data?')" class="btn btn-danger my-1">
                                                     <i class="fa-solid fa-circle-xmark"></i> Deny & Reject
                                                 </a> 
+                                            @endif
+                                            <a href="{{ route('pendingList') }}" class="btn btn-warning fw-bold"><i class="fa-sharp fa-regular fa-calendar-clock"></i> Pending List</a>
+                                            <a href="{{ route('verifiedList') }}" class="btn btn-success fw-bold"><i class="fa-duotone fa-solid fa-check-to-slot"></i> Verified List</a>
+                                            <a href="{{ route('rejectedList') }}" class="btn btn-danger fw-bold"><i class="fa-regular fa-shuffle"></i> Rejected List</a>
                                         </div>
                                     </div>
                                 </div>
