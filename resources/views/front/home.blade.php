@@ -183,8 +183,8 @@
                                             @foreach($verifiedList as $verified)
                                             <tr>
                                                 <th scope="row">{{ $x }}</th>
-                                                <td>{{ $verified->fullName }}</td>
-                                                <td>{{ $verified->dept }}</td>
+                                                <td>{{ $verified->studentName }}</td>
+                                                <td>{{ $verified->department }}</td>
                                                 <td>{{ $verified->shift }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($verified->created_at)->format('d/m/Y') }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($verified->updated_at)->format('d/m/Y') }}</td>
