@@ -21,8 +21,9 @@ class FrontEnd extends Controller
     
     public function adminLogin(){
         if(Session::has('modarator') || Session::has('superAdmin')):
+            return redirect(route('adminHome'));
         else:
-        return view('front.adminSignin');
+            return view('front.adminSignin');
         endif;
     }
 
