@@ -68,5 +68,10 @@ class AdminPanel extends Controller
         else:
             return back()->with('error','Sorry! no data found with your query');
         endif;
+    }    
+
+    public function editPerticipate($id){
+        $student = studentRegister::find($id);
+        return view('admin.editPerticipate',['student'=>$student]);
     }
 }

@@ -22,6 +22,13 @@
     <link href="{{ asset('public/admin/velzon/html/default/') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ asset('public/admin/velzon/html/default/') }}/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- Include DataTables CSS and JS -->
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <style>
         .table > tbody > tr > td {
             vertical-align: middle;
@@ -279,6 +286,7 @@
 
     <!-- App js -->
     <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/js/app.js"></script>
+    @yield('scripts')
 </body>
 
 </html>

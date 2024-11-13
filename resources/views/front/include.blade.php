@@ -91,9 +91,6 @@
         </header>
         <!-- end header -->
          @yield('frontBody')
-         
-        
-        
         <!-- start features section -->
         <section class="wow animate__fadeIn border-bottom border-color-extra-light-gray">
             <div class="container">

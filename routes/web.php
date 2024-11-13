@@ -91,6 +91,26 @@ Route::middleware(['modarator','superAdmin'])->group(function(){
         'viewPerticipate'
     ])->name('viewPerticipate');
 
+    Route::get('/backoffice/admin/student/edit/{id}',[
+        AdminPanel::class,
+        'editPerticipate'
+    ])->name('editPerticipate');
+
+    Route::post('/backoffice/admin/student/update',[
+        FrontEnd::class,
+        'updatePerticipant'
+    ])->name('updatePerticipant');
+
+    Route::post('/backoffice/admin/student/avatar/update',[
+        FrontEnd::class,
+        'updatePerticipantAvatar'
+    ])->name('updatePerticipantAvatar');
+
+    Route::get('/backoffice/admin/student/avatar/del/{id}',[
+        AdminPanel::class,
+        'delAvatar'
+    ])->name('delAvatar');
+
     Route::get('/backoffice/admin/register/reject/{id}',[
         AdminPanel::class,
         'rejectRegister'
