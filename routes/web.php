@@ -98,13 +98,13 @@ Route::middleware(['modarator','superAdmin'])->group(function(){
 
     Route::post('/backoffice/admin/student/update',[
         FrontEnd::class,
-        'updatePerticipant'
-    ])->name('updatePerticipant');
+        'updatePerticipate'
+    ])->name('updatePerticipate');
 
     Route::post('/backoffice/admin/student/avatar/update',[
-        FrontEnd::class,
-        'updatePerticipantAvatar'
-    ])->name('updatePerticipantAvatar');
+        AdminPanel::class,
+        'updateAvatar'
+    ])->name('updateAvatar');
 
     Route::get('/backoffice/admin/student/avatar/del/{id}',[
         AdminPanel::class,

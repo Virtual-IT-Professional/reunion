@@ -7,6 +7,7 @@ use App\Models\studentRegister;
 use App\Mail\RegisterVerify;
 use Middleware;
 use Mail;
+use File;
 
 class AdminPanel extends Controller
 {
@@ -73,7 +74,10 @@ class AdminPanel extends Controller
     public function delAvatar($id){
         $student = studentRegister::find($id);
         if(!empty($student)):
-            $avatar = public_folder('').'/'.$student->avatar;
+            $avatar = public_path('upload/student/').'/'.$student->avatar;
+            if (File::exists($avatar)) {
+                File::delete($avatar);
+            }
             $student->avatar = '';
             if($student->save()):
                 return back()->with('success','Avatar deleted successfully');
@@ -88,5 +92,65 @@ class AdminPanel extends Controller
     public function editPerticipate($id){
         $student = studentRegister::find($id);
         return view('admin.editPerticipate',['student'=>$student]);
+    }
+    public function updatePerticipate(Request $requ){
+        $student = studentRegister::find($requ->perticipateId);
+        if(empty($chk)):
+            return back()->with('error','Sorry! No data found with your query');
+        endif;
+
+        $student->studentName           = $requ->fullName;
+        $student->department            = $requ->dept;
+        $student->shift                 = $requ->shift;
+        $student->phone                 = $requ->phoneNumber;
+        $student->emailAddress          = $requ->email;
+        $student->tShirtSize            = $requ->tShirtSize;
+        $student->blGroup               = $requ->blGroup;
+        $student->totalAttend           = $requ->totalGuest;
+        $student->currentAddress        = $requ->currentAddress;
+        $student->professionDetails     = $requ->professionalDetails;
+        $student->paymentBy             = $requ->payType;
+        $student->paymentId             = $requ->payId;
+        $student->paymentAmount         = $requ->payAmount;
+        $student->status                = $requ->status;
+        
+        if($student->save()):
+            if($requ->totalMember>0):
+                $guestlength = count($requ->guestName);
+                for ($i = 0; $i < $guestlength; $i++) {
+                    $guest = new geustRegister();
+                    $guest->guestName = $requ->guestName[$i];
+                    $guest->guestRelation = $requ->guestRelation[$i];
+                    $guest->linkStudent = $student->id;
+                    if(!empty($requ->guestAge[$i])):
+                        $guest->guestAge = $requ->guestAge[$i];
+                    endif;
+                    $guest->save();
+                }
+            endif;
+            return redirect(route('thankyou'))->with('success','Thanks! Your details submitted successfully. Please wait till verify by admin panel. You will received a confirmation mail/message to your email/phone');
+        else:
+            return back()->with('error','Sorry! There was an error. Please try later');
+        endif;
+    }
+
+    public function updateAvatar(Request $requ){
+        $student = studentRegister::find($requ->perticipateId);
+        if(empty($student)):
+            return back()->with('error','Sorry! No data found');
+        endif;
+        request()->validate([
+            'file' => 'mimes:jpeg,png,jpg,gif,svg|max:300',
+        ]);
+        if(!empty($requ->avatar)):
+            $imageName = time().'.'.request()->avatar->getClientOriginalExtension();
+            request()->avatar->move(public_path('upload/student'), $imageName);
+            $student->avatar = $imageName;
+        endif;
+        if($student->save()):
+            return back()->with('success','Success! Avatar updated successfully');
+        else:
+            return back()->with('error','Sorry! There was an error. Please try later');
+        endif;
     }
 }
