@@ -70,6 +70,21 @@ class AdminPanel extends Controller
         endif;
     }    
 
+    public function delAvatar($id){
+        $student = studentRegister::find($id);
+        if(!empty($student)):
+            $avatar = public_folder('').'/'.$student->avatar;
+            $student->avatar = '';
+            if($student->save()):
+                return back()->with('success','Avatar deleted successfully');
+            else:
+                return back()->with('error','There was an error. Please try later');
+            endif;
+        else:
+            return back()->with('error','Sorry! no data found with your query');
+        endif;
+    }    
+
     public function editPerticipate($id){
         $student = studentRegister::find($id);
         return view('admin.editPerticipate',['student'=>$student]);
