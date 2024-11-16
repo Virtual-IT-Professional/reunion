@@ -168,84 +168,57 @@ Verified Student
                                                 </div>
                                             </div>
                                             <!--end col-->
-                                            <div class="col-lg-4 col-12">
-                                                <div class="mb-3">
-                                                    <label class="fw-bold" for="totalGuest" class="form-label">Guest Attend</label>
-                                                    <div>
-                                                        <select name="totalMember" id="totalGuest" class="form-control">
-                                                            <option>{{ $student->totalAttend }}</option>
-                                                            <option value="0">0</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                            <option value="8">8</option>
-                                                            <option value="9">9</option>
-                                                            <option value="10">10</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--end col-->
                                         </div>
                                         <!--end row-->
                                         <!-- guest details here -->
                                         <div class="card-header mb-2">
                                             <div class="h4">
-                                                <i class="fas fa-user-secret"></i> Guest Details
+                                                <i class="fas fa-user-secret"></i> Guest Details(Total-{{ $student->totalAttend }})
                                             </div>
                                         </div>
-                                        <div id="memberList">
-                                            @php
-                                                $guestList = \App\Models\geustRegister::where(['linkStudent'=>$student->id])->get();
-                                                $x = 1;
-                                                $y = 0;
-                                            @endphp
-                                            @if(!empty($guestList) && count($guestList)>0)
-                                            @foreach($guestList as $guest)
-                                            <h3 class="h4">Guest {{ $x }}</h3>
-                                            <div class='row my-2'>
-                                                <div class='col-12 col-md-4'>
-                                                    <label class='text-success'>Guest Name</label>
-                                                    <input type='text' class='form-control border-success text-success' placeholder='Enter name' required name='guestName[]' value="{{ $guest->guestName }}">
-                                                </div>
-                                                <div class='col-12 col-md-4'>
-                                                    <label class='text-success'>Relation</label>
-                                                    <select class='form-control border-success text-success' name='guestRelation[]' onchange='guestRelation({{ $y }})' required>
-                                                        <option value='{{ $guest->guestRelation }}'>{{ $guest->guestRelation }}</option>
-                                                        <option value="Spouse">Spouse</option>
-                                                        <option value="Father">Father</option>
-                                                        <option value="Mother">Mother</option>
-                                                        <option value="Brother">Brother</option>
-                                                        <option value="Sister">Sister</option>
-                                                        <option value="Son">Son</option>
-                                                        <option value="Daughter">Daughter</option>
-                                                        <option value="Other">Other</option>
-                                                    </select>
-                                                    <input type='hidden' name='guestCharge[]' id='guestCharge{{ $y }}' value='' />  
-                                                </div>
-                                                <div class='col-12 col-md-4'>
-                                                    <div id='guestAge{{ $y }}' @if($guest->guestRelation=="Son" || $guest->guestRelation=="Daughter") style='display:block' @else style='display:none' @endif>
-                                                        <label class='text-success'>Guest Age</label>
-                                                        <input type='text' class='form-control border-success text-success' placeholder='25' name='guestAge[]' id='memberAge{{ $y }}' oninput='calculateGuestCharge({{ $y }})' @if(!empty($guest->guestAge)) value='{{ $guest->guestAge }}' @else value='Null' @endif>
-                                                    </div>
+                                        @php
+                                            $guestList = \App\Models\geustRegister::where(['linkStudent'=>$student->id])->get();
+                                            $x = 1;
+                                        @endphp
+                                        @if(!empty($guestList) && count($guestList)>0)
+                                        @foreach($guestList as $guest)
+                                        <h3 class="h4">Guest {{ $x }}</h3>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-12">
+                                                <div class="mb-3">
+                                                    <label class="fw-bold" for="firstnameInput" class="form-label">Full Name</label>
+                                                    <div>{{ $guest->guestName }}</div>
                                                 </div>
                                             </div>
-                                            <!--end row-->
-                                            @php
-                                                $x++;
-                                                $y++;
-                                            @endphp
-                                            @endforeach
-                                            @else
-                                            <div class="row">
-                                                <div class="col-12">No guest attend</div>
+                                            <!--end col-->
+                                            <div class="col-lg-4 col-12">
+                                                <div class="mb-3">
+                                                    <label class="fw-bold" for="phonenumberInput" class="form-label">Relation</label>
+                                                    <div>{{ $guest->guestRelation }}</div>
+                                                </div>
                                             </div>
-                                            @endif
+                                            <!--end col-->
+                                            <div class="col-lg-4 col-12">
+                                                <div class="mb-3">
+                                                    <label class="fw-bold" for="emailInput" class="form-label">Age</label>
+                                                    <div>@if(!empty($guest->guestAge)) {{ $guest->guestAge }} @else - @endif</div>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
                                         </div>
+                                        <!--end row-->
+                                        @php
+                                            $x++;
+                                        @endphp
+                                        @endforeach
+                                        <a href="{{ route('editGuest',['id'=>$student->id]) }}" class="btn btn-danger my-1 btn-sm">
+                                            <i class="fa-solid fa-pencil-square"></i> Edit Guest
+                                        </a>
+                                        @else
+                                        <div class="row">
+                                            <div class="col-12">No guest attend</div>
+                                        </div>
+                                        @endif
                                         <!-- payment details here -->
                                     
                                         <div class="card-header mb-2">
@@ -322,88 +295,4 @@ Verified Student
                 </div>
                 <!-- container-fluid -->
             </div><!-- End Page-content -->
-@endsection
-
-@section('scripts')
-<script>
-
-    $(document).ready(function() {
-        $('#totalGuest').on('change', function() {
-            // Get totalGuest value
-            const totalGuest = parseInt($(this).val());
-
-            // Check if totalGuest is a valid number
-            if (!isNaN(totalGuest)) {
-                let member = ""; // Initialize an empty string to accumulate HTML
-                $("#memberList").empty();
-                for (let i = 0; i < totalGuest; i++) {
-                    member += `
-                        <div class='row my-2'>
-                            <div class='col-12 col-md-4'>
-                                <label class='text-success'>${ i+1 }. Guest Name</label>
-                                <input type='text' class='form-control border-success text-success' placeholder='Enter name' required name='guestName[]'>
-                            </div>
-                            <div class='col-12 col-md-4'>
-                                <label class='text-success'>Relation</label>
-                                <select class='form-control border-success text-success' name='guestRelation[]' onchange='guestRelation(${i})' required>
-                                    <option value=''>-</option>
-                                    <option value="Spouse">Spouse</option>
-                                    <option value="Father">Father</option>
-                                    <option value="Mother">Mother</option>
-                                    <option value="Brother">Brother</option>
-                                    <option value="Sister">Sister</option>
-                                    <option value="Son">Son</option>
-                                    <option value="Daughter">Daughter</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                                <input type='hidden' name='guestCharge[]' id='guestCharge${i}' value='' />  
-                            </div>
-                            <div class='col-12 col-md-4'>
-                                <div id='guestAge${i}' style='display:none'>
-                                    <label class='text-success'>Guest Age</label>
-                                    <input type='text' class='form-control border-success text-success' placeholder='25' name='guestAge[]' id='memberAge${i}' oninput='calculateGuestCharge(${i})' value=''>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
-
-                // Append all accumulated HTML at once to #memberList
-                $("#memberList").append(member);
-            }
-        });
-    });
-
-    // Show/hide age input based on relation selection
-    function guestRelation(index) {
-        const relation = $(`select[name='guestRelation[]']`).eq(index).val();
-        if (relation === "Son" || relation === "Daughter") {
-            $(`#guestAge${index}`).show();
-            $(`#guestCharge${index}`).val(0); 
-        } else {
-            $(`#guestAge${index}`).hide();
-            $(`#guestCharge${index}`).val(1020); 
-        }
-        updateTotalPayment();
-    }
-
-    // Calculate guest charge based on age
-    function calculateGuestCharge(index) {
-        const age = parseInt($(`#memberAge${index}`).val());
-        const charge = (age <= 6) ? 0 : 1020;
-        $(`#guestCharge${index}`).val(charge);
-        updateTotalPayment();
-    }
-
-    // Function to calculate and update the total payment
-    function updateTotalPayment() {
-        let totalCharge = 0;
-        $("input[name='guestCharge[]']").each(function() {
-            const charge = parseInt($(this).val()) || 0; // Convert to integer or 0 if NaN
-            totalCharge += charge;
-        });
-        const finalCharge = parseInt(totalCharge + 1530);
-        $("#totalPayment").val(finalCharge);
-    }
-</script>
 @endsection

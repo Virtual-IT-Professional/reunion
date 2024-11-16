@@ -97,9 +97,19 @@ Route::middleware(['modarator','superAdmin'])->group(function(){
     ])->name('editPerticipate');
 
     Route::post('/backoffice/admin/student/update',[
-        FrontEnd::class,
+        AdminPanel::class,
         'updatePerticipate'
     ])->name('updatePerticipate');
+
+    Route::get('/backoffice/admin/student/guest/edit/{id}',[
+        AdminPanel::class,
+        'editGuest'
+    ])->name('editGuest');
+
+    Route::post('/backoffice/admin/student/guest/update',[
+        AdminPanel::class,
+        'updateGuest'
+    ])->name('updateGuest');
 
     Route::post('/backoffice/admin/student/avatar/update',[
         AdminPanel::class,

@@ -9,7 +9,7 @@ Reject Student
             <div class="card-header">
                 <h3>Reject Student List</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body table-responsive">
                 @if(Session::has('success'))
                 <div class="alert alert-success">
                     {{ Session::get('success') }}

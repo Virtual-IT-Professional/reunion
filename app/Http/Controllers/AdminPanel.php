@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\studentRegister;
 use App\Mail\RegisterVerify;
+use App\Models\geustRegister;
 use Middleware;
 use Mail;
 use File;
@@ -93,9 +94,15 @@ class AdminPanel extends Controller
         $student = studentRegister::find($id);
         return view('admin.editPerticipate',['student'=>$student]);
     }
+
+    public function editGuest($id){
+        $student = studentRegister::find($id);
+        return view('admin.editGuest',['student'=>$student]);
+    }
+
     public function updatePerticipate(Request $requ){
         $student = studentRegister::find($requ->perticipateId);
-        if(empty($chk)):
+        if(empty($student)):
             return back()->with('error','Sorry! No data found with your query');
         endif;
 
@@ -106,7 +113,7 @@ class AdminPanel extends Controller
         $student->emailAddress          = $requ->email;
         $student->tShirtSize            = $requ->tShirtSize;
         $student->blGroup               = $requ->blGroup;
-        $student->totalAttend           = $requ->totalGuest;
+        $student->totalAttend           = $requ->totalMember;
         $student->currentAddress        = $requ->currentAddress;
         $student->professionDetails     = $requ->professionalDetails;
         $student->paymentBy             = $requ->payType;
@@ -115,20 +122,38 @@ class AdminPanel extends Controller
         $student->status                = $requ->status;
         
         if($student->save()):
-            if($requ->totalMember>0):
-                $guestlength = count($requ->guestName);
-                for ($i = 0; $i < $guestlength; $i++) {
-                    $guest = new geustRegister();
-                    $guest->guestName = $requ->guestName[$i];
-                    $guest->guestRelation = $requ->guestRelation[$i];
-                    $guest->linkStudent = $student->id;
-                    if(!empty($requ->guestAge[$i])):
-                        $guest->guestAge = $requ->guestAge[$i];
-                    endif;
-                    $guest->save();
-                }
-            endif;
-            return redirect(route('thankyou'))->with('success','Thanks! Your details submitted successfully. Please wait till verify by admin panel. You will received a confirmation mail/message to your email/phone');
+            return back()->with('success','Details updated successfully');
+        else:
+            return back()->with('error','Sorry! There was an error. Please try later');
+        endif;
+    }
+
+    public function updateGuest(Request $requ){
+        $student = studentRegister::find($requ->perticipateId);
+        if(empty($student)):
+            return back()->with('error','Sorry! No data found with your query');
+        endif;
+
+        if($requ->totalMember>0):
+            $guestList = geustRegister::where(['linkStudent'=>$requ->perticipateId])->delete();
+            $guestlength = count($requ->guestName);
+            for ($i = 0; $i < $guestlength; $i++) {
+                $guest = new geustRegister();
+                $guest->guestName       = $requ->guestName[$i];
+                $guest->guestRelation   = $requ->guestRelation[$i];
+                $guest->linkStudent     = $student->id;
+                if(!empty($requ->guestAge[$i])):
+                    $guest->guestAge = $requ->guestAge[$i];
+                endif;
+                $guest->save();
+            }
+        endif;
+        $student->totalAttend           = $requ->totalMember;
+        $student->paymentBy             = $requ->payType;
+        $student->paymentId             = $requ->payId;
+        $student->paymentAmount         = $requ->payAmount;
+        if($student->save()):
+            return back()->with('success','Details updated successfully');
         else:
             return back()->with('error','Sorry! There was an error. Please try later');
         endif;
