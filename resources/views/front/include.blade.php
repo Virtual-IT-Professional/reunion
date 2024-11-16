@@ -52,6 +52,9 @@
             .topHeader{
                 font-size: 17px !important;
             }
+            section{
+                padding: 65px 0;
+            }
         </style>
     </head>
     <body>
