@@ -203,7 +203,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 text-center"><a href="{{ route('studentRegister') }}" class="btn btn-success btn-lg mt-4"><i class="fa-solid fa-right-to-bracket"></i> Let's Register</a></div>
+                    <div class="col-12 text-center"><a href="{{ route('studentRegister') }}" class="btn btn-success btn-lg my-2"><i class="fa-solid fa-right-to-bracket"></i> Let's Register</a></div>
                 </div>
             </div>
         </section>
