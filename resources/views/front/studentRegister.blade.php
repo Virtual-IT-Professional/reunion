@@ -219,8 +219,8 @@
                 
                 <ol>
                     <li>Fill The Form for Only Once Even If There Are Multiple Guests</li>
-                    <li>General Member(Student of Session 2010-11 of CPI) joining fee 1500 BDT</li>
-                    <li>Per Guest Member Joining Fees 1000 BDT</li>
+                    <li>General Member(Student of Session 2010-11 of CPI) joining fee 1530 BDT</li>
+                    <li>Per Guest Member Joining Fees 1020 BDT</li>
                     <li>6 Years of Age Own Children Must Register, Don't Need to Below 6 Years</li>
                 </ol>
             </div>
