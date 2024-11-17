@@ -20,15 +20,12 @@ Reject Student
                     {{ Session::get('error') }}
                 </div>
                 @endif
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                     <thead>
                         <th>SL</th>
                         <th>Name</th>
                         <th>Department</th>
-                        <th>Shift</th>
-                        <th>Total Participat</th>
-                        <th>Date Verify</th>
-                        <th>Verified By</th>
+                        <th>Date Rejected</th>
                         <th>Action</th>
                     </thead>
                     <thead>
@@ -40,11 +37,10 @@ Reject Student
                                 <tr>
                                     <td class="align-middle text-center">{{ $x }}</td>
                                     <td class="align-middle text-center">{{ $reject->studentName }}</td>
-                                    <td class="align-middle text-center">{{ $reject->department  }}</td>
-                                    <td class="align-middle text-center">{{ $reject->shift  }}</td>
-                                    <td class="align-middle text-center">{{ $reject->totalAttend  }}</td>
-                                    <td class="align-middle text-center">{{ $reject->paymentBy }}</td>
-                                    <td class="align-middle text-center">{{ $reject->paymentId  }}</td>
+                                    <td class="align-middle text-center">{{ $verify->department  }}
+                                        <br> ({{ $verify->shift  }} Shift)
+                                    </td>
+                                    <td class="align-middle text-center">{{ \Carbon\Carbon::parse($reject->updated_at)->format('d/m/Y') }}</td>
                                     <td class="align-middle text-center">-</td>
                                 </tr>
                             @php

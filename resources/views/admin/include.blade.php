@@ -8,7 +8,7 @@
     <meta content="CPI Reunion Admin Panel" name="description" />
     <meta content="Virtual IT Professional" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('public/admin/velzon/html/default/') }}/assets/images/favicon-cpi.png">
+    <link rel="shortcut icon" href="{{ asset('public/admin/velzon/html/default/') }}/assets/images/logo.png">
 
     <script src="https://kit.fontawesome.com/32dcd4a478.js" crossorigin="anonymous"></script>
  

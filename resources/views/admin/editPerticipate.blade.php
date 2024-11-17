@@ -161,10 +161,17 @@ Verified Student
                                                 </div>
                                             </div>
                                             <!--end col-->
-                                            <div class="col-lg-8 col-12">
+                                            <div class="col-lg-4 col-6">
                                                 <div class="mb-3">
                                                     <label class="fw-bold" for="professionalDetails" class="form-label">Professional Details</label>
-                                                    <div><input type="text" name="professionalDetails" id="professionalDetails" class="form-control" value="{{ $student->professionDetails }}"></div>
+                                                    <div><input type="text" name="professionalDetails" id="professionalDetails" class="form-control" value="{{ $student->professionDetails }}" placeholder="Enter your professional details"></div>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-4 col-6">
+                                                <div class="mb-3">
+                                                    <label class="fw-bold" for="experience" class="form-label">Professional Experience</label>
+                                                    <div><input type="text" name="experience" id="experience" class="form-control" value="{{ $student->experience }}" placeholder="Enter your professional experience"></div>
                                                 </div>
                                             </div>
                                             <!--end col-->

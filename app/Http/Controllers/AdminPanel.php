@@ -45,6 +45,7 @@ class AdminPanel extends Controller
          
                 $body = [
                     'name'=>$student->studentName,
+                    'logo'=>asset('public/admin/velzon/html/default/assets/images/logo.png'),
                     'url_a'=>'https://www.cpireunion.com/',
                 ];
          
@@ -113,9 +114,9 @@ class AdminPanel extends Controller
         $student->emailAddress          = $requ->email;
         $student->tShirtSize            = $requ->tShirtSize;
         $student->blGroup               = $requ->blGroup;
-        $student->totalAttend           = $requ->totalMember;
         $student->currentAddress        = $requ->currentAddress;
         $student->professionDetails     = $requ->professionalDetails;
+        $student->experience            = $requ->experience;
         $student->paymentBy             = $requ->payType;
         $student->paymentId             = $requ->payId;
         $student->paymentAmount         = $requ->payAmount;

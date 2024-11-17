@@ -91,10 +91,17 @@ Verified Student
                                             </div>
                                         </div>
                                         <!--end col-->
-                                        <div class="col-lg-8 col-12">
+                                        <div class="col-lg-4 col-6">
                                             <div class="mb-3">
-                                                <label class="fw-bold" for="cityInput" class="form-label">City</label>
+                                                <label class="fw-bold" for="cityInput" class="form-label">Professional Details</label>
                                                 <div>{{ $student->professionDetails }}</div>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-4 col-6">
+                                            <div class="mb-3">
+                                                <label class="fw-bold" for="cityInput" class="form-label">Professional Experience</label>
+                                                <div>{{ $student->experience }}</div>
                                             </div>
                                         </div>
                                         <!--end col-->

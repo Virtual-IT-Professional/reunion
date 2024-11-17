@@ -20,16 +20,14 @@ Pending Student
                     {{ Session::get('error') }}
                 </div>
                 @endif
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                     <thead>
                         <th>SL</th>
                         <th>Name</th>
                         <th>Department</th>
-                        <th>Shift</th>
-                        <th>Participat</th>
-                        <th>Payment By</th>
+                        <th>Total Guest</th>
+                        <th>Method</th>
                         <th>Amount</th>
-                        <th>TXN ID</th>
                         <th>Action</th>
                     </thead>
                     <thead>
@@ -41,12 +39,12 @@ Pending Student
                                 <tr>
                                     <td class="align-middle text-center">{{ $x }}</td>
                                     <td class="align-middle text-center">{{ $pending->studentName }}</td>
-                                    <td class="align-middle text-center">{{ $pending->department  }}</td>
-                                    <td class="align-middle text-center">{{ $pending->shift  }}</td>
+                                    <td class="align-middle text-center">{{ $pending->department  }}
+                                        <br> ({{ $pending->shift  }} Shift)
+                                    </td>
                                     <td class="align-middle text-center">{{ $pending->totalAttend  }}</td>
                                     <td class="align-middle text-center">@if($pending->paymentBy==1) Bkash @endif @if($pending->paymentBy==2) Nagad @endif</td>
-                                    <td class="align-middle text-center">{{ $pending->paymentAmount  }}</td>
-                                    <td class="align-middle text-center">{{ $pending->paymentId  }}</td>
+                                    <td class="align-middle text-center">{{ $pending->paymentAmount }} BDT<br>TXN ID: {{ $pending->paymentId }}</td>
                                     <td class="align-middle text-center">
                                         <a href="{{ route('acceptRegister',['id'=>$pending->id]) }}" onclick="alert('Are you sure, you verify the data?')" class="btn btn-success btn-sm my-1">
                                             <i class="fa-solid fa-badge-check"></i>

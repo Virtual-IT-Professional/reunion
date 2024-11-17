@@ -19,8 +19,8 @@
         <div class="col-12 text-center">
             <h2 class="display-6 fw-bold">Reunion Registration Form</h2>
             <!-- Button trigger modal -->
-            <a class="fw-bold btn btn-success" data-bs-toggle="modal" data-bs-target="#programDetails"><i class="fa-sharp fa-light fa-memo-circle-info"></i> Program Details</a>
-            <a class="fw-bold btn btn-primary" data-bs-toggle="modal" data-bs-target="#tShirtDetails"><i class="fa-sharp fa-solid fa-shirt"></i> T-Shirt Details</a>
+            <a class="fw-bold btn btn-success my-2" data-bs-toggle="modal" data-bs-target="#programDetails"><i class="fa-sharp fa-light fa-memo-circle-info"></i> Program Details</a>
+            <a class="fw-bold btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#tShirtDetails"><i class="fa-sharp fa-solid fa-shirt"></i> T-Shirt Details</a>
         </div>
     </div>
     <div class="row align-items-center mt-5">
@@ -45,7 +45,8 @@
                         </ul>
                     </div>
                 @endif
-                <h3>Emergency Help: +880 1674-779916</h3>
+                <h5 class="fw-bold d-none d-md-block">Emergency Help: 01674-779916</h5>
+                <h5 class="fw-bold d-md-none d-block text-center">Emergency Help: <br>01674-779916</h5>
                 <form class="row g-3" method="POST" action="{{ route('saveStudent') }}" enctype="multipart/form-data">
                     @csrf
                     <h6 class="mb-0 fw-bold">Personal Details</h6>
@@ -132,7 +133,7 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="expreience" class="form-label">Professional Experience</label>
-                        <input type="text" class="form-control" id="expreience" placeholder="Experience details please" name="expreience">
+                        <input type="text" class="form-control" id="expreience" placeholder="Experience details please" name="experience">
                     </div>
                     <h6 class="mb-0 fw-bold">Guest Details</h6>
                     <div class="col-12 col-md-4">
@@ -157,7 +158,7 @@
                     <h6 class="mb-0 fw-bold">Payment Details</h6>
                     <div class="col-12 col-md-4">
                         <label for="totalPayment" class="form-label">Total Amount(*)</label>
-                        <input type="number" class="form-control" id="totalPayment" placeholder="Enter payment amount" required name="payAmount" readonly>
+                        <input type="number" class="form-control" id="totalPayment" placeholder="Enter payment amount" required name="payAmount" value="1530" readonly>
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="paymentMethod" class="form-label">Payment Method(*)</label>
@@ -362,6 +363,9 @@
 
                 // Append all accumulated HTML at once to #memberList
                 $("#memberList").append(member);
+                if(totalGuest===0){
+                    $("#totalPayment").val(1530);
+                }
             }
         });
 

@@ -1,6 +1,6 @@
 @extends('front.include')
 @section('frontBody')
-<div class="container p-4">
+<div class="container p-4 mt-4">
     <div class="row align-items-center mt-5">
         <div class="col-11 mx-auto">
             <div class="card card-body shadow p-4">

@@ -161,16 +161,13 @@
                         <div class="card">
                             <div class="card-header">Total Register</div>
                             <div class="card-body">
-                                <table class="table" id="dataTable">
+                                <table class="table text-center" id="dataTable">
                                     <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Department</th>
-                                            <th scope="col">Shift</th>
-                                            <th scope="col">Registration Date</th>
-                                            <th scope="col">Verified Date</th>
-                                        </tr>
+                                        <th class="text-center">SL</th>
+                                        <th class="text-center">Name</th>
+                                        <th class="text-center">Department</th>
+                                        <th class="text-center">Registration Date</th>
+                                        <th class="text-center">Verify Date</th>
                                     </thead>
                                     <tbody>
                                         @php
@@ -180,15 +177,16 @@
                                             @php
                                                 $x = 1;
                                             @endphp
-                                            @foreach($verifiedList as $verified)
-                                            <tr>
-                                                <th scope="row">{{ $x }}</th>
-                                                <td>{{ $verified->studentName }}</td>
-                                                <td>{{ $verified->department }}</td>
-                                                <td>{{ $verified->shift }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($verified->created_at)->format('d/m/Y') }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($verified->updated_at)->format('d/m/Y') }}</td>
-                                            </tr>
+                                            @foreach($verifiedList as $verify)
+                                        <tr>
+                                            <td class="align-middle text-center">{{ $x }}</td>
+                                            <td class="align-middle text-center">{{ $verify->studentName }}</td>
+                                            <td class="align-middle text-center">{{ $verify->department  }}
+                                                <br> ({{ $verify->shift  }} Shift)
+                                            </td>
+                                            <td class="align-middle text-center">{{ \Carbon\Carbon::parse($verify->created_at)->format('d/m/Y') }}</td>
+                                            <td class="align-middle text-center">{{ \Carbon\Carbon::parse($verify->updated_at)->format('d/m/Y') }}</td>
+                                        </tr>
                                             @php
                                                 $x++;
                                             @endphp

@@ -20,16 +20,15 @@ Verified Student
                     {{ Session::get('error') }}
                 </div>
                 @endif
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                     <thead>
                         <th>SL</th>
                         <th>Name</th>
                         <th>Department</th>
-                        <th>Shift</th>
-                        <th>Total Participat</th>
-                        <th>Payment By</th>
-                        <th>Payment By</th>
-                        <th>Date Verify</th>
+                        <th>Total Guest</th>
+                        <th>Method</th>
+                        <th>Amout</th>
+                        <th>Verify Date</th>
                         <th>Action</th>
                     </thead>
                     <thead>
@@ -41,12 +40,13 @@ Verified Student
                                 <tr>
                                     <td class="align-middle text-center">{{ $x }}</td>
                                     <td class="align-middle text-center">{{ $verify->studentName }}</td>
-                                    <td class="align-middle text-center">{{ $verify->department  }}</td>
-                                    <td class="align-middle text-center">{{ $verify->shift  }}</td>
+                                    <td class="align-middle text-center">{{ $verify->department  }}
+                                        <br> ({{ $verify->shift  }} Shift)
+                                    </td>
                                     <td class="align-middle text-center">{{ $verify->totalAttend  }}</td>
                                     <td class="align-middle text-center">@if($verify->paymentBy==1) Bkash @endif @if($verify->paymentBy==2) Nagad @endif</td>
-                                    <td class="align-middle text-center">{{ $verify->paymentId  }}</td>
-                                    <td class="align-middle text-center">{{ $verify->updated_by  }}</td>
+                                    <td class="align-middle text-center">{{ $verify->paymentAmount }} BDT<br>TXN ID: {{ $verify->paymentId }}</td>
+                                    <td class="align-middle text-center">{{ \Carbon\Carbon::parse($verify->updated_at)->format('d/m/Y') }}</td>
                                     <td class="align-middle text-center">
                                         <a href="{{ route('viewPerticipate',['id'=>$verify->id]) }}" class="btn btn-success btn-sm my-1">
                                             <i class="fa-sharp fa-light fa-eye"></i>
