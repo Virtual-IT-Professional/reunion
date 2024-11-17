@@ -9,7 +9,7 @@ Pending Student
             <div class="card-header">
                 <h3>Pending Student List</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body table-responsive">
                 @if(Session::has('success'))
                 <div class="alert alert-success">
                     {{ Session::get('success') }}
@@ -26,8 +26,8 @@ Pending Student
                         <th>Name</th>
                         <th>Department</th>
                         <th>Shift</th>
-                        <th>Total Participat</th>
-                        <th>Payment Method</th>
+                        <th>Participat</th>
+                        <th>Payment By</th>
                         <th>Amount</th>
                         <th>TXN ID</th>
                         <th>Action</th>
