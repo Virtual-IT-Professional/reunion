@@ -14,7 +14,7 @@
         <meta name="keywords" content="cpi, cumilla poly, polytechnic, cpi reunion, reunion cpi, cpi reunion 2010-11, reunion cpi 2010-11, cpi reunion 10-11, reunion cpi 10-11">
         <script src="https://kit.fontawesome.com/32dcd4a478.js" crossorigin="anonymous"></script>
         <!-- favicon -->
-        <link rel="shortcut icon" href="{{ asset('public/front/html/') }}/images/favicon-cpi.png">
+        <link rel="shortcut icon" href="{{ asset('public/front/html/') }}/images/logo.png">
         <link rel="apple-touch-icon" href="{{ asset('public/front/html/') }}/images/favicon-cpi.png">
         <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('public/front/html/') }}/images/favicon-cpi.png">
         <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('public/front/html/') }}/images/favicon-cpi.png">
@@ -51,6 +51,9 @@
             }
             .topHeader{
                 font-size: 17px !important;
+            }
+            section{
+                padding: 65px 0;
             }
         </style>
     </head>

@@ -21,8 +21,8 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-10 col-12 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center last-paragraph-no-margin topHeader">
                         <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-15px-bottom">CPI Engineer's Reunion 2024</h5>
-                        <h6 class="alt-font text-deep-pink margin-5px-bottom d-block mb-3">Session 2010-11</h6>
-                        <p class="mb-0">Reunion 2024 is going to be held on 25th December 2024 in the joint initiative of all departments of Comilla Polytechnic Institute for the session 2010-11. All friends of all departments of the 2010-11 session are invited to participate in the reunion.</p>
+                        <h5 class="alt-font text-deep-pink margin-5px-bottom d-block mb-3">Session 2010-11</h5>
+                        <p class="mb-0">Reunion 2024 is going to be held on 25th December 2024 in the joint initiative of all departments of Cumilla Polytechnic Institute for the session 2010-11. All friends of all departments of the 2010-11 session are invited to participate in the reunion.</p>
                         <p>Register quickly to participate in the reunion and encourage your friends too.</p>
                     </div>  
                 </div>
@@ -203,7 +203,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 text-center"><a href="{{ route('studentRegister') }}" class="btn btn-success mt-4"><i class="fa-solid fa-right-to-bracket"></i> Let's Register</a></div>
+                    <div class="col-12 text-center"><a href="{{ route('studentRegister') }}" class="btn btn-success btn-lg my-2"><i class="fa-solid fa-right-to-bracket"></i> Let's Register</a></div>
                 </div>
             </div>
         </section>
