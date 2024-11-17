@@ -109,7 +109,7 @@
                     <div class="col text-center md-margin-50px-bottom sm-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.2s">
                         <i class="icon-chat icon-medium margin-25px-bottom sm-margin-10px-bottom"></i>
                         <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Let's Talk(WhatsApp)</div>
-                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto"> 01678-909091(Register)<br>01972-006267(Payment)<br> 01926-139346(Foreign)</p>
+                        <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto"> 01674-779916(Register)<br>01972-006267(Payment)<br> 01926-139346(Foreign)</p>
                     </div>
                     <!-- end features box item -->
                     <!-- start features box item -->
