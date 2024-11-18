@@ -41,6 +41,7 @@ class AdminPanel extends Controller
         if(!empty($student)):
             $student->status = 'Verified';
             if($student->save()):
+                $updateGuest = geustRegister::where(['linkStudent'=>$id])->update(['status' => 'Verified']);
                 $email = $student->emailAddress;
          
                 $body = [
