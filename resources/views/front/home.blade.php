@@ -110,13 +110,21 @@
                         <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase margin-40px-bottom ">Registration Procedure Details</h5>
                     </div>  
                 </div>
+                @php
+                    $verifiedList = \App\Models\studentRegister::where(['status'=>'Verified'])->orderby('id','DESC')->get();
+                    $verifiedGuest = \App\Models\geustRegister::where(['status'=>'Verified'])->orderby('id','DESC')->get();
+
+                    $todayRegister = \App\Models\geustRegister::where(['updated_at'=>\Carbon\Carbon::today()])->orderby('id','DESC')->get();
+
+                    $totalRegister = count($verifiedList)+count($verifiedGuest);
+                @endphp
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4">
                     <!-- start counter box item -->
                     <div class="col md-padding-twelve-left md-margin-60px-bottom sm-margin-40px-bottom sm-padding-15px-left wow animate__fadeInRight">
                         <div class="feature-box-5 position-relative">
                             <i class="fa-solid fa-users text-medium-gray icon-extra-medium top-6"></i>
                             <div class="feature-content">
-                                <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="350" data-speed="2000">350</h6>
+                                <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="{{ count($verifiedList) }}" data-speed="2000">{{ count($verifiedList) }}</h6>
                                 <span class="text-small text-uppercase position-relative top-minus4">General Member</span>
                             </div>
                         </div>
@@ -127,7 +135,7 @@
                         <div class="feature-box-5 position-relative">
                             <i class="fa-light fa-user-group-crown text-medium-gray icon-extra-medium top-6"></i>
                             <div class="feature-content">
-                                <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="780" data-speed="2000">780</h6>
+                                <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="{{ count($verifiedGuest) }}" data-speed="2000">{{ count($verifiedGuest) }}</h6>
                                 <span class="text-small text-uppercase position-relative top-minus4">Guest Joining</span>
                             </div>
                         </div>
@@ -138,7 +146,7 @@
                         <div class="feature-box-5 position-relative">
                             <i class="fa-solid fa-user-graduate text-medium-gray icon-extra-medium top-6"></i>
                             <div class="feature-content">
-                                <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="850" data-speed="2000">850</h6>
+                                <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="{{ $todayRegister }}" data-speed="2000">{{ $todayRegister }}</h6>
                                 <span class="text-small text-uppercase position-relative top-minus4">Today Register</span>
                             </div>
                         </div>
@@ -149,7 +157,7 @@
                         <div class="feature-box-5 position-relative">
                             <i class="fa-light fa-user-group text-medium-gray icon-extra-medium top-6"></i>
                             <div class="feature-content">
-                                <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="650" data-speed="2000">650</h6>
+                                <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="{{ $totalRegister }}" data-speed="2000">{{ $totalRegister }}</h6>
                                 <span class="text-small text-uppercase position-relative top-minus4">Total Register</span>
                             </div>
                         </div>
@@ -164,15 +172,13 @@
                                 <table class="table text-center" id="dataTable">
                                     <thead>
                                         <th class="text-center">SL</th>
+                                        <th class="text-center">Avatar</th>
                                         <th class="text-center">Name</th>
                                         <th class="text-center">Department</th>
-                                        <th class="text-center">Registration Date</th>
-                                        <th class="text-center">Verify Date</th>
+                                        <th class="text-center">Registration</th>
+                                        <th class="text-center">Verify</th>
                                     </thead>
                                     <tbody>
-                                        @php
-                                            $verifiedList = \App\Models\studentRegister::where(['status'=>'Verified'])->orderby('id','DESC')->get();
-                                        @endphp
                                         @if(!empty($verifiedList))
                                             @php
                                                 $x = 1;
@@ -180,6 +186,13 @@
                                             @foreach($verifiedList as $verify)
                                         <tr>
                                             <td class="align-middle text-center">{{ $x }}</td>
+                                            <td class="align-middle text-center">
+                                                @if(!empty($verify->avatar))
+                                                <img src="{{ asset('public/upload/student/') }}/{{ $verify->avatar }}" alt="{{ $verify->studentName }}" class="rounded-0" style="height:60px;width:60px">
+                                                @else
+                                                <img src="{{ asset('public/upload/') }}/avatar.png" alt="{{ $verify->studentName }}" class="w-100 img-thumbnail rounded-0">
+                                            @endif
+                                            </td>
                                             <td class="align-middle text-center">{{ $verify->studentName }}</td>
                                             <td class="align-middle text-center">{{ $verify->department  }}
                                                 <br> ({{ $verify->shift  }} Shift)

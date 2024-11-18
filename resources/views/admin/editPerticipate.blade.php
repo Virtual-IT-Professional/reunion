@@ -218,14 +218,14 @@ Verified Student
                                             $x++;
                                         @endphp
                                         @endforeach
-                                        <a href="{{ route('editGuest',['id'=>$student->id]) }}" class="btn btn-danger my-1 btn-sm">
-                                            <i class="fa-solid fa-pencil-square"></i> Edit Guest
-                                        </a>
                                         @else
                                         <div class="row">
                                             <div class="col-12">No guest attend</div>
                                         </div>
                                         @endif
+                                        <a href="{{ route('editGuest',['id'=>$student->id]) }}" class="btn btn-danger my-1 btn-sm">
+                                            <i class="fa-solid fa-pencil-square"></i> Edit Guest
+                                        </a>
                                         <!-- payment details here -->
                                     
                                         <div class="card-header mb-2">
