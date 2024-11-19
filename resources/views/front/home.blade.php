@@ -233,10 +233,10 @@
                     <div class="col team-block text-start team-style-2 md-margin-seven-bottom sm-margin-40px-bottom wow animate__slideInUp">
                         <figure>
                             <div class="team-image sm-w-100">
-                                <img src="https://via.placeholder.com/700x892" alt="">
+                                <img src="{{ url('/') }}/public/upload/student/1731844018.jpg" alt="">
                                 <div class="team-overlay bg-deep-pink"></div>
                                 <div class="team-member-position text-center margin-25px-top">
-                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Dipu Dewan</div>
+                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">MD DIPU DEWAN</div>
                                     <div class="text-extra-small text-uppercase text-medium-gray">Organizer</div>
                                 </div>
                             </div>
@@ -257,11 +257,11 @@
                     <div class="col team-block text-start team-style-2 md-margin-seven-bottom sm-margin-40px-bottom wow animate__slideInUp" data-wow-delay="0.2s">
                         <figure>
                             <div class="team-image sm-w-100">
-                                <img src="https://via.placeholder.com/700x892" alt="">
+                                <img src="{{ url('/') }}/public/upload/student/1731772172.jpg" alt="">
                                 <div class="team-overlay bg-deep-pink"></div>
                                 <div class="team-member-position text-center margin-25px-top">
-                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Moftasim Billah Nahid</div>
-                                    <div class="text-extra-small text-uppercase text-medium-gray">Creative Director</div>
+                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Moftachim Billah Nahid</div>
+                                    <div class="text-extra-small text-uppercase text-medium-gray">CO-Organizer</div>
                                 </div>
                             </div>
                             <figcaption>
@@ -281,11 +281,11 @@
                     <div class="col team-block text-start team-style-2 md-margin-seven-bottom sm-margin-40px-bottom wow animate__slideInUp" data-wow-delay="0.4s">
                         <figure>
                             <div class="team-image sm-w-100">
-                                <img src="https://via.placeholder.com/700x892" alt="">
+                                <img src="{{ url('/') }}/public/upload/student/1731818129.jpg" alt="">
                                 <div class="team-overlay bg-deep-pink"></div>
                                 <div class="team-member-position text-center margin-25px-top">
-                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Faruk Hossain Faysal</div>
-                                    <div class="text-extra-small text-uppercase text-medium-gray">Creative Studio Head</div>
+                                    <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Md. Faruq Hossain Faysal</div>
+                                    <div class="text-extra-small text-uppercase text-medium-gray">IT Management Team</div>
                                 </div>
                             </div>
                             <figcaption>
@@ -309,7 +309,7 @@
                                 <div class="team-overlay bg-deep-pink"></div>
                                 <div class="team-member-position text-center margin-25px-top">
                                     <div class="text-extra-dark-gray font-weight-600 text-uppercase text-small alt-font">Mirajur Rahman Tuhin</div>
-                                    <div class="text-extra-small text-uppercase text-medium-gray">Co-Founder / Design</div>
+                                    <div class="text-extra-small text-uppercase text-medium-gray">Media & Graphics Team</div>
                                 </div>
                             </div>
                             <figcaption>
