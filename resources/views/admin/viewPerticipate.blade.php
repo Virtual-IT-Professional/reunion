@@ -172,28 +172,35 @@ Verified Student
                                 </div>
                                 <div class="card-body p-4">
                                     <div class="row">
-                                        <div class="col-lg-6 col-12">
+                                        <div class="col-lg-4 col-12">
                                             <div class="mb-3">
                                                 <label class="fw-bold" for="firstnameInput" class="form-label">Payment Type</label>
                                                 <div>@if($student->paymentBy==1) Bkash @endif @if($student->paymentBy==2) Nagad @endif</div>
                                             </div>
                                         </div>
                                         <!--end col-->
-                                        <div class="col-lg-6 col-12">
+                                        <div class="col-lg-4 col-12">
                                             <div class="mb-3">
                                                 <label class="fw-bold" for="phonenumberInput" class="form-label">Amount</label>
                                                 <div>{{ $student->paymentAmount }}</div>
                                             </div>
                                         </div>
                                         <!--end col-->
-                                        <div class="col-lg-6 col-12">
+                                        <div class="col-lg-4 col-12">
+                                            <div class="mb-3">
+                                                <label class="fw-bold" for="phonenumberInput" class="form-label">Date of Payment</label>
+                                                <div>{{ $student->created_at->format('d/m/Y') }}</div>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-4 col-12">
                                             <div class="mb-3">
                                                 <label class="fw-bold" for="emailInput" class="form-label">TXN ID</label>
                                                 <div>{{ $student->paymentId }}</div>
                                             </div>
                                         </div>
                                         <!--end col-->
-                                        <div class="col-lg-6 col-12">
+                                        <div class="col-lg-4 col-12">
                                             <div class="mb-3">
                                                 <label class="fw-bold" for="emailInput" class="form-label">Verified Date</label>
                                                 <div>@if($student->status=='PendingVerify') Payment Not Verify @else {{ \Carbon\Carbon::parse($student->updated_at)->format('d/m/Y') }} @endif</div>

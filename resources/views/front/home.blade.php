@@ -114,7 +114,7 @@
                     $verifiedList = \App\Models\studentRegister::where(['status'=>'Verified'])->orderby('id','DESC')->get();
                     $verifiedGuest = \App\Models\geustRegister::where(['status'=>'Verified'])->orderby('id','DESC')->get();
 
-                    $todayRegister = \App\Models\geustRegister::where(['updated_at'=>\Carbon\Carbon::today()])->orderby('id','DESC')->get();
+                    $todayRegister = \App\Models\studentRegister::whereDay('updated_at',now())->get();
 
                     $totalRegister = count($verifiedList)+count($verifiedGuest);
                 @endphp
@@ -146,7 +146,7 @@
                         <div class="feature-box-5 position-relative">
                             <i class="fa-solid fa-user-graduate text-medium-gray icon-extra-medium top-6"></i>
                             <div class="feature-content">
-                                <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="{{ $todayRegister }}" data-speed="2000">{{ $todayRegister }}</h6>
+                                <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="{{ count($todayRegister) }}" data-speed="2000">{{ count($todayRegister) }}</h6>
                                 <span class="text-small text-uppercase position-relative top-minus4">Today Register</span>
                             </div>
                         </div>
