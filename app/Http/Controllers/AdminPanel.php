@@ -144,6 +144,7 @@ class AdminPanel extends Controller
                 $guest->guestName       = $requ->guestName[$i];
                 $guest->guestRelation   = $requ->guestRelation[$i];
                 $guest->linkStudent     = $student->id;
+                $guest->status          = "Verified";
                 if(!empty($requ->guestAge[$i])):
                     $guest->guestAge = $requ->guestAge[$i];
                 endif;

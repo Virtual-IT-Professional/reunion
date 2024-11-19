@@ -158,17 +158,17 @@
                             <i class="fa-light fa-user-group text-medium-gray icon-extra-medium top-6"></i>
                             <div class="feature-content">
                                 <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="{{ $totalRegister }}" data-speed="2000">{{ $totalRegister }}</h6>
-                                <span class="text-small text-uppercase position-relative top-minus4">Total Register</span>
+                                <span class="text-small text-uppercase position-relative top-minus4">Total Joining</span>
                             </div>
                         </div>
                     </div>
                     <!-- end counter box item -->
                 </div>
                 <div class="row mt-5">
-                    <div class="col-10 mx-auto">
+                    <div class="col-12 col-md-10 mx-auto">
                         <div class="card">
-                            <div class="card-header">Total Register</div>
-                            <div class="card-body">
+                            <div class="card-header">Verified Members</div>
+                            <div class="card-body table-responsive">
                                 <table class="table text-center" id="dataTable">
                                     <thead>
                                         <th class="text-center">SL</th>
