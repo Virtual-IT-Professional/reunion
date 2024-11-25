@@ -37,8 +37,8 @@ Reject Student
                                 <tr>
                                     <td class="align-middle text-center">{{ $x }}</td>
                                     <td class="align-middle text-center">{{ $reject->studentName }}</td>
-                                    <td class="align-middle text-center">{{ $verify->department  }}
-                                        <br> ({{ $verify->shift  }} Shift)
+                                    <td class="align-middle text-center">{{ $reject->department  }}
+                                        <br> ({{ $reject->shift  }} Shift)
                                     </td>
                                     <td class="align-middle text-center">{{ \Carbon\Carbon::parse($reject->updated_at)->format('d/m/Y') }}</td>
                                     <td class="align-middle text-center">-</td>
