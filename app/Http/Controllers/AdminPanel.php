@@ -74,6 +74,20 @@ class AdminPanel extends Controller
         endif;
     }    
 
+    public function returnPending($id){
+        $student = studentRegister::find($id);
+        if(!empty($student)):
+            $student->status = 'PendingVerify';
+            if($student->save()):
+                return back()->with('success','Data updated successfully');
+            else:
+                return back()->with('error','There was an error. Please try later');
+            endif;
+        else:
+            return back()->with('error','Sorry! no data found with your query');
+        endif;
+    }    
+
     public function delAvatar($id){
         $student = studentRegister::find($id);
         if(!empty($student)):

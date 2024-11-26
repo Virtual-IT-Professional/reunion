@@ -51,6 +51,9 @@ Verified Student
                                         <a href="{{ route('viewPerticipate',['id'=>$verify->id]) }}" class="btn btn-success btn-sm my-1">
                                             <i class="fa-sharp fa-light fa-eye"></i>
                                         </a> 
+                                        <a href="{{ route('returnPending',['id'=>$verify->id]) }}" class="btn btn-warning btn-sm my-1">
+                                            <i class="fa-sharp fa-light fa-calendar-clock"></i>
+                                        </a> 
                                     </td>
                                 </tr>
                             @php

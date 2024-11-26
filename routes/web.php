@@ -86,6 +86,11 @@ Route::middleware(['modarator','superAdmin'])->group(function(){
         'acceptRegister'
     ])->name('acceptRegister');
 
+    Route::get('/backoffice/admin/register/return/pending/{id}',[
+        AdminPanel::class,
+        'returnPending'
+    ])->name('returnPending');
+
     Route::get('/backoffice/admin/student/view/{id}',[
         AdminPanel::class,
         'viewPerticipate'
