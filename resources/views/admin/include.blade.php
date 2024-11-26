@@ -271,7 +271,9 @@
     </div>
 <script>
 $(document).ready( function () {
-    $('#verified','#pending','#reject').DataTable();
+    $('#verified').DataTable();
+    $('#pending').DataTable();
+    $('#reject').DataTable();
 } );
 </script>
 
