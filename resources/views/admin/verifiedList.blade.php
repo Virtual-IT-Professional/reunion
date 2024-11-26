@@ -20,7 +20,7 @@ Verified Student
                     {{ Session::get('error') }}
                 </div>
                 @endif
-                <table class="table table-bordered text-center">
+                <table class="table table-bordered text-center" id="verified">
                     <thead>
                         <th>SL</th>
                         <th>Name</th>

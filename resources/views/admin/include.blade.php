@@ -269,6 +269,13 @@
             </div>
         </div>
     </div>
+<script>
+$(document).ready( function () {
+    $('#verified').DataTable();
+    $('#pending').DataTable();
+    $('#reject').DataTable();
+} );
+</script>
 
     <!-- JAVASCRIPT -->
     <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
