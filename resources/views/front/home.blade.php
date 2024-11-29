@@ -114,7 +114,8 @@
                     $verifiedList = \App\Models\studentRegister::where(['status'=>'Verified'])->orderby('id','DESC')->get();
                     $verifiedGuest = \App\Models\geustRegister::where(['status'=>'Verified'])->orderby('id','DESC')->get();
 
-                    $todayRegister = \App\Models\studentRegister::whereDay('updated_at',today())->where(['status'=>'Verified'])->get();
+                    $todayRegister = \App\Models\studentRegister::where('updated_at',today())->where(['status'=>'Verified'])->get();
+                    //echo now();
 
                     $totalRegister = count($verifiedList)+count($verifiedGuest);
                 @endphp
