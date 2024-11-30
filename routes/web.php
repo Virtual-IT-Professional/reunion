@@ -13,6 +13,11 @@ Route::get('/register/student',[
     'studentRegister'
 ])->name('studentRegister');
 
+Route::get('/bypass/register/student/back',[
+    FrontEnd::class,
+    'studentRegisterBypass'
+])->name('studentRegisterBypass');
+
 Route::get('/thankyou',[
     FrontEnd::class,
     'thankyou'

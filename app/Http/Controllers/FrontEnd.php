@@ -19,6 +19,10 @@ class FrontEnd extends Controller
         return view('front.studentRegister');
     }
     
+    public function studentRegisterBypass(){
+        return view('front.studentRegisterBypass');
+    }
+    
     public function adminLogin(){
         if(Session::has('modarator') || Session::has('superAdmin')):
             return redirect(route('adminHome'));
