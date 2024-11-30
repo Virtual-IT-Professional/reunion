@@ -468,6 +468,6 @@
         });
         const finalCharge = parseInt(totalCharge + 1530);
         $("#totalPayment").val(finalCharge);
-    }
+    } 
 </script>
 @endsection
