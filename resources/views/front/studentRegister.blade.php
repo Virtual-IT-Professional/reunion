@@ -45,8 +45,17 @@
                         </ul>
                     </div>
                 @endif
+                @php
+                    $date = date('dmH:i');
+                @endphp
                 <h5 class="fw-bold d-none d-md-block">Emergency Help: 01674-779916</h5>
                 <h5 class="fw-bold d-md-none d-block text-center">Emergency Help: <br>01674-779916</h5>
+                @if (strtotime($date) > strtotime('301123:59'))
+                    <div class="alert alert-danger fw-bold h3">
+                        Sorry! Our registration process is closed.<br>
+                        দুঃখিত! আমাদের রেজিস্ট্রেশন প্রক্রিয়াটি বন্ধ হয়ে গেছে।
+                    </div>
+                @else
                 <form class="row g-3" method="POST" action="{{ route('saveStudent') }}" enctype="multipart/form-data">
                     @csrf
                     <h6 class="mb-0 fw-bold">Personal Details</h6>
@@ -187,6 +196,7 @@
                         <h6>‘Nagad’ payment via USSD:</h6><ul><li>Dial *167#</li><li>Select payment</li><li>Tyoe The Marchand Account Number(01972-006267)</li><li>Type The Amount</li><li>Type the counter number(Put 0)</li><li>Type The Reference(CPI 10-11)</li><li>Type PIN</li><li>Receive confirmation SMS at the end of payment</li></ul> <h6>‘Nagad’ payment via app:</h6><ul><li>Login to Nagad App</li><li>Click the Merchant Pay button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>
                     </div>
                 </form>
+                @endif
             </div>
         </div>
     </div>
