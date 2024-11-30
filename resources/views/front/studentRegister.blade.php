@@ -189,11 +189,31 @@
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                    <div class="col-12 mt-4" id="bkashPaymentNumber">
-                        <h6>`bKash` payment via USSD:</h6><ul><li>Dial *247#</li><li>Choose “Payment”</li><li>Enter the Merchant bKash Account Number(01972-006267)</li><li>Enter the amount</li><li>Enter Reference(CPI 10-11)</li><li>Type PIN</li><li>Done! You will receive confirmation SMS at the end of payment</li></ul> <h6>‘bKash’ payment via app:</h6><ul><li>Login to bKash App</li><li>Click the Payment button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>
+                    <div id="bkashPaymentNumber">
+                        <div class="row align-items-center">
+                            <div class="col-6 mx-auto d-block d-md-none">
+                                <img class="w-75" src="{{ asset('public/front/bkashPayment.jpg') }}" alt="BkashPayment">
+                            </div>
+                            <div class="col-12 col-md-8 mt-4">
+                                <h6>`bKash` payment via USSD:</h6><ul><li>Dial *247#</li><li>Choose “Payment”</li><li>Enter the Merchant bKash Account Number(01972-006267)</li><li>Enter the amount</li><li>Enter Reference(CPI 10-11)</li><li>Type PIN</li><li>Done! You will receive confirmation SMS at the end of payment</li></ul> <h6>‘bKash’ payment via app:</h6><ul><li>Login to bKash App</li><li>Click the Payment button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>
+                            </div>
+                            <div class="col-md-4 d-none d-md-block">
+                                <img class="w-75" src="{{ asset('public/front/bkashPayment.jpg') }}" alt="BkashPayment">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 mt-4" id="nagadPaymentNumber">
-                        <h6>‘Nagad’ payment via USSD:</h6><ul><li>Dial *167#</li><li>Select payment</li><li>Tyoe The Marchand Account Number(01972-006267)</li><li>Type The Amount</li><li>Type the counter number(Put 0)</li><li>Type The Reference(CPI 10-11)</li><li>Type PIN</li><li>Receive confirmation SMS at the end of payment</li></ul> <h6>‘Nagad’ payment via app:</h6><ul><li>Login to Nagad App</li><li>Click the Merchant Pay button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>
+                    <div id="nagadPaymentNumber">
+                        <div class="row align-items-center">
+                            <div class="col-6 mx-auto d-block d-md-none">
+                                <img class="w-75" src="{{ asset('public/front/nagadPayment.jpg') }}" alt="NagadPayment">
+                            </div>
+                            <div class="col-12 col-md-8 mt-4">
+                                <h6>‘Nagad’ payment via USSD:</h6><ul><li>Dial *167#</li><li>Select payment</li><li>Tyoe The Marchand Account Number(01972-006267)</li><li>Type The Amount</li><li>Type the counter number(Put 0)</li><li>Type The Reference(CPI 10-11)</li><li>Type PIN</li><li>Receive confirmation SMS at the end of payment</li></ul> <h6>‘Nagad’ payment via app:</h6><ul><li>Login to Nagad App</li><li>Click the Merchant Pay button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>
+                            </div>
+                            <div class="col-md-4 d-none d-md-block">
+                                <img class="w-75" src="{{ asset('public/front/nagadPayment.jpg') }}" alt="NagadPayment">
+                            </div>
+                        </div>
                     </div>
                 </form>
                 @endif
