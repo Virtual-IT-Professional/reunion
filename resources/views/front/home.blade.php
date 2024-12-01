@@ -103,7 +103,7 @@
         </section>
         <!-- end parallax section -->
         <!-- start accordion section -->
-        <section class="bg-light-gray border-none p-0 wow animate__fadeIn py-5">
+        <section class="bg-light-gray border-none p-0 wow animate__fadeIn py-5" id="perticipate">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-10 col-12 text-center">
