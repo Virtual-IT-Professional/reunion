@@ -51,7 +51,7 @@
                 @endphp
                 <h5 class="fw-bold d-none d-md-block">Emergency Help: 01674-779916</h5>
                 <h5 class="fw-bold d-md-none d-block text-center">Emergency Help: <br>01674-779916</h5>
-                @if (strtotime($today) > strtotime($date))
+                @if (strtotime($today) < strtotime($date))
                     <div class="alert alert-danger fw-bold h3">
                         Sorry! Our registration process is closed.<br>
                         দুঃখিত! আমাদের রেজিস্ট্রেশন প্রক্রিয়াটি বন্ধ হয়ে গেছে।
