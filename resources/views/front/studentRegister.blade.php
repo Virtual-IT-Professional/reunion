@@ -47,6 +47,7 @@
                 @endif
                 @php
                     echo $date = date('dmHi');
+                    echo strtotime($date);
                 @endphp
                 <h5 class="fw-bold d-none d-md-block">Emergency Help: 01674-779916</h5>
                 <h5 class="fw-bold d-md-none d-block text-center">Emergency Help: <br>01674-779916</h5>
