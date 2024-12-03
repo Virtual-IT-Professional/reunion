@@ -55,6 +55,11 @@
             section{
                 padding: 65px 0;
             }
+            .bg-transper {
+                background-color: rgb(255, 255, 255, 0.7);
+                color: #000 !important;
+                margin-top: -10rem !important;
+            }
         </style>
     </head>
     <body>
