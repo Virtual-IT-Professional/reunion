@@ -146,19 +146,13 @@ Verified Student
                                                 </div>
                                             </div>
                                             <!--end col-->
-                                            <!--end col-->
                                             <div class="col-lg-4 col-6">
-                                                <div class="mb-3">
-                                                    <label class="fw-bold" for="websiteInput1" class="form-label">Current Status</label>
-                                                    <div>
-                                                        <select name="status" class="form-control" id="">
-                                                            <option value="{{ $student->status }}">{{ $student->status }}</option>
-                                                            <option value="PendingVerify">PendingVerify</option>
-                                                            <option value="Verified">Verified</option>
-                                                            <option value="Rejected">Rejected</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                <label for="gender" class="form-label">Gender(*)</label>
+                                                <select id="gender" class="form-select" required name="gender">
+                                                    <option>{{ $student->gender }}</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
                                             </div>
                                             <!--end col-->
                                             <div class="col-lg-4 col-6">
@@ -172,6 +166,20 @@ Verified Student
                                                 <div class="mb-3">
                                                     <label class="fw-bold" for="experience" class="form-label">Professional Experience</label>
                                                     <div><input type="text" name="experience" id="experience" class="form-control" value="{{ $student->experience }}" placeholder="Enter your professional experience"></div>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-lg-4 col-6">
+                                                <div class="mb-3">
+                                                    <label class="fw-bold" for="websiteInput1" class="form-label">Current Status</label>
+                                                    <div>
+                                                        <select name="status" class="form-control" id="">
+                                                            <option value="{{ $student->status }}">{{ $student->status }}</option>
+                                                            <option value="PendingVerify">PendingVerify</option>
+                                                            <option value="Verified">Verified</option>
+                                                            <option value="Rejected">Rejected</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!--end col-->

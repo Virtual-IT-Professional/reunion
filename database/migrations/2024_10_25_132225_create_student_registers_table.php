@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('department')->nullable();
             $table->string('shift')->nullable();
             $table->string('rollNo')->nullable();
+            $table->string('gender')->nullable();
             $table->text('professionDetails')->nullable();
             $table->string('currentAddress')->nullable();
             $table->string('blGroup')->nullable();
