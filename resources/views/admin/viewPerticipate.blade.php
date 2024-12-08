@@ -52,14 +52,14 @@ Verified Student
                                         <div class="col-lg-4 col-6">
                                             <div class="mb-3">
                                                 <label class="fw-bold" for="lastnameInput" class="form-label">Department</label>
-                                                <div>{{ $student->department }}</div>
+                                                <div>{{ $student->department }}<br>({{ $student->shift }})</div>
                                             </div>
                                         </div>
                                         <!--end col-->
                                         <div class="col-lg-4 col-6">
                                             <div class="mb-3">
                                                 <label class="fw-bold" for="JoiningdatInput" class="form-label">Shift</label>
-                                                <div>{{ $student->shift }}</div>
+                                                <div>{{ $student->gender }}</div>
                                             </div>
                                         </div>
                                         <!--end col-->
