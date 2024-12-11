@@ -61,4 +61,9 @@ Reject Student
     </div>
 </div><!-- end row -->
 
+<script>
+$(document).ready( function () {
+    reject = $('#reject').DataTable();
+} );
+</script>
 @endsection

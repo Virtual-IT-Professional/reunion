@@ -73,5 +73,10 @@ Verified Student
         </div>
     </div>
 </div><!-- end row -->
+<script>
+$(document).ready( function () {
+    verified = $('#verified').DataTable();
+} );
+</script>
 
 @endsection

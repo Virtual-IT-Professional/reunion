@@ -74,5 +74,10 @@ Pending Student
         </div>
     </div>
 </div><!-- end row -->
+<script>
+$(document).ready( function () {
+    pending = $('#pending').DataTable();
+} );
+</script>
 
 @endsection

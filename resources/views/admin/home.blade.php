@@ -103,7 +103,7 @@ Dashboard
                 <div class="card">
                     <div class="card-header">Verified Members</div>
                     <div class="card-body table-responsive">
-                        <table class="table text-center" id="verified">
+                        <table class="table text-center" id="active">
                             <thead>
                                 <th>SL</th>
                                 <th>Name</th>
@@ -211,5 +211,10 @@ Dashboard
         </div>
     </div><!-- end col -->
 </div><!-- end row -->
+<script>
+$(document).ready( function () {
+    verified = $('#active').DataTable();
+} );
+</script>
 
 @endsection
