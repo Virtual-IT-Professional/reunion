@@ -20,7 +20,7 @@ Verified Student
                     {{ Session::get('error') }}
                 </div>
                 @endif
-                <table class="table table-bordered text-center" id="verified">
+                <table class="table table-bordered text-center" id="dataTable">
                     <thead>
                         <th>SL</th>
                         <th>Name</th>
@@ -73,10 +73,5 @@ Verified Student
         </div>
     </div>
 </div><!-- end row -->
-<script>
-$(document).ready( function () {
-    $('#verified').DataTable();
-} );
-</script>
 
 @endsection
