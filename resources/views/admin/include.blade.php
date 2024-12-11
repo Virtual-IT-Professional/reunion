@@ -269,6 +269,11 @@
             </div>
         </div>
     </div>
+    <script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+    </script>
 
     <!-- JAVASCRIPT -->
     <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -286,12 +291,9 @@
 
     <!-- App js -->
     <script src="{{ asset('public/admin/velzon/html/default/') }}/assets/js/app.js"></script>
+        <!-- setting -->
+        <script type="text/javascript" src="{{ asset('public/front/html/') }}/js/main.js"></script>
     @yield('scripts')
-    <script>
-    $(document).ready(function () {
-        $('#dataTable').DataTable();
-    });
-    </script>
 </body>
 
 </html>
