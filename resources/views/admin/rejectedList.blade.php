@@ -63,7 +63,7 @@ Reject Student
 
 <script>
 $(document).ready( function () {
-    reject = $('#reject').DataTable();
+    $('#reject').DataTable();
 } );
 </script>
 @endsection

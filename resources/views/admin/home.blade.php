@@ -213,7 +213,7 @@ Dashboard
 </div><!-- end row -->
 <script>
 $(document).ready( function () {
-    verified = $('#active').DataTable();
+    $('#active').DataTable();
 } );
 </script>
 
