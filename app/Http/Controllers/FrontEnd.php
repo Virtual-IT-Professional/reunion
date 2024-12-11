@@ -106,6 +106,7 @@ class FrontEnd extends Controller
         $student->experience            = $requ->experience;
         $student->paymentBy             = $requ->payType;
         $student->paymentId             = $requ->payId;
+        $student->gender                = $requ->gender;
         $student->paymentAmount         = $requ->payAmount;
         $student->status = 'PendingVerify';
         request()->validate([
