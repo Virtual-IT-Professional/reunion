@@ -117,11 +117,11 @@
                                             <td>{{ $verified->id }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Phone</td>
-                                            <td>{{ $verified->phone }}</td>
+                                            <td class="fw-bold">-</td>
+                                            <td></td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">-<br></td>
+                                            <td class="fw-bold">-</td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -168,7 +168,7 @@
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Department</td>
-                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
+                                            <td>{{ $verified->department }}({{ $verified->shift }})</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Guest</td>
@@ -205,7 +205,7 @@
                                             <td>Full/Null</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">-<br></td>
+                                            <td class="fw-bold">-</td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -247,7 +247,7 @@
                                             <td>Full/Null</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">-<br></td>
+                                            <td class="fw-bold">-</td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -289,7 +289,7 @@
                                             <td>Full/Null</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">-<br></td>
+                                            <td class="fw-bold">-</td>
                                             <td></td>
                                         </tr>
                                         <tr>
