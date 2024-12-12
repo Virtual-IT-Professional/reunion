@@ -71,7 +71,7 @@
                                             <td colspan="2" class="fw-bold text-center bg-primary bg-primary text-white">Office Copy</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Token No</td>
+                                            <td class="fw-bold">SL</td>
                                             <td>{{ $verified->id }}</td>
                                         </tr>
                                         <tr>
@@ -79,7 +79,7 @@
                                             <td>{{ $verified->studentName }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Mobile</td>
+                                            <td class="fw-bold">Cell No</td>
                                             <td>{{ $verified->phone }}</td>
                                         </tr>
                                         <tr>
@@ -87,7 +87,7 @@
                                             <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Guest</td>
+                                            <td class="fw-bold">Total Guest</td>
                                             <td>{{ $verified->totalAttend }}</td>
                                         </tr>
                                         <tr>
@@ -113,7 +113,7 @@
                                             <td colspan="2" class="fw-bold text-center bg-primary bg-primary text-white">Refel Draw</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Token No</td>
+                                            <td class="fw-bold">SL</td>
                                             <td>{{ $verified->id }}</td>
                                         </tr>
                                         <tr>
@@ -121,12 +121,12 @@
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
+                                            <td class="fw-bold">Cell No</td>
+                                            <td>{{ $verified->phone }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
+                                            <td class="fw-bold">Dept</td>
+                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">-</td>
@@ -155,7 +155,7 @@
                                             <td colspan="2" class="fw-bold text-center bg-primary bg-primary text-white">Participate Copy</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Token No</td>
+                                            <td class="fw-bold">SL</td>
                                             <td>{{ $verified->id }}</td>
                                         </tr>
                                         <tr>
@@ -163,15 +163,15 @@
                                             <td>{{ $verified->studentName }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Mobile</td>
+                                            <td class="fw-bold">Cell No</td>
                                             <td>{{ $verified->phone }}</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Department</td>
-                                            <td>{{ $verified->department }}({{ $verified->shift }})</td>
+                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Guest</td>
+                                            <td class="fw-bold">Total Guest</td>
                                             <td>{{ $verified->totalAttend }}</td>
                                         </tr>
                                         <tr>
@@ -197,24 +197,24 @@
                                             <td colspan="2" class="fw-bold text-center bg-primary bg-primary text-white">Food-Snacks</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Token No</td>
+                                            <td class="fw-bold">SL</td>
                                             <td>{{ $verified->id }}</td>
                                         </tr>
                                         <tr>
+                                            <td class="fw-bold">Full Name</td>
+                                            <td>{{ $verified->studentName }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Cell No</td>
+                                            <td>{{ $verified->phone }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Department</td>
+                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
+                                        </tr>
+                                        <tr>
                                             <td class="fw-bold">Meal</td>
-                                            <td>Full/Null</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
+                                            <td>{{ $verified->totalAttend+1 }}</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">-</td>
@@ -239,24 +239,24 @@
                                             <td colspan="2" class="fw-bold text-center bg-primary bg-primary text-white">Food-Lunch</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Token No</td>
+                                            <td class="fw-bold">SL</td>
                                             <td>{{ $verified->id }}</td>
                                         </tr>
                                         <tr>
+                                            <td class="fw-bold">Full Name</td>
+                                            <td>{{ $verified->studentName }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Cell No</td>
+                                            <td>{{ $verified->phone }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Department</td>
+                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
+                                        </tr>
+                                        <tr>
                                             <td class="fw-bold">Meal</td>
-                                            <td>Full/Null</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
+                                            <td>{{ $verified->totalAttend+1 }}</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">-</td>
@@ -281,24 +281,24 @@
                                             <td colspan="2" class="fw-bold text-center bg-primary bg-primary text-white">Food-Breakfast</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Token No</td>
+                                            <td class="fw-bold">SL</td>
                                             <td>{{ $verified->id }}</td>
                                         </tr>
                                         <tr>
+                                            <td class="fw-bold">Full Name</td>
+                                            <td>{{ $verified->studentName }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Cell No</td>
+                                            <td>{{ $verified->phone }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Department</td>
+                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
+                                        </tr>
+                                        <tr>
                                             <td class="fw-bold">Meal</td>
-                                            <td>Full/Null</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
+                                            <td>{{ $verified->totalAttend+1 }}</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">-</td>
@@ -323,7 +323,7 @@
                                             <td colspan="2" class="fw-bold text-center bg-primary bg-primary text-white">Gift</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Token No</td>
+                                            <td class="fw-bold">SL</td>
                                             <td>{{ $verified->id }}</td>
                                         </tr>
                                         <tr>
