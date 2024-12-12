@@ -84,7 +84,7 @@
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Department</td>
-                                            <td>{{ $verified->department }}({{ $verified->shift }})</td>
+                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Guest</td>
@@ -117,8 +117,8 @@
                                             <td>{{ $verified->id }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">-</td>
-                                            <td></td>
+                                            <td class="fw-bold">Phone</td>
+                                            <td>{{ $verified->phone }}</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">-</td>
@@ -168,7 +168,7 @@
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Department</td>
-                                            <td>{{ $verified->department }}({{ $verified->shift }})</td>
+                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Guest</td>
