@@ -71,6 +71,12 @@ Route::middleware(['modarator','superAdmin'])->group(function(){
     ])->name('adminHome');
 
 
+    Route::get('/backoffice/ticket',[
+        AdminPanel::class,
+        'ticket'
+    ])->name('ticket');
+
+
     Route::get('/backoffice/admin/pendingStudent',[
         AdminPanel::class,
         'pendingList'

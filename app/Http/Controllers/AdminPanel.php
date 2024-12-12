@@ -16,6 +16,10 @@ class AdminPanel extends Controller
         return view('admin.home');
     }
 
+    public function ticket(){
+        return view('admin.ticket');
+    }
+
     public function pendingList(){
         $pendingList = studentRegister::where(['status'=>'PendingVerify'])->orderBy('id','DESC')->get();
         return view('admin.pendingList',['pendingList'=>$pendingList]);
