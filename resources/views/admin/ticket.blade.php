@@ -84,7 +84,7 @@
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Department</td>
-                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
+                                            <td>{{ str_replace("Technology","",$verified->department); }}<br>({{ $verified->shift }} Shift)</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Total Guest</td>
@@ -125,8 +125,8 @@
                                             <td>{{ $verified->phone }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Dept</td>
-                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
+                                            <td class="fw-bold">Department</td>
+                                            <td>{{ str_replace("Technology","",$verified->department); }}<br>({{ $verified->shift }} Shift)</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">-</td>
@@ -168,7 +168,7 @@
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Department</td>
-                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
+                                            <td>{{ str_replace("Technology","",$verified->department); }}<br>({{ $verified->shift }} Shift)</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Total Guest</td>
@@ -210,7 +210,7 @@
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Department</td>
-                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
+                                            <td>{{ str_replace("Technology","",$verified->department); }}<br>({{ $verified->shift }} Shift)</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Meal</td>
@@ -252,7 +252,7 @@
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Department</td>
-                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
+                                            <td>{{ str_replace("Technology","",$verified->department); }}<br>({{ $verified->shift }} Shift)</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Meal</td>
@@ -294,7 +294,7 @@
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Department</td>
-                                            <td>{{ $verified->department }}<br>({{ $verified->shift }})</td>
+                                            <td>{{ str_replace("Technology","",$verified->department); }}<br>({{ $verified->shift }} Shift)</td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Meal</td>
