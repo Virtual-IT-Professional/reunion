@@ -121,12 +121,12 @@
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Cell No</td>
-                                            <td>{{ $verified->phone }}</td>
+                                            <td class="fw-bold">-</td>
+                                            <td></td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">Department</td>
-                                            <td>{{ str_replace("Technology","",$verified->department); }}<br>({{ $verified->shift }} Shift)</td>
+                                            <td class="fw-bold">-</td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">-</td>
