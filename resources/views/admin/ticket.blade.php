@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>CPI Reunion || @yield('adminTitle')</title>
+    <title>CPI Reunion || Ticket</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="CPI Reunion Admin Panel" name="description" />
     <meta content="Virtual IT Professional" name="author" />
