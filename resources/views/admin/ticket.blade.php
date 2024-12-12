@@ -121,7 +121,7 @@
                                             <td>{{ $verified->phone }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">-</td>
+                                            <td class="fw-bold">-<br></td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -205,7 +205,7 @@
                                             <td>Full/Null</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">-</td>
+                                            <td class="fw-bold">-<br></td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -247,7 +247,7 @@
                                             <td>Full/Null</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">-</td>
+                                            <td class="fw-bold">-<br></td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -289,7 +289,7 @@
                                             <td>Full/Null</td>
                                         </tr>
                                         <tr>
-                                            <td class="fw-bold">-</td>
+                                            <td class="fw-bold">-<br></td>
                                             <td></td>
                                         </tr>
                                         <tr>
