@@ -82,7 +82,7 @@ class AdminPanel extends Controller
                     'url_a'=>'https://www.cpireunion.com/',
                 ];
             endforeach;
-            Mail::send('mail.register.ticketCollect', ['body' => $body], function ($message) use ($subject,$send_form,$email) {
+            Mail::send('mail.register.ticketCollect', ['body' => $body], function ($message) use ($subject,$send_from,$email) {
                 $message->subject($subject);
                 $message->from($send_from);
                 $message->to($email);
