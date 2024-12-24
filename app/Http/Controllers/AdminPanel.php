@@ -71,7 +71,7 @@ class AdminPanel extends Controller
             foreach ($student as $std):
                 $email = explode(',',$std->emailAddress);
                 $subject = "Reunion-You are invited";
-                $send_form = "support@cpireunion.com";
+                $send_from = "support@cpireunion.com";
          
                 $body = [
                     'name'=>$std->studentName,
