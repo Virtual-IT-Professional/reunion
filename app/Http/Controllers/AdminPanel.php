@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\studentRegister;
 use App\Mail\RegisterVerify;
+use App\Mail\inviteSent;
 use App\Models\geustRegister;
 use Middleware;
 use Mail;
