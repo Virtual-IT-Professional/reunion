@@ -66,7 +66,7 @@ class AdminPanel extends Controller
     }
 
     public function inviteSent(){
-        $student = studentRegister::where(['status'=>'Verified'])->get()->limit(20);
+        $student = studentRegister::where(['status'=>'Verified'])->limit(20)->get();
         if(!empty($student)):
             foreach($student as $std):
                 $email = $std->emailAddress;
