@@ -68,8 +68,10 @@ class AdminPanel extends Controller
     public function inviteSent(){
         $student = studentRegister::where(['status'=>'Verified'])->limit(20)->get();
         if(!empty($student)):
-            foreach($student as $std):
-                $email = $std->emailAddress;
+            foreach ($student as $std):
+                $email = explode(',',$std->emailAddress);
+                $subject = "Reunion-You are invited";
+                $send_form = "support@cpireunion.com";
          
                 $body = [
                     'name'=>$std->studentName,
@@ -79,9 +81,12 @@ class AdminPanel extends Controller
                     'logo'=>asset('public/admin/velzon/html/default/assets/images/logo.png'),
                     'url_a'=>'https://www.cpireunion.com/',
                 ];
-         
-                Mail::to($email)->send(new inviteSent($body));
             endforeach;
+            Mail::send('mail.register.ticketCollect', ['body' => $body], function ($message) use ($subject,$send_form,$email) {
+                $message->subject($subject);
+                $message->from($send_from);
+                $message->to($email);
+            });
         else:
             return back()->with('error','Sorry! no data found with your query');
         endif;
