@@ -20,6 +20,7 @@ Verified Student
                     {{ Session::get('error') }}
                 </div>
                 @endif
+                <a href="{{ route('inviteSent') }}" class="btn btn-success">Sent Invitation</a>
                 <table class="table table-bordered text-center" id="dataTable">
                     <thead>
                         <th>SL</th>

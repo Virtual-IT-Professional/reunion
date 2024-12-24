@@ -97,6 +97,11 @@ Route::middleware(['modarator','superAdmin'])->group(function(){
         'acceptRegister'
     ])->name('acceptRegister');
 
+    Route::get('/backoffice/admin/sent/invite',[
+        AdminPanel::class,
+        'inviteSent'
+    ])->name('inviteSent');
+
     Route::get('/backoffice/admin/register/return/pending/{id}',[
         AdminPanel::class,
         'returnPending'

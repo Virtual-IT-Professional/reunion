@@ -64,6 +64,28 @@ class AdminPanel extends Controller
         endif;
     }
 
+    public function inviteSent(){
+        $student = studentRegister::where(['status'=>'Verified'])->get();
+        if(!empty($student)):
+            foreach($student as $std):
+                $email = $std->emailAddress;
+         
+                $body = [
+                    'name'=>$std->studentName,
+                    'id'=>$std->id,
+                    'department'=>$std->department,
+                    'shift'=>$std->shift,
+                    'logo'=>asset('public/admin/velzon/html/default/assets/images/logo.png'),
+                    'url_a'=>'https://www.cpireunion.com/',
+                ];
+         
+                Mail::to($email)->send(new inviteSent($body));
+            endforeach;
+        else:
+            return back()->with('error','Sorry! no data found with your query');
+        endif;
+    }
+
     public function rejectRegister($id){
         $student = studentRegister::find($id);
         if(!empty($student)):
