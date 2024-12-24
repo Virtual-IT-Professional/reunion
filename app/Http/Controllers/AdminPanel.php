@@ -87,6 +87,7 @@ class AdminPanel extends Controller
                 $message->from($send_from);
                 $message->to($email);
             });
+            return back()->with('success','Success! mail sending successfully');
         else:
             return back()->with('error','Sorry! no data found with your query');
         endif;
