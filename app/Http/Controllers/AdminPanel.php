@@ -81,8 +81,8 @@ class AdminPanel extends Controller
                     'logo'=>asset('public/admin/velzon/html/default/assets/images/logo.png'),
                     'url_a'=>'https://www.cpireunion.com/',
                 ];
+                Mail::to($email)->send(new inviteSent($body));
             endforeach;
-            Mail::to($email)->send(new inviteSent($body));
             return back()->with('success','Success! mail sending successfully');
         else:
             return back()->with('error','Sorry! no data found with your query');
