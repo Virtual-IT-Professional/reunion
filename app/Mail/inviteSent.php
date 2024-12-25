@@ -38,7 +38,7 @@ class inviteSent extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.register.ticketCollect',
+            markdown: 'mail.register.ticketCollect',
         );
     }
 

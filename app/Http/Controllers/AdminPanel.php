@@ -66,7 +66,7 @@ class AdminPanel extends Controller
     }
 
     public function inviteSent(){
-        $student = studentRegister::where(['status'=>'Verified'])->limit(20)->get();
+        $student = studentRegister::where(['status'=>'Verified'])->get();
         if(!empty($student)):
             foreach ($student as $std):
                 $email = explode(',',$std->emailAddress);
@@ -82,11 +82,7 @@ class AdminPanel extends Controller
                     'url_a'=>'https://www.cpireunion.com/',
                 ];
             endforeach;
-            Mail::send('mail.register.ticketCollect', ['body' => $body], function ($message) use ($subject,$send_from,$email) {
-                $message->subject($subject);
-                $message->from($send_from);
-                $message->to($email);
-            });
+            Mail::to($email)->send(new inviteSent($body));
             return back()->with('success','Success! mail sending successfully');
         else:
             return back()->with('error','Sorry! no data found with your query');

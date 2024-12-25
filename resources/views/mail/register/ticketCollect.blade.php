@@ -1,20 +1,20 @@
 @component('mail::message')
-<h2>Hello {{$body['name']}},</h2>
-<p>We are happy to inform you that our programm "CPI Engineers Reunion 2024 - Session 2010-11" is going to held at tomorrow 8.00 AM to 4.30 PM. Please collect your ticket from our entry gate. Here are the details of you to collect the ticket.....</p>
+<h2>Hello, {{$body['name']}},</h2>
+<p>We are happy to inform you that our programm "CPI Engineers Reunion 2024 - Session 2010-11" is going to held at today(25th December 2025) 8.00 AM to 4.30 PM. Please collect your ticket from our entry gate. Here are the details of you to collect the ticket.....</p>
 
-<table>
+<table style="text-align:left !important">
     <tbody>
         <tr>
             <th>Name:</th>
-            <th>{{ $body['name'] }}</th>
+            <td>{{ $body['name'] }}</td>
         </tr>
         <tr>
             <th>Department:</th>
-            <th>{{ $body['department'] }} ({{ $body['shift'] }})</th>
+            <td>{{ $body['department'] }} ({{ $body['shift'] }})</td>
         </tr>
         <tr>
             <th>Token No:</th>
-            <th>{{ $body['id'] }}</th>
+            <td>{{ $body['id'] }}</td>
         </tr>
     </tbody>
 </table>
