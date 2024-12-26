@@ -68,10 +68,13 @@ class AdminPanel extends Controller
     public function inviteSent(){
         $student = studentRegister::where(['status'=>'Verified'])->get();
         if(!empty($student)):
+            
+            // Dispatch job to send emails
+            ini_set('max_execution_time', 45000);
+            $email = [];
+
             foreach ($student as $std):
-                $email = explode(',',$std->emailAddress);
-                $subject = "Reunion-You are invited";
-                $send_from = "support@cpireunion.com";
+                $email = $std->emailAddress;
          
                 $body = [
                     'name'=>$std->studentName,
@@ -81,6 +84,7 @@ class AdminPanel extends Controller
                     'logo'=>asset('public/admin/velzon/html/default/assets/images/logo.png'),
                     'url_a'=>'https://www.cpireunion.com/',
                 ];
+                // $mail = explode(', ',$email);
                 Mail::to($email)->send(new inviteSent($body));
             endforeach;
             return back()->with('success','Success! mail sending successfully');
