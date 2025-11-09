@@ -2,7 +2,11 @@
 @section('frontBody')
 
 <!-- start hero section -->
-<section id="home" class="p-0 parallax mobile-height wow animate__fadeIn" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('public/front/html/') }}/images/cpi_cover.jpg');height:570px">
+@php
+    $heroImage = !empty($siteSettings?->hero_image) ? asset('public/upload/site/'.$siteSettings->hero_image) : asset('public/front/html/').'/images/cpi_cover.jpg';
+    $regOpen = $siteSettings?->registration_open ?? true;
+@endphp
+<section id="home" class="p-0 parallax mobile-height wow animate__fadeIn" data-parallax-background-ratio="0.5" style="background-image:url('{{ $heroImage }}');height:570px">
     <div class="opacity-extra-medium bg-extra-dark-gray"></div>
     <div class="container position-relative full-screen">
         <div class="row h-100 align-items-center">
@@ -45,9 +49,26 @@
                         </ul>
                     </div>
                 @endif
-                <h5 class="fw-bold d-none d-md-block">Emergency Help: 01674-779916</h5>
-                <h5 class="fw-bold d-md-none d-block text-center">Emergency Help: <br>01674-779916</h5>
-                <form class="row g-3" method="POST" action="{{ route('saveStudent') }}" enctype="multipart/form-data">
+                @php
+                    $emergency = $siteSettings?->emergency_phone ?? '01674-779916';
+                    $participateFee = $siteSettings?->participate_fee ?? 1530;
+                    $guestFee = $siteSettings?->guest_fee ?? 1020;
+                    $bkash = $siteSettings?->bkash_number ?? '01972-006267';
+                    $nagad = $siteSettings?->nagad_number ?? '01972-006267';
+                    $payRef = $siteSettings?->payment_reference ?? 'CPI 10-11';
+                    $venue = $siteSettings?->venue ?? 'Play Ground of Cumilla Polytechnic Institute';
+                    $eventText = optional($siteSettings?->event_date)->format('j F Y, l \\a\\t g:i A') ?? '25th December 2024, Wednesday at 8.30 AM to Day Long';
+                @endphp
+                <h5 class="fw-bold d-none d-md-block">Emergency Help: {{ $emergency }}</h5>
+                <h5 class="fw-bold d-md-none d-block text-center">Emergency Help: <br>{{ $emergency }}</h5>
+                @if(!$regOpen)
+                    <div class="alert alert-danger fw-bold h5 py-4">
+                        Registration is currently closed.<br>
+                        দুঃখিত! রেজিস্ট্রেশন এখন বন্ধ আছে।
+                    </div>
+                @else
+                <form class="row g-3" method="POST" action="{{ route('saveStudent') }}" enctype="multipart/form-data" id="registrationForm"
+                    data-participate-fee="{{ $participateFee }}" data-guest-fee="{{ $guestFee }}">
                     @csrf
                     <h6 class="mb-0 fw-bold">Personal Details</h6>
                     <div class="row  mt-4">
@@ -63,13 +84,10 @@
                     <div class="col-12 col-md-4">
                         <label for="dept" class="form-label">Department(*)</label>
                         <select id="dept" class="form-select" required name="dept">
-                            <option selected>Choose...</option>
-                            <option>Civil Technology</option>
-                            <option>Electrical Technology</option>
-                            <option>Mechanical Technology</option>
-                            <option>Power Technology</option>
-                            <option>Eelectronics Technology</option>
-                            <option>Computer Technology</option>
+                            <option value="" selected>Choose...</option>
+                            @foreach($departments as $dep)
+                                <option value="{{ $dep }}">{{ $dep }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-12 col-md-4">
@@ -163,7 +181,7 @@
                     <h6 class="mb-0 fw-bold">Payment Details</h6>
                     <div class="col-12 col-md-4">
                         <label for="totalPayment" class="form-label">Total Amount(*)</label>
-                        <input type="number" class="form-control" id="totalPayment" placeholder="Enter payment amount" required name="payAmount" value="1530" readonly>
+                        <input type="number" class="form-control" id="totalPayment" placeholder="Enter payment amount" required name="payAmount" value="{{ $participateFee }}" readonly>
                     </div>
                     <div class="col-12 col-md-4">
                         <label for="paymentMethod" class="form-label">Payment Method(*)</label>
@@ -186,7 +204,7 @@
                                 <img class="w-75" src="{{ asset('public/front/bkashPayment.jpg') }}" alt="BkashPayment">
                             </div>
                             <div class="col-12 col-md-8 mt-4">
-                                <h6>`bKash` payment via USSD:</h6><ul><li>Dial *247#</li><li>Choose “Payment”</li><li>Enter the Merchant bKash Account Number(01972-006267)</li><li>Enter the amount</li><li>Enter Reference(CPI 10-11)</li><li>Type PIN</li><li>Done! You will receive confirmation SMS at the end of payment</li></ul> <h6>‘bKash’ payment via app:</h6><ul><li>Login to bKash App</li><li>Click the Payment button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>
+                                <h6>`bKash` payment via USSD:</h6><ul><li>Dial *247#</li><li>Choose “Payment”</li><li>Merchant Account Number({{ $bkash }})</li><li>Amount</li><li>Reference({{ $payRef }})</li><li>PIN</li><li>Confirmation SMS.</li></ul> <h6>‘bKash’ payment via app:</h6><ul><li>Login to bKash App</li><li>Payment</li><li>Merchant Account Number({{ $bkash }}) or QR</li><li>Amount</li><li>Reference: {{ $payRef }}</li><li>PIN & Hold</li><li>Confirmation SMS.</li></ul>
                             </div>
                             <div class="col-md-4 d-none d-md-block">
                                 <img class="w-75" src="{{ asset('public/front/bkashPayment.jpg') }}" alt="BkashPayment">
@@ -199,7 +217,7 @@
                                 <img class="w-75" src="{{ asset('public/front/nagadPayment.jpg') }}" alt="NagadPayment">
                             </div>
                             <div class="col-12 col-md-8 mt-4">
-                                <h6>‘Nagad’ payment via USSD:</h6><ul><li>Dial *167#</li><li>Select payment</li><li>Tyoe The Marchand Account Number(01972-006267)</li><li>Type The Amount</li><li>Type the counter number(Put 0)</li><li>Type The Reference(CPI 10-11)</li><li>Type PIN</li><li>Receive confirmation SMS at the end of payment</li></ul> <h6>‘Nagad’ payment via app:</h6><ul><li>Login to Nagad App</li><li>Click the Merchant Pay button</li><li>Type the Merchant Account Number(01972-006267) or scan the QR code</li><li>Type The Amount</li><li>Type The Reference(CPI 10-11) & Pin</li><li>Tap & Hold</li><li>Receive confirmation SMS at the end of payment</li></ul>
+                                <h6>‘Nagad’ payment via USSD:</h6><ul><li>Dial *167#</li><li>Select payment</li><li>Merchant Account Number({{ $nagad }})</li><li>Amount</li><li>Counter (0)</li><li>Reference: {{ $payRef }}</li><li>PIN</li><li>Confirmation SMS.</li></ul> <h6>‘Nagad’ payment via app:</h6><ul><li>Login to Nagad App</li><li>Merchant Pay</li><li>Account Number({{ $nagad }}) or QR</li><li>Amount</li><li>Reference: {{ $payRef }}</li><li>PIN & Hold</li><li>Confirmation SMS.</li></ul>
                             </div>
                             <div class="col-md-4 d-none d-md-block">
                                 <img class="w-75" src="{{ asset('public/front/nagadPayment.jpg') }}" alt="NagadPayment">
@@ -207,6 +225,7 @@
                         </div>
                     </div>
                 </form>
+                @endif
             </div>
         </div>
     </div>
@@ -226,26 +245,26 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Reunion Venue</h6>
-                <p class="fw-bold">Play Ground of Cumilla Polytechnic Institute</p>
+                <p class="fw-bold">{{ $venue }}</p>
                 <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Reunion Will Held</h6>
-                <p class="fw-bold">25th December 2024, Wednesday at 8.30 AM to Day Long</p>
+                <p class="fw-bold">{{ $eventText }}</p>
                 <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Registration Fees</h6>
                 
                 <ul>
-                    <li><b>Participate:</b> 1530/- (Bkash/Nagad Charge Included)</li>
-                    <li><b>Guest:</b> 1020/- (Bkash/Nagad Charge Included)</li>
+                    <li><b>Participate:</b> {{ number_format($participateFee) }}/- (Bkash/Nagad Charge Included)</li>
+                    <li><b>Guest:</b> {{ number_format($guestFee) }}/- (Bkash/Nagad Charge Included)</li>
                 </ul>
                 <p class="my-2 mt-4 fw-bold text-success">Payment System:</p>
                 <ul>
-                    <li><b class="text-danger">Bkash:</b> 01972-006267 (Merchant Make Payment)</li>
-                    <li><b class="text-danger">Nagad:</b> 01972-006267 (Merchant Make Payment)</li>
+                    <li><b class="text-danger">Bkash:</b> {{ $bkash }} (Merchant Make Payment)</li>
+                    <li><b class="text-danger">Nagad:</b> {{ $nagad }} (Merchant Make Payment)</li>
                 </ul>
                 <h6 class="text-extra-dark-gray sm-w-80 d-inline-block mb-0 fw-bold">Registration Rules</h6>
                 
                 <ol>
                     <li>Fill The Form for Only Once Even If There Are Multiple Guests</li>
-                    <li>General Member(Student of Session 2010-11 of CPI) joining fee 1530 BDT</li>
-                    <li>Per Guest Member Joining Fees 1020 BDT</li>
+                    <li>General Member(Student of Session 2010-11 of CPI) joining fee {{ number_format($participateFee) }} BDT</li>
+                    <li>Per Guest Member Joining Fees {{ number_format($guestFee) }} BDT</li>
                     <li>6 Years of Age Own Children Must Register, Don't Need to Below 6 Years</li>
                 </ol>
             </div>
@@ -265,7 +284,7 @@
                     <li>Fun Zone for Kids</li>
                     <li>Guest Female/Entertainment for Woman</li>
                     <li>Raffle Draw (Attractive Gift)</li>
-                    <li>Gettings Video Message Display About Ex Engineers from Foreigners Friends(01674-779916 Imo,WhatsApp, Viber)</li>
+                    <li>Gettings Video Message Display About Ex Engineers from Foreigners Friends({{ $emergency }} Imo,WhatsApp, Viber)</li>
                 </ul>
             </div>
         </div>
@@ -343,6 +362,11 @@
 @section('scripts')
 <script>
 
+    // Use dataset values for dynamic fee calculation (fallback to PHP variables if dataset missing)
+    const formEl = document.getElementById('registrationForm');
+    const baseParticipateFee = parseInt(formEl?.dataset.participateFee || '{{ $participateFee }}');
+    const perGuestFee = parseInt(formEl?.dataset.guestFee || '{{ $guestFee }}');
+
     $(document).ready(function() {
         // Hide payment options initially
         $("#bkashPaymentNumber").addClass('d-none');
@@ -406,7 +430,7 @@
                 // Append all accumulated HTML at once to #memberList
                 $("#memberList").append(member);
                 if(totalGuest===0){
-                    $("#totalPayment").val(1530);
+                    $("#totalPayment").val(baseParticipateFee);
                 }
             }
         });
@@ -436,7 +460,7 @@
             $(`#guestCharge${index}`).val(0); 
         } else {
             $(`#guestAge${index}`).hide();
-            $(`#guestCharge${index}`).val(1020); 
+            $(`#guestCharge${index}`).val(perGuestFee); 
         }
         updateTotalPayment();
     }
@@ -444,7 +468,7 @@
     // Calculate guest charge based on age
     function calculateGuestCharge(index) {
         const age = parseInt($(`#memberAge${index}`).val());
-        const charge = (age <= 6) ? 0 : 1020;
+        const charge = (age <= 6) ? 0 : perGuestFee;
         $(`#guestCharge${index}`).val(charge);
         updateTotalPayment();
     }
@@ -456,7 +480,7 @@
             const charge = parseInt($(this).val()) || 0; // Convert to integer or 0 if NaN
             totalCharge += charge;
         });
-        const finalCharge = parseInt(totalCharge + 1530);
+        const finalCharge = parseInt(totalCharge + baseParticipateFee);
         $("#totalPayment").val(finalCharge);
     } 
 </script>

@@ -58,8 +58,8 @@
                                 </div>
                                 <!-- end row -->
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Super Admin !</h5>
-                                    <p class="text-muted">Sign Up a modarator.</p>
+                                    <h5 class="text-primary">{{ isset($isFirst) && $isFirst ? 'Create First Super Admin' : 'Super Admin' }}</h5>
+                                    <p class="text-muted">{{ isset($isFirst) && $isFirst ? 'Initialize backoffice by creating the first admin' : 'Sign Up a moderator or admin' }}.</p>
                                 </div>
                                 @if(Session::has('success'))
                                 <div class="alert alert-success">
@@ -81,13 +81,10 @@
                                         <div class="mb-3">
                                             <label for="dept" class="form-label">Department(*)</label>
                                             <select id="dept" class="form-select" required name="dept">
-                                                <option selected>Choose...</option>
-                                                <option>Civil Technology</option>
-                                                <option>Electrical Technology</option>
-                                                <option>Mechanical Technology</option>
-                                                <option>Power Technology</option>
-                                                <option>Eelectronics Technology</option>
-                                                <option>Computer Technology</option>
+                                                <option value="" selected>Choose...</option>
+                                                @foreach($departments as $dep)
+                                                    <option value="{{ $dep }}">{{ $dep }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="mb-3">
@@ -98,14 +95,19 @@
                                                 <option>2nd</option>
                                             </select>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="adminRule" class="form-label">Rules(*)</label>
-                                            <select id="adminRule" class="form-select" required name="adminRule">
-                                                <option value="" selected>Choose...</option>
-                                                <option>Admin</option>
-                                                <option>Modarator</option>
-                                            </select>
-                                        </div>
+                                        @if(isset($isFirst) && $isFirst)
+                                            <input type="hidden" name="adminRule" value="Admin" />
+                                        @else
+                                            <div class="mb-3">
+                                                <label for="adminRule" class="form-label">Rules(*)</label>
+                                                <select id="adminRule" class="form-select" required name="adminRule">
+                                                    <option value="" selected>Choose...</option>
+                                                    @foreach($adminRules as $rule)
+                                                        <option value="{{ $rule }}">{{ $rule }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        @endif
 
                                         <div class="mb-3">
                                             <label for="session" class="form-label">Batch/Session</label>

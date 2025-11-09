@@ -3,12 +3,16 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>CPI Reunion || @yield('adminTitle')</title>
+    @php $adminSiteName = $siteSettings?->site_name ?? 'CPI Reunion'; @endphp
+    <title>{{ $adminSiteName }} || @yield('adminTitle')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="CPI Reunion Admin Panel" name="description" />
     <meta content="Virtual IT Professional" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('public/admin/velzon/html/default/') }}/assets/images/logo.png">
+    @php
+        $adminFavicon = !empty($siteSettings?->favicon) ? asset('public/upload/site/'.$siteSettings->favicon) : asset('public/admin/velzon/html/default/').'/assets/images/logo.png';
+    @endphp
+    <link rel="shortcut icon" href="{{ $adminFavicon }}">
 
     <script src="https://kit.fontawesome.com/32dcd4a478.js" crossorigin="anonymous"></script>
  
@@ -48,7 +52,7 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box horizontal-logo">
-                    <a href="{{ url('/') }}" class="logo logo-dark" target="_blank">
+                    <a href="{{ url('/') }}" class="logo logo-dark" target="_blank" title="{{ $adminSiteName }}">
                         <span class="logo-sm">
                             <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                         </span>
@@ -57,7 +61,7 @@
                         </span>
                     </a>
 
-                    <a href="{{ url('/') }}" class="logo logo-light" target="_blank">
+                    <a href="{{ url('/') }}" class="logo logo-light" target="_blank" title="{{ $adminSiteName }}">
                         <span class="logo-sm">
                             <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                         </span>
@@ -97,22 +101,25 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                            @php
+                                $headerAvatar = !empty($authAdmin?->avatar) ? asset('public/upload/admin/'.$authAdmin->avatar) : asset('public/admin/velzon/html/default/assets/images/users/avatar-1.jpg');
+                            @endphp
+                            <img class="rounded-circle header-profile-user" src="{{ $headerAvatar }}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Anna Adame</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ $authAdmin->adminName ?? 'Admin Panel' }}</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ $authAdmin->adminType ?? '' }}</span>
                             </span>
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome Anna!</h6>
-                        <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
+                        <h6 class="dropdown-header">Welcome {{ $authAdmin->adminName ?? 'Guest' }}!</h6>
+                        <a class="dropdown-item" href="{{ route('adminProfile') }}"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
                         <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Verify Fund : <b>$5971.67</b></span></a>
-                        <a class="dropdown-item" href="pages-profile-settings.html"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
-                        <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+                        <a class="dropdown-item" href="{{ route('adminSettings') }}"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
                     </div>
                 </div>
             </div>
@@ -125,7 +132,7 @@
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <!-- Dark Logo-->
-                <a href="{{ url('/') }}" class="logo logo-dark" target="_blank">
+                <a href="{{ url('/') }}" class="logo logo-dark" target="_blank" title="{{ $adminSiteName }}">
                     <span class="logo-sm">
                         <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                     </span>
@@ -134,7 +141,7 @@
                     </span>
                 </a>
                 <!-- Light Logo-->
-                <a href="{{ url('/') }}" class="logo logo-light" target="_blank">
+                <a href="{{ url('/') }}" class="logo logo-light" target="_blank" title="{{ $adminSiteName }}">
                     <span class="logo-sm">
                         <img src="{{ asset('public/admin/velzon/html/default/') }}/assets/images/adminLogo-light.png" class="p-2" alt="" height="80">
                     </span>
@@ -177,6 +184,21 @@
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ route('adminTeam') }}">
+                                <i class="fa-solid fa-users-gear"></i> <span data-key="t-apps">Working Team</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ route('adminClients') }}">
+                                <i class="fa-regular fa-rectangle-history"></i> <span data-key="t-apps">Clients / Sponsors</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ route('adminSettings') }}">
+                                <i class="fa-solid fa-gear"></i> <span data-key="t-apps">Settings</span>
+                            </a>
                         </li>
                         @if(Session::has('superAdmin')):
                         <li class="nav-item">
@@ -237,11 +259,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <script>document.write(new Date().getFullYear())</script> © CPI Reunion | All rights reserved.
+                            <script>document.write(new Date().getFullYear())</script> © {{ $adminSiteName }} | All rights reserved.
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">
-                                Design & Develop by Virtual IT Professional
+                                {{ $siteSettings?->tagline ?? 'Design & Develop by Virtual IT Professional' }}
                             </div>
                         </div>
                     </div>

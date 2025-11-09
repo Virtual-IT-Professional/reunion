@@ -5,6 +5,7 @@ use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\Modarator;
 use App\Http\Middleware\SuperAdmin;
+use App\Http\Middleware\OnlySuperAdmin;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -16,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'modarator' => Modarator::class,
             'superAdmin' => SuperAdmin::class,
+            'onlySuperAdmin' => OnlySuperAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

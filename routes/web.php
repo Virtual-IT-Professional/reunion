@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\AdminPanel;
 
-Route::get('/', function () {
-    return view('front.home');
-});
+Route::get('/', [
+    FrontEnd::class,
+    'index'
+])->name('home');
 
 Route::get('/register/student',[
     FrontEnd::class,
@@ -146,4 +147,64 @@ Route::middleware(['modarator','superAdmin'])->group(function(){
         AdminPanel::class,
         'rejectRegister'
     ])->name('rejectRegister');
+
+    // Admin profile routes
+    Route::get('/backoffice/admin/profile',[
+        AdminPanel::class,
+        'profile'
+    ])->name('adminProfile');
+
+    Route::post('/backoffice/admin/profile/update',[
+        AdminPanel::class,
+        'updateProfile'
+    ])->name('adminProfileUpdate');
+
+    Route::post('/backoffice/admin/password/update',[
+        AdminPanel::class,
+        'updatePassword'
+    ])->name('adminPasswordUpdate');
+
+    Route::post('/backoffice/admin/avatar/update',[
+        AdminPanel::class,
+        'updateAdminAvatar'
+    ])->name('adminAvatarUpdate');
+
+    // Team management
+    Route::get('/backoffice/admin/team',[
+        AdminPanel::class,
+        'team'
+    ])->name('adminTeam');
+
+    Route::post('/backoffice/admin/team/store',[
+        AdminPanel::class,
+        'teamStore'
+    ])->name('adminTeamStore');
+
+    Route::post('/backoffice/admin/team/update',[
+        AdminPanel::class,
+        'teamUpdate'
+    ])->name('adminTeamUpdate');
+
+    Route::get('/backoffice/admin/team/delete/{id}',[
+        AdminPanel::class,
+        'teamDelete'
+    ])->name('adminTeamDelete');
+
+    // Site Settings
+    Route::get('/backoffice/admin/settings',[
+        AdminPanel::class,
+        'settings'
+    ])->middleware('onlySuperAdmin')->name('adminSettings');
+
+    Route::post('/backoffice/admin/settings',[
+        AdminPanel::class,
+        'updateSettings'
+    ])->middleware('onlySuperAdmin')->name('adminSettingsUpdate');
+
+    // Clients / Sponsors
+    Route::get('/backoffice/admin/clients',[ AdminPanel::class, 'clients' ])->name('adminClients');
+    Route::post('/backoffice/admin/clients/store',[ AdminPanel::class, 'clientStore' ])->name('adminClientStore');
+    Route::post('/backoffice/admin/clients/update',[ AdminPanel::class, 'clientUpdate' ])->name('adminClientUpdate');
+    Route::get('/backoffice/admin/clients/delete/{id}',[ AdminPanel::class, 'clientDelete' ])->name('adminClientDelete');
+    Route::get('/backoffice/admin/clients/toggle/{id}',[ AdminPanel::class, 'clientToggle' ])->name('adminClientToggle');
 });

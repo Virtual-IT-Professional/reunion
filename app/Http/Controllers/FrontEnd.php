@@ -6,29 +6,45 @@ use Illuminate\Http\Request;
 use App\Models\studentRegister;
 use App\Models\geustRegister;
 use App\Models\adminPanel;
+use App\Models\TeamMember;
 use Hash;
 use Session;
 
 class FrontEnd extends Controller
 {
     public function index(){
-        return view('front.home');
+        $team = TeamMember::where('active',true)->orderBy('ordering','ASC')->get();
+        return view('front.home',[ 'team'=>$team ]);
     }
     
     public function studentRegister(){
+        $open = optional(\App\Models\SiteSetting::first())->registration_open ?? true;
+        if(!$open){
+            return redirect(url('/'))
+                ->with('error','Registration is currently closed. Please check back later.');
+        }
         return view('front.studentRegister');
     }
     
     public function studentRegisterBypass(){
+        $open = optional(\App\Models\SiteSetting::first())->registration_open ?? true;
+        if(!$open){
+            return redirect(url('/'))
+                ->with('error','Registration is currently closed. Please check back later.');
+        }
         return view('front.studentRegisterBypass');
     }
     
     public function adminLogin(){
-        if(Session::has('modarator') || Session::has('superAdmin')):
+        // If no admin exists yet, redirect to first-time setup for super admin creation
+        if(adminPanel::count() === 0){
+            return redirect(route('adminSignup'))->with('success','Create the first Super Admin account');
+        }
+
+        if(Session::has('modarator') || Session::has('superAdmin')){
             return redirect(route('adminHome'));
-        else:
-            return view('front.adminSignin');
-        endif;
+        }
+        return view('front.adminSignin');
     }
 
     public function confirmAdminLogin(Request $requ){
@@ -53,8 +69,15 @@ class FrontEnd extends Controller
         endif;
     }
     
-    public function adminSignup(){
-        return view('front.adminSignup');
+    public function adminSignup(Request $requ){
+        $isFirst = adminPanel::count() === 0; // true if no admin accounts exist yet
+
+        // Allow access if first setup OR super admin already logged in
+        if(!$isFirst && !Session::has('superAdmin')){
+            return redirect(route('adminLogin'))->with('error','Only Super Admin can create new admin accounts');
+        }
+
+        return view('front.adminSignup',["isFirst"=>$isFirst]);
     }
     
     public function thankyou(){
@@ -62,31 +85,53 @@ class FrontEnd extends Controller
     }
 
     public function confirmAdminSignup(Request $requ){
-        $chk = adminPanel::where(['emailAddress'=>$requ->emailAddress])->first();
-        if(!empty($chk)):
-            return back()->with('error','Sorry! Admin profile already exist');
-        else:
-            if($requ->password != $requ->confirmPass):
-                return back()->with('error','Password does not match correctly');
-            endif;
-            $admin = new adminPanel();
-            $admin->adminName       = $requ->fullName;
-            $admin->emailAddress    = $requ->emailAddress;
-            $admin->department      = $requ->dept;
-            $admin->shift           = $requ->shift;
-            $admin->adminType       = $requ->adminRule;
-            $admin->batchSession    = $requ->batch;
-            $hashPass = Hash::make($requ->password);
-            $admin->password        = $hashPass;
-            if($admin->save()):
-                return back()->with('success','Profile created successfully');
-            else:
-                return back()->with('error','Profile created failed');
-            endif;
-        endif;
+        $isFirst = adminPanel::count() === 0;
+
+        // If not first setup, require an authenticated super admin
+        if(!$isFirst && !Session::has('superAdmin')){
+            return redirect(route('adminLogin'))->with('error','Unauthorized action');
+        }
+
+        // Basic validation
+        $requ->validate([
+            'fullName'      => 'required|string|min:3',
+            'emailAddress'  => 'required|email',
+            'password'      => 'required|min:6',
+            'confirmPass'   => 'required|same:password',
+        ]);
+
+        $existing = adminPanel::where('emailAddress',$requ->emailAddress)->first();
+        if($existing){
+            return back()->with('error','Sorry! Admin profile already exists');
+        }
+
+        $admin = new adminPanel();
+        $admin->adminName       = $requ->fullName;
+        $admin->emailAddress    = $requ->emailAddress;
+        $admin->department      = $requ->dept;
+        $admin->shift           = $requ->shift;
+        // Force first account to be Super Admin (Admin)
+        $admin->adminType       = $isFirst ? 'Admin' : $requ->adminRule;
+        $admin->batchSession    = $requ->batch;
+        $admin->password        = Hash::make($requ->password);
+
+        if($admin->save()){
+            // Auto login the first super admin
+            if($isFirst){
+                $requ->session()->regenerate();
+                $requ->session()->put('superAdmin',$admin->id);
+                return redirect(route('adminHome'))->with('success','Super Admin account created successfully');
+            }
+            return back()->with('success','Admin profile created successfully');
+        }
+        return back()->with('error','Profile creation failed');
     }
 
     public function saveStudent(Request $requ){
+        $open = optional(\App\Models\SiteSetting::first())->registration_open ?? true;
+        if(!$open){
+            return back()->with('error','Registration is currently closed.');
+        }
         $chk = studentRegister::where(['phone'=>$requ->phone,'emailAddress'=>$requ->mailAddress,'status'=>'PendingVerify'])->first();
         if(!empty($chk)):
             return back()->with('error','You already have a pending data. Please wait till verify it');
