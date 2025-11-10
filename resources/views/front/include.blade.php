@@ -130,11 +130,6 @@
                         <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Contact Us</div>
                         <p class="w-70 lg-w-85 md-w-55 sm-w-75 sm-margin-10px-bottom mx-auto">{{ $siteSettings?->address ?? '401 Motteejel, Dhaka.' }}</p>
                     </div>
-            @if($regOpen)
-            <div class="col-12 text-center"><a href="{{ route('studentRegister') }}" class="btn btn-success my-4"><i class="fa-solid fa-right-to-bracket"></i> Let's Register</a></div>
-            @else
-            <div class="col-12 text-center"><span class="badge bg-secondary p-3">Registration is closed</span></div>
-            @endif
                     <!-- end features box item -->
                     <!-- start features box item -->
                     <div class="col text-center md-margin-50px-bottom sm-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.2s">
