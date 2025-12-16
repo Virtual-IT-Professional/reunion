@@ -182,8 +182,19 @@
                                     <li class="nav-item">
                                         <a href="{{ route('rejectedList') }}" class="nav-link"> <span data-key="t-to-do">Spam/Reject List</span></a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('adminCreateStudent') }}" class="nav-link"> <span data-key="t-to-do">Create Registration</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('adminImportStudents') }}" class="nav-link"> <span data-key="t-to-do">Import via CSV</span></a>
+                                    </li>
                                 </ul>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ route('adminIdCards') }}">
+                                <i class="fa-solid fa-id-card"></i> <span data-key="t-apps">ID Cards</span>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="{{ route('adminTeam') }}">

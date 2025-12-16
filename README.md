@@ -21,6 +21,45 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## CPI Reunion Admin - CSV Import
+
+This project includes an admin CSV import system for student registrations.
+
+- Location: Admin → Registration → Import via CSV
+- Template: Download from `public/admin/templates/student_import_template.csv`
+- Modes:
+	- Upsert: Create new or update existing records by matching `emailAddress` or `phone`.
+	- Create only: Create new records; skip existing matches.
+- Required per-row fields: `name`, `dept`, `shift`
+- Supported headers (case-insensitive; synonyms accepted):
+	- name/studentName, dept/department, shift, phone/mobile, email/emailAddress,
+	- gender, blood/blGroup/bloodGroup, tShirt/tShirtSize, address/currentAddress,
+	- profession/professionDetails, experience, guestCount/totalAttend,
+	- paymentBy/payType, paymentId/payId/txn/txnid, amount/paymentAmount/payAmount,
+	- status, roll/rollNo
+
+### Guest Import
+
+- Add guests via repeated columns: `guest_1_name, guest_1_relation, guest_1_age, guest_2_name, ...`
+- Behavior on upsert is configurable:
+	- Replace: delete existing guests and import new ones
+	- Append: keep existing guests and add new ones
+	- Ignore: do not import guests from CSV
+	- Configure on the import form under "Guest Behavior"
+
+Example header:
+
+```
+name,dept,shift,phone,email,gender,blGroup,tShirtSize,currentAddress,profession,experience,totalAttend,payType,payId,payAmount,status,rollNo
+```
+
+Example rows:
+
+```
+John Doe,Computer,1st,01700000001,john@example.com,Male,O+,L,"Cumilla, Bangladesh",Software Engineer,5 years,2,1,BKP123456,2550,PendingVerify,10101
+Jane Smith,Civil,2nd,01800000002,jane@example.com,Female,AB+,M,"Dhaka, Bangladesh",Structural Engineer,3 years,0,2,NGD987654,1530,Verified,20202
+```
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.

@@ -148,6 +148,44 @@ Route::middleware(['modarator','superAdmin'])->group(function(){
         'rejectRegister'
     ])->name('rejectRegister');
 
+    // Admin create student registration
+    Route::get('/backoffice/admin/student/create',[
+        AdminPanel::class,
+        'createStudent'
+    ])->name('adminCreateStudent');
+    Route::post('/backoffice/admin/student/store',[
+        AdminPanel::class,
+        'storeStudent'
+    ])->name('adminStoreStudent');
+
+    // ID Card management
+    Route::get('/backoffice/admin/idcards',[
+        AdminPanel::class,
+        'idCards'
+    ])->name('adminIdCards');
+    Route::post('/backoffice/admin/idcards/issue/{id}',[
+        AdminPanel::class,
+        'issueIdCard'
+    ])->name('issueIdCard');
+    Route::get('/backoffice/admin/idcards/print/{id}',[
+        AdminPanel::class,
+        'printIdCard'
+    ])->name('printIdCard');
+    Route::post('/backoffice/admin/idcards/mark-printed/{id}',[
+        AdminPanel::class,
+        'markIdCardPrinted'
+    ])->name('markIdCardPrinted');
+
+    // CSV import for registrations
+    Route::get('/backoffice/admin/student/import',[
+        AdminPanel::class,
+        'importForm'
+    ])->name('adminImportStudents');
+    Route::post('/backoffice/admin/student/import',[
+        AdminPanel::class,
+        'importProcess'
+    ])->name('adminImportStudentsProcess');
+
     // Admin profile routes
     Route::get('/backoffice/admin/profile',[
         AdminPanel::class,

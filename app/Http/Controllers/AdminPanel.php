@@ -592,4 +592,314 @@ class AdminPanel extends Controller
         }
         return back()->with('error','Operation failed');
     }
+
+    /* ===================== Admin Create Student ===================== */
+    public function createStudent(){
+        return view('admin.createStudent');
+    }
+
+    public function storeStudent(Request $requ){
+        // Prevent duplicates by phone/email if still pending
+        $chk = studentRegister::where([
+            'phone' => $requ->phone,
+            'emailAddress' => $requ->mailAddress,
+        ])->whereIn('status',[ 'PendingVerify','Verified' ])->first();
+        if(!empty($chk)){
+            return back()->with('error','A registration already exists for this phone/email');
+        }
+
+        $requ->validate([
+            'stdName'       => 'required|string|min:3',
+            'dept'          => 'required|string',
+            'shift'         => 'required|string',
+            'phone'         => 'required|string',
+            'mailAddress'   => 'required|email',
+            'gender'        => 'required|string',
+            'blGroup'       => 'required|string',
+            'tShirtSize'    => 'required|string',
+            'currentAddress'=> 'required|string',
+            'payAmount'     => 'nullable|numeric',
+            'payType'       => 'nullable|string',
+            'payId'         => 'nullable|string',
+            'avatar'        => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:300',
+        ]);
+
+        $student = new studentRegister();
+        $student->studentName           = $requ->stdName;
+        $student->department            = $requ->dept;
+        $student->shift                 = $requ->shift;
+        $student->phone                 = $requ->phone;
+        $student->emailAddress          = $requ->mailAddress;
+        $student->tShirtSize            = $requ->tShirtSize;
+        $student->blGroup               = $requ->blGroup;
+        $student->totalAttend           = $requ->totalMember;
+        $student->currentAddress        = $requ->currentAddress;
+        $student->professionDetails     = $requ->professionDetails;
+        $student->experience            = $requ->experience;
+        $student->paymentBy             = $requ->payType;
+        $student->paymentId             = $requ->payId;
+        $student->gender                = $requ->gender;
+        $student->paymentAmount         = $requ->payAmount;
+        $student->status                = $requ->status ?? 'PendingVerify';
+
+        if($requ->hasFile('avatar')){
+            $imageName = time().'.'.$requ->file('avatar')->getClientOriginalExtension();
+            $requ->file('avatar')->move(public_path('upload/student'), $imageName);
+            $student->avatar = $imageName;
+        }
+
+        if($student->save()){
+            if(($requ->totalMember ?? 0) > 0 && is_array($requ->guestName)){
+                $guestlength = count($requ->guestName);
+                for ($i = 0; $i < $guestlength; $i++) {
+                    $guest = new geustRegister();
+                    $guest->guestName = $requ->guestName[$i] ?? null;
+                    $guest->guestRelation = $requ->guestRelation[$i] ?? null;
+                    $guest->linkStudent = $student->id;
+                    if(!empty($requ->guestAge[$i] ?? null)){
+                        $guest->guestAge = $requ->guestAge[$i];
+                    }
+                    $guest->status = $student->status === 'Verified' ? 'Verified' : 'PendingVerify';
+                    $guest->save();
+                }
+            }
+            return redirect()->route('viewPerticipate',['id'=>$student->id])->with('success','Student created successfully');
+        }
+        return back()->with('error','Create failed');
+    }
+
+    /* ===================== ID Card Management ===================== */
+    public function idCards(){
+        $students = studentRegister::orderBy('id','DESC')->get();
+        return view('admin.idcards',[ 'students' => $students ]);
+    }
+
+    private function generateCardNumber(studentRegister $student): string
+    {
+        $year = date('Y');
+        return 'CPI-R-'.$year.'-'.str_pad($student->id,5,'0',STR_PAD_LEFT);
+    }
+
+    public function issueIdCard(Request $requ, $id){
+        $student = studentRegister::find($id);
+        if(!$student){ return back()->with('error','Student not found'); }
+        $student->id_card_number = $requ->id_card_number ?: $this->generateCardNumber($student);
+        $student->id_card_status = 'Issued';
+        $student->id_card_issued_at = now();
+        if($student->save()){
+            return back()->with('success','ID Card issued');
+        }
+        return back()->with('error','Issue failed');
+    }
+
+    public function markIdCardPrinted($id){
+        $student = studentRegister::find($id);
+        if(!$student){ return back()->with('error','Student not found'); }
+        $student->id_card_status = 'Printed';
+        $student->id_card_printed_at = now();
+        if($student->save()){
+            return back()->with('success','Marked as printed');
+        }
+        return back()->with('error','Update failed');
+    }
+
+    public function printIdCard($id){
+        $student = studentRegister::find($id);
+        if(!$student){ return back()->with('error','Student not found'); }
+        if(empty($student->id_card_number)){
+            // Auto-issue a number for print convenience
+            $student->id_card_number = $this->generateCardNumber($student);
+            $student->id_card_status = 'Issued';
+            $student->id_card_issued_at = now();
+            $student->save();
+        }
+        return view('admin.idcard_print',[ 'student' => $student ]);
+    }
+
+    /* ===================== CSV Import ===================== */
+    public function importForm(){
+        return view('admin.importStudents');
+    }
+
+    public function importProcess(Request $requ){
+        $requ->validate([
+            'csv' => 'required|file|mimes:csv,txt|max:5120',
+            'mode' => 'nullable|in:create,upsert',
+            'default_status' => 'nullable|in:PendingVerify,Verified,Rejected',
+            'guest_behavior' => 'nullable|in:ignore,replace,append'
+        ]);
+        $mode = $requ->mode ?? 'upsert';
+        $defaultStatus = $requ->default_status ?? 'PendingVerify';
+        $guestBehavior = $requ->guest_behavior ?? 'replace';
+        $path = $requ->file('csv')->getRealPath();
+
+        $handle = fopen($path,'r');
+        if(!$handle){
+            return back()->with('error','Unable to read the CSV file');
+        }
+        $created = 0; $updated = 0; $skipped = 0; $log = [];
+
+        $header = fgetcsv($handle,0,',');
+        if(!$header){ fclose($handle); return back()->with('error','CSV header missing'); }
+        // Normalize headers
+        $normalize = function($h){
+            $h = preg_replace('/^\xEF\xBB\xBF/','',$h); // strip BOM
+            return strtolower(trim($h));
+        };
+        $header = array_map($normalize,$header);
+
+        // Map synonyms to model fields
+        $mapKey = function($key){
+            switch($key){
+                case 'name': case 'studentname': return 'studentName';
+                case 'dept': case 'department': return 'department';
+                case 'shift': return 'shift';
+                case 'phone': case 'mobile': return 'phone';
+                case 'email': case 'emailaddress': return 'emailAddress';
+                case 'gender': return 'gender';
+                case 'blood': case 'bloodgroup': case 'blgroup': return 'blGroup';
+                case 'tshirt': case 'tshirtsize': return 'tShirtSize';
+                case 'address': case 'currentaddress': return 'currentAddress';
+                case 'profession': case 'professiondetails': return 'professionDetails';
+                case 'experience': return 'experience';
+                case 'guestcount': case 'totalattend': return 'totalAttend';
+                case 'paymentby': case 'paytype': return 'paymentBy';
+                case 'paymentid': case 'payid': case 'txn': case 'txnid': return 'paymentId';
+                case 'amount': case 'paymentamount': case 'payamount': return 'paymentAmount';
+                case 'status': return 'status';
+                case 'roll': case 'rollno': return 'rollNo';
+                default: return null;
+            }
+        };
+        $fieldKeys = array_map($mapKey,$header);
+
+        while(($row = fgetcsv($handle,0,',')) !== false){
+            if(count($row) === 1 && trim($row[0]) === ''){ continue; }
+            $data = [];
+            $raw = [];
+            foreach($row as $i => $value){
+                $key = $fieldKeys[$i] ?? null;
+                if(!$key){ continue; }
+                $data[$key] = is_string($value) ? trim($value) : $value;
+                // also store raw normalized header -> value for guest parsing
+                $rawKey = $header[$i] ?? null;
+                if($rawKey !== null){ $raw[$rawKey] = is_string($value) ? trim($value) : $value; }
+            }
+            // Minimal validation
+            if(empty($data['studentName']) || empty($data['department']) || empty($data['shift'])){
+                $skipped++; $log[] = 'Skipped: missing required fields (name/dept/shift)'; continue;
+            }
+            // Normalize status
+            $status = $data['status'] ?? $defaultStatus;
+            if(!in_array($status,['PendingVerify','Verified','Rejected'])){ $status = $defaultStatus; }
+
+            // Find existing by email or phone
+            $existing = null;
+            if(!empty($data['emailAddress'])){
+                $existing = studentRegister::where('emailAddress',$data['emailAddress'])->first();
+            }
+            if(!$existing && !empty($data['phone'])){
+                $existing = studentRegister::where('phone',$data['phone'])->first();
+            }
+
+            // Collect guests from raw columns: guest_{n}_name, guest_{n}_relation, guest_{n}_age
+            $guests = [];
+            foreach($raw as $rk => $rv){
+                if(preg_match('/^guest[_]?(\d+)_(name|relation|age)$/', $rk, $m)){
+                    $idx = intval($m[1]); $attr = $m[2];
+                    if(!isset($guests[$idx])){ $guests[$idx] = ['guestName'=>null,'guestRelation'=>null,'guestAge'=>null]; }
+                    if($attr === 'name'){ $guests[$idx]['guestName'] = $rv; }
+                    elseif($attr === 'relation'){ $guests[$idx]['guestRelation'] = $rv; }
+                    elseif($attr === 'age'){ $guests[$idx]['guestAge'] = is_numeric($rv) ? intval($rv) : null; }
+                }
+            }
+            // sanitize guests: remove empty name
+            $guests = array_values(array_filter($guests,function($g){ return !empty($g['guestName']); }));
+
+            if($existing){
+                if($mode === 'create'){
+                    $skipped++; $log[] = 'Skipped existing: '.$existing->emailAddress; continue;
+                }
+                // Update
+                $existing->studentName       = $data['studentName'] ?? $existing->studentName;
+                $existing->department        = $data['department'] ?? $existing->department;
+                $existing->shift             = $data['shift'] ?? $existing->shift;
+                $existing->phone             = $data['phone'] ?? $existing->phone;
+                $existing->emailAddress      = $data['emailAddress'] ?? $existing->emailAddress;
+                $existing->gender            = $data['gender'] ?? $existing->gender;
+                $existing->blGroup           = $data['blGroup'] ?? $existing->blGroup;
+                $existing->tShirtSize        = $data['tShirtSize'] ?? $existing->tShirtSize;
+                $existing->currentAddress    = $data['currentAddress'] ?? $existing->currentAddress;
+                $existing->professionDetails = $data['professionDetails'] ?? $existing->professionDetails;
+                $existing->experience        = $data['experience'] ?? $existing->experience;
+                $existing->totalAttend       = $data['totalAttend'] ?? $existing->totalAttend;
+                $existing->paymentBy         = $data['paymentBy'] ?? $existing->paymentBy;
+                $existing->paymentId         = $data['paymentId'] ?? $existing->paymentId;
+                $existing->paymentAmount     = $data['paymentAmount'] ?? $existing->paymentAmount;
+                $existing->rollNo            = $data['rollNo'] ?? $existing->rollNo;
+                $existing->status            = $status;
+                if($existing->save()){
+                    // handle guests according to behavior
+                    if(!empty($guests)){
+                        if($guestBehavior === 'replace'){
+                            geustRegister::where(['linkStudent'=>$existing->id])->delete();
+                        }
+                        if($guestBehavior !== 'ignore'){
+                            foreach($guests as $g){
+                                $guest = new geustRegister();
+                                $guest->guestName = $g['guestName'] ?? null;
+                                $guest->guestRelation = $g['guestRelation'] ?? null;
+                                $guest->guestAge = $g['guestAge'] ?? null;
+                                $guest->linkStudent = $existing->id;
+                                $guest->status = $status;
+                                $guest->save();
+                            }
+                        }
+                    }
+                    $updated++;
+                } else { $skipped++; $log[] = 'Failed to update: '.$existing->emailAddress; }
+            } else {
+                // Create
+                $student = new studentRegister();
+                $student->studentName           = $data['studentName'] ?? null;
+                $student->department            = $data['department'] ?? null;
+                $student->shift                 = $data['shift'] ?? null;
+                $student->phone                 = $data['phone'] ?? null;
+                $student->emailAddress          = $data['emailAddress'] ?? null;
+                $student->gender                = $data['gender'] ?? null;
+                $student->blGroup               = $data['blGroup'] ?? null;
+                $student->tShirtSize            = $data['tShirtSize'] ?? null;
+                $student->currentAddress        = $data['currentAddress'] ?? null;
+                $student->professionDetails     = $data['professionDetails'] ?? null;
+                $student->experience            = $data['experience'] ?? null;
+                $student->totalAttend           = $data['totalAttend'] ?? null;
+                $student->paymentBy             = $data['paymentBy'] ?? null;
+                $student->paymentId             = $data['paymentId'] ?? null;
+                $student->paymentAmount         = $data['paymentAmount'] ?? null;
+                $student->rollNo                = $data['rollNo'] ?? null;
+                $student->status                = $status;
+                if($student->save()){
+                    // create guests if present
+                    if(!empty($guests)){
+                        foreach($guests as $g){
+                            $guest = new geustRegister();
+                            $guest->guestName = $g['guestName'] ?? null;
+                            $guest->guestRelation = $g['guestRelation'] ?? null;
+                            $guest->guestAge = $g['guestAge'] ?? null;
+                            $guest->linkStudent = $student->id;
+                            $guest->status = $status;
+                            $guest->save();
+                        }
+                        $student->totalAttend = count($guests);
+                        $student->save();
+                    }
+                    $created++;
+                } else { $skipped++; $log[] = 'Failed to create: '.($data['emailAddress'] ?? $data['phone'] ?? 'unknown'); }
+            }
+        }
+        fclose($handle);
+
+        return back()->with('success',"Imported: $created, Updated: $updated, Skipped: $skipped")
+                     ->with('importLog',$log);
+    }
 }
