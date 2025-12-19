@@ -175,6 +175,24 @@ Route::middleware(['modarator','superAdmin'])->group(function(){
         AdminPanel::class,
         'markIdCardPrinted'
     ])->name('markIdCardPrinted');
+    // Batch IDCards
+    Route::post('/backoffice/admin/idcards/issue-batch',[
+        AdminPanel::class,
+        'issueIdCardsBatch'
+    ])->name('issueIdCardsBatch');
+    Route::get('/backoffice/admin/idcards/print-batch',[
+        AdminPanel::class,
+        'printIdCardsBatch'
+    ])->name('printIdCardsBatch');
+    // Regenerate ID numbers
+    Route::post('/backoffice/admin/idcards/regenerate',[
+        AdminPanel::class,
+        'regenerateIdCards'
+    ])->name('regenerateIdCards');
+    Route::post('/backoffice/admin/idcards/regenerate-all-old',[
+        AdminPanel::class,
+        'regenerateIdCardsAllOld'
+    ])->name('regenerateIdCardsAllOld');
 
     // CSV import for registrations
     Route::get('/backoffice/admin/student/import',[

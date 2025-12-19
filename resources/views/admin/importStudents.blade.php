@@ -8,10 +8,21 @@ Import Registrations
         <div class="card card-body shadow p-4">
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <h4 class="fw-bold mb-0">Import Student Registrations from CSV</h4>
-                <a class="btn btn-outline-secondary" href="{{ asset('public/admin/templates/student_import_template.csv') }}" download>
-                    Download CSV Template
-                </a>
+                <div class="btn-group">
+                        <a class="btn btn-outline-secondary" href="{{ asset('public/admin/templates/student_import_template_simple.csv') }}" download>
+                            Download Simple Template
+                        </a>
+                        <a class="btn btn-outline-secondary" href="{{ asset('public/admin/templates/student_import_template.csv') }}" download>
+                            Download Advanced Template
+                        </a>
+                    </div>
             </div>
+            <p class="text-muted">CSV accepted headers include:</p>
+            <ul>
+                <li><code>SL No, Form No, Name, Father Name, Villege, Mobile, Blood Group, T-Shirt Size, Total Member, Amount, Batch</code> (simple format)</li>
+                <li><code>name,dept,shift,phone,email,gender,blGroup,tShirtSize,currentAddress,profession,experience,totalAttend,payType,payId,payAmount,status,rollNo</code> (advanced format)</li>
+            </ul>
+            <p class="text-muted">Unknown columns are ignored.</p>
             <p class="text-muted">CSV should include headers like: <code>name,dept,shift,phone,email,gender,blGroup,tShirtSize,currentAddress,profession,experience,totalAttend,payType,payId,payAmount,status,rollNo</code>. Unknown columns are ignored.</p>
             @if(Session::has('error'))
                 <div class="alert alert-danger">{{ Session::get('error') }}</div>

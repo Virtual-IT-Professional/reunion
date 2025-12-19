@@ -36,6 +36,10 @@
               <label class="form-label">Tagline</label>
               <input type="text" name="tagline" class="form-control" value="{{ old('tagline', $settings->tagline ?? '') }}">
             </div>
+            <div class="col-md-6">
+              <label class="form-label">Brand Color</label>
+              <input type="color" name="brand_color" class="form-control form-control-color" value="{{ old('brand_color', $settings->brand_color ?? '#19a974') }}" title="Choose brand accent color">
+            </div>
 
             <div class="col-md-4">
               <label class="form-label">Contact Email</label>

@@ -16,8 +16,9 @@ class OnlySuperAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Session::has('superAdmin')){
-            return redirect()->route('adminHome')->with('error','Only Super Admin can access this section');
+        // Allow super admin as well as moderator to access settings
+        if(!(Session::has('superAdmin') || Session::has('modarator'))){
+            return redirect()->route('adminLogin')->with('error','Please login to continue');
         }
         return $next($request);
     }

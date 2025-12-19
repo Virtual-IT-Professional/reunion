@@ -103,18 +103,20 @@ Dashboard
                 <div class="card">
                     <div class="card-header">Verified Members</div>
                     <div class="card-body table-responsive">
-                        <table class="table text-center" id="active">
+                        <table class="table text-center datatable" id="active">
                             <thead>
-                                <th>SL</th>
-                                <th>Name</th>
-                                <th>Department</th>
-                                <th>Total Guest</th>
-                                <th>Method</th>
-                                <th>Amout</th>
-                                <th>Verify Date</th>
-                                <th>Action</th>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                    <th>Total Guest</th>
+                                    <th>Method</th>
+                                    <th>Amout</th>
+                                    <th>Verify Date</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
-                            <thead>
+                            <tbody>
                                 @if(!empty($verifiedList) && count($verifiedList)>0)
                                     @php
                                         $x = 1;
@@ -122,21 +124,30 @@ Dashboard
                                     @foreach($verifiedList as $verify)
                                         <tr>
                                             <td class="align-middle text-center">{{ $x }}</td>
-                                            <td class="align-middle text-center">{{ $verify->studentName }}</td>
-                                            <td class="align-middle text-center">{{ $verify->department  }}
-                                                <br> ({{ $verify->shift  }} Shift)
+                                            <td class="align-middle text-center"><span class="bn-text">{{ $verify->studentName }}</span></td>
+                                            <td class="align-middle text-center"><span class="bn-text">{{ $verify->department }}</span>
+                                                <br> ({{ $verify->shift }} Shift)
                                             </td>
                                             <td class="align-middle text-center">{{ $verify->totalAttend  }}</td>
                                             <td class="align-middle text-center">@if($verify->paymentBy==1) Bkash @endif @if($verify->paymentBy==2) Nagad @endif</td>
                                             <td class="align-middle text-center">{{ $verify->paymentAmount }} BDT<br>TXN ID: {{ $verify->paymentId }}</td>
                                             <td class="align-middle text-center">{{ \Carbon\Carbon::parse($verify->updated_at)->format('d/m/Y') }}</td>
                                             <td class="align-middle text-center">
-                                                <a href="{{ route('viewPerticipate',['id'=>$verify->id]) }}" class="btn btn-success btn-sm my-1">
+                                                <a href="{{ route('viewPerticipate',['id'=>$verify->id]) }}" class="btn btn-success btn-sm my-1" title="View">
                                                     <i class="fa-sharp fa-light fa-eye"></i>
-                                                </a> 
-                                                <a href="{{ route('returnPending',['id'=>$verify->id]) }}" class="btn btn-warning btn-sm my-1">
+                                                </a>
+                                                <a href="{{ route('returnPending',['id'=>$verify->id]) }}" class="btn btn-warning btn-sm my-1" title="Return Pending">
                                                     <i class="fa-sharp fa-light fa-calendar-clock"></i>
-                                                </a> 
+                                                </a>
+                                                <a href="{{ route('printIdCard',['id'=>$verify->id]) }}" target="_blank" class="btn btn-secondary btn-sm my-1" title="Print Single ID">
+                                                    <i class="fa-solid fa-print"></i>
+                                                </a>
+                                                @php $rowBatch = $verify->batch ?? $verify->department; @endphp
+                                                @if(!empty($rowBatch))
+                                                <a href="{{ route('printIdCardsBatch') }}?batch={{ urlencode($rowBatch) }}" target="_blank" class="btn btn-info btn-sm my-1" title="Open Batch Print">
+                                                    <i class="fa-solid fa-layer-group"></i>
+                                                </a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @php
@@ -148,7 +159,7 @@ Dashboard
                                         <td colspan="9" class="text-center py-2">Sorry! No data found</td>
                                     </tr>
                                 @endif
-                            </thead>                        
+                            </tbody>                        
                         </table>
                     </div>
                 </div>
@@ -157,17 +168,19 @@ Dashboard
                 <div class="card">
                     <div class="card-header">Pending for Verify</div>
                     <div class="card-body table-responsive">
-                        <table class="table text-center" id="pending">
+                        <table class="table text-center datatable" id="pending">
                             <thead>
-                                <th>SL</th>
-                                <th>Name</th>
-                                <th>Department</th>
-                                <th>Total Guest</th>
-                                <th>Method</th>
-                                <th>Amount</th>
-                                <th>Action</th>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                    <th>Total Guest</th>
+                                    <th>Method</th>
+                                    <th>Amount</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
-                            <thead>
+                            <tbody>
                                 @if(!empty($pendingList) && count($pendingList)>0)
                                     @php
                                         $x = 1;
@@ -175,9 +188,9 @@ Dashboard
                                     @foreach($pendingList as $pending)
                                         <tr>
                                             <td class="align-middle text-center">{{ $x }}</td>
-                                            <td class="align-middle text-center">{{ $pending->studentName }}</td>
-                                            <td class="align-middle text-center">{{ $pending->department  }}
-                                                <br> ({{ $pending->shift  }} Shift)
+                                            <td class="align-middle text-center"><span class="bn-text">{{ $pending->studentName }}</span></td>
+                                            <td class="align-middle text-center"><span class="bn-text">{{ $pending->department }}</span>
+                                                <br> ({{ $pending->shift }} Shift)
                                             </td>
                                             <td class="align-middle text-center">{{ $pending->totalAttend  }}</td>
                                             <td class="align-middle text-center">@if($pending->paymentBy==1) Bkash @endif @if($pending->paymentBy==2) Nagad @endif</td>
@@ -203,7 +216,7 @@ Dashboard
                                         <td colspan="9" class="text-center py-2">Sorry! No data found</td>
                                     </tr>
                                 @endif
-                            </thead>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -212,9 +225,15 @@ Dashboard
     </div><!-- end col -->
 </div><!-- end row -->
 <script>
-$(document).ready( function () {
-    $('#active').DataTable();
-} );
+$(document).ready(function() {
+    // Initialize explicitly to avoid timing issues on dashboard
+    if (!$.fn.dataTable.isDataTable('#active')) {
+        $('#active').DataTable();
+    }
+    if (!$.fn.dataTable.isDataTable('#pending')) {
+        $('#pending').DataTable();
+    }
+});
 </script>
 
 @endsection

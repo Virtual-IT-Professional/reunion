@@ -25,7 +25,7 @@
             <div class="col-5 col-md-7 mx-auto bg-transper p-4">
                 <h5 class="mb-1">{{ $heroTitle }}</h5>
                 @if(!empty($heroSubtitle))
-                    <div class="text-white-2 mb-3">{{ $heroSubtitle }}</div>
+                    <div class="text-white-2 mb-3 bn-text">{{ $heroSubtitle }}</div>
                 @endif
                 <div data-enddate="{{ $eventDate }}" class="countdown counter-box-3 mb-0 mt-0"></div>
             </div>
@@ -122,8 +122,8 @@
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-7 col-sm-10 text-center last-paragraph-no-margin">
                 <a class="popup-youtube" href="{{ $parallaxVideo }}"><img src="{{ asset('public/front/html/') }}/images/icon-play.png" class="w-130px" alt=""/></a>
-                <h4 class="alt-font text-white-2 margin-15px-bottom sm-margin-20px-bottom">{{ $heroSubtitle ?? 'Register. Joining. Fun.' }}</h4>
-                <p class="text-extra-large font-weight-300 text-light-gray w-85 sm-w-100 d-inline-block margin-25px-bottom">{{ $tagline }}</p>
+                <h4 class="alt-font text-white-2 margin-15px-bottom sm-margin-20px-bottom bn-text">{{ $heroSubtitle ?? 'Register. Joining. Fun.' }}</h4>
+                <p class="text-extra-large font-weight-300 text-light-gray w-85 sm-w-100 d-inline-block margin-25px-bottom bn-text">{{ $tagline }}</p>
             </div>
         </div>
     </div>
@@ -138,13 +138,19 @@
             </div>  
         </div>
         @php
-            $verifiedList = \App\Models\studentRegister::where(['status'=>'Verified'])->orderby('id','DESC')->get();
-            $verifiedGuest = \App\Models\geustRegister::where(['status'=>'Verified'])->orderby('id','DESC')->get();
+            $verifiedList = \App\Models\studentRegister::where(['status'=>'Verified'])->orderBy('id','DESC')->get();
+            // Keep guest model if needed elsewhere
+            // $verifiedGuest = \App\Models\geustRegister::where(['status'=>'Verified'])->orderBy('id','DESC')->get();
 
-            $todayRegister = \App\Models\studentRegister::whereDay('created_at',date('d'))->where(['status'=>'Verified'])->get();
-            //echo now();
+            $todayRegister = \App\Models\studentRegister::whereDay('created_at',date('d'))
+                                ->where(['status'=>'Verified'])->get();
 
-            $totalRegister = count($verifiedList)+count($verifiedGuest);
+            $generalMembers = count($verifiedList);
+            $totalMembers = $verifiedList->sum(function($s){
+                return ($s->totalAttend ?? $s->totalMember ?? $s->total_member ?? 0);
+            });
+            // Derive guest joining as Total - General (never below zero)
+            $guestJoining = max($totalMembers - $generalMembers, 0);
         @endphp
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4">
             <!-- start counter box item -->
@@ -163,7 +169,7 @@
                 <div class="feature-box-5 position-relative">
                     <i class="fa-light fa-user-group-crown text-medium-gray icon-extra-medium top-6"></i>
                     <div class="feature-content">
-                        <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="{{ count($verifiedGuest) }}" data-speed="2000">{{ count($verifiedGuest) }}</h6>
+                        <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="{{ $guestJoining }}" data-speed="2000">{{ $guestJoining }}</h6>
                         <span class="text-small text-uppercase position-relative top-minus4">Guest Joining</span>
                     </div>
                 </div>
@@ -185,7 +191,7 @@
                 <div class="feature-box-5 position-relative">
                     <i class="fa-light fa-user-group text-medium-gray icon-extra-medium top-6"></i>
                     <div class="feature-content">
-                        <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="{{ $totalRegister }}" data-speed="2000">{{ $totalRegister }}</h6>
+                        <h6 class="d-block text-extra-dark-gray font-weight-600 alt-font mb-0 counter" data-to="{{ $totalMembers }}" data-speed="2000">{{ $totalMembers }}</h6>
                         <span class="text-small text-uppercase position-relative top-minus4">Total Joining</span>
                     </div>
                 </div>
@@ -202,7 +208,7 @@
                                 <th class="text-center">SL</th>
                                 <th class="text-center">Avatar</th>
                                 <th class="text-center">Name</th>
-                                <th class="text-center">Department</th>
+                                <th class="text-center">Batch</th>
                                 <th class="text-center">Registration</th>
                                 <th class="text-center">Verify</th>
                             </thead>
@@ -221,10 +227,8 @@
                                         <img src="{{ asset('public/upload/') }}/avatar.png" alt="{{ $verify->studentName }}" class="w-100 img-thumbnail rounded-0">
                                     @endif
                                     </td>
-                                    <td class="align-middle text-center">{{ $verify->studentName }}</td>
-                                    <td class="align-middle text-center">{{ $verify->department  }}
-                                        <br> ({{ $verify->shift  }} Shift)
-                                    </td>
+                                    <td class="align-middle text-center"><span class="bn-text">{{ $verify->studentName }}</span></td>
+                                    <td class="align-middle text-center"><span class="bn-text">{{ $verify->batch ?? $verify->department }}</span></td>
                                     <td class="align-middle text-center">{{ \Carbon\Carbon::parse($verify->created_at)->format('d/m/Y') }}</td>
                                     <td class="align-middle text-center">{{ \Carbon\Carbon::parse($verify->updated_at)->format('d/m/Y') }}</td>
                                 </tr>

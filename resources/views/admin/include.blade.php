@@ -38,6 +38,18 @@
             vertical-align: middle;
         }
     </style>
+    <style>
+        /* Global Bengali value support: use local fonts if found, fall back gracefully */
+        @font-face {
+            font-family: 'SutonnyMJ';
+            src: local('SutonnyMJ'),
+                 url('{{ asset('public/fonts/SutonnyMJ.woff2') }}') format('woff2'),
+                 url('{{ asset('public/fonts/SutonnyMJ.woff') }}') format('woff'),
+                 url('{{ asset('public/fonts/SutonnyMJ.ttf') }}') format('truetype');
+            font-display: swap;
+        }
+        .bn-text { font-family: 'SutonnyMJ','Nikosh','SolaimanLipi','Kalpurush','AdorshoLipi','Bangla','Bangla MN','Noto Sans Bengali', Segoe UI, Roboto, Arial, sans-serif; }
+    </style>
 
 </head>
 
@@ -303,8 +315,13 @@
         </div>
     </div>
     <script>
-    $(document).ready(function () {
-        $('#dataTable').DataTable();
+    $(function () {
+        // Initialize DataTables on all marked tables, avoid double init
+        $('table.datatable, table[id^="dataTable"]').each(function(){
+            if (!$.fn.dataTable.isDataTable(this)) {
+                $(this).DataTable();
+            }
+        });
     });
     </script>
 

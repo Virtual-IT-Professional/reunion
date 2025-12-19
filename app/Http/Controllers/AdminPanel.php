@@ -410,19 +410,26 @@ class AdminPanel extends Controller
 
     public function updateSettings(Request $requ){
         $settings = SiteSetting::first() ?: new SiteSetting();
-        // Build validation rules with conditional dimensions (skip for SVG)
-        $heroRule = ['nullable','image','mimes:png,jpg,jpeg,svg','max:2048'];
-        if($requ->hasFile('hero_image') && strtolower($requ->file('hero_image')->getClientOriginalExtension()) !== 'svg'){
-            $heroRule[] = 'dimensions:min_width=1200,min_height=600';
+        // Build validation rules; no dimension constraints to avoid false errors
+        $heroRule = ['nullable','mimes:png,jpg,jpeg,svg','max:2048'];
+        if($requ->hasFile('hero_image')){
+            $heroExt = strtolower($requ->file('hero_image')->getClientOriginalExtension());
+            if($heroExt !== 'svg'){
+                $heroRule[] = 'image';
+            }
         }
-        $parallaxRule = ['nullable','image','mimes:png,jpg,jpeg,svg','max:2048'];
-        if($requ->hasFile('parallax_image') && strtolower($requ->file('parallax_image')->getClientOriginalExtension()) !== 'svg'){
-            $parallaxRule[] = 'dimensions:min_width=1200,min_height=600';
+        $parallaxRule = ['nullable','mimes:png,jpg,jpeg,svg','max:2048'];
+        if($requ->hasFile('parallax_image')){
+            $parallaxExt = strtolower($requ->file('parallax_image')->getClientOriginalExtension());
+            if($parallaxExt !== 'svg'){
+                $parallaxRule[] = 'image';
+            }
         }
 
         $requ->validate([
             'site_name'     => 'nullable|string|max:150',
             'tagline'       => 'nullable|string|max:200',
+            'brand_color'   => ['nullable','regex:/^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/'],
             'contact_email' => 'nullable|email',
             'contact_phone' => 'nullable|string|max:50',
             'facebook'      => 'nullable|url',
@@ -430,7 +437,8 @@ class AdminPanel extends Controller
             'instagram'     => 'nullable|url',
             'youtube'       => 'nullable|url',
             'event_date'    => 'nullable|date',
-            'logo'          => 'nullable|mimes:png,jpg,jpeg,svg|max:500',
+            // Logo: allow any dimensions and remove file size cap (server limits apply)
+            'logo'          => 'nullable|mimes:png,jpg,jpeg,svg',
             'favicon'       => 'nullable|mimes:png,ico,jpg,jpeg|max:200',
             'hero_image'    => $heroRule,
             'parallax_image'=> $parallaxRule,
@@ -444,6 +452,7 @@ class AdminPanel extends Controller
 
         $settings->site_name      = $requ->site_name;
         $settings->tagline        = $requ->tagline;
+        $settings->brand_color    = $requ->brand_color;
         $settings->contact_email  = $requ->contact_email;
         $settings->contact_phone  = $requ->contact_phone;
         $settings->address        = $requ->address;
@@ -676,8 +685,10 @@ class AdminPanel extends Controller
 
     private function generateCardNumber(studentRegister $student): string
     {
-        $year = date('Y');
-        return 'CPI-R-'.$year.'-'.str_pad($student->id,5,'0',STR_PAD_LEFT);
+        // Format: VBHS-Member No-Batch
+        $memberNo = $student->slNo ?: ($student->rollNo ?: str_pad($student->id,5,'0',STR_PAD_LEFT));
+        $batch    = $student->batch ?: ($student->department ?: date('Y'));
+        return 'VBHS-'.$memberNo.'-'.$batch;
     }
 
     public function issueIdCard(Request $requ, $id){
@@ -716,6 +727,105 @@ class AdminPanel extends Controller
         return view('admin.idcard_print',[ 'student' => $student ]);
     }
 
+    // Batch ID Card operations
+    public function issueIdCardsBatch(Request $requ){
+        $requ->validate(['batch' => 'required|string']);
+        $batch = trim($requ->batch);
+        $students = studentRegister::where(function($q) use ($batch){
+            $q->where('batch',$batch)
+              ->orWhere(function($qq) use ($batch){ $qq->whereNull('batch')->where('department',$batch); });
+        })->orderBy('id','ASC')->get();
+        if($students->isEmpty()){
+            return back()->with('error','No students found for batch: '.$batch);
+        }
+        $issued = 0;
+        foreach($students as $s){
+            if(empty($s->id_card_number)){
+                $s->id_card_number = $this->generateCardNumber($s);
+                $s->id_card_status = 'Issued';
+                $s->id_card_issued_at = now();
+                if($s->save()) $issued++;
+            }
+        }
+        return back()->with('success',"Batch '$batch': Issued numbers for $issued student(s)");
+    }
+
+    public function printIdCardsBatch(Request $requ){
+        $requ->validate(['batch' => 'required|string']);
+        $batch = trim($requ->batch);
+        $students = studentRegister::where(function($q) use ($batch){
+            $q->where('batch',$batch)
+              ->orWhere(function($qq) use ($batch){ $qq->whereNull('batch')->where('department',$batch); });
+        })->orderBy('id','ASC')->get();
+        if($students->isEmpty()){
+            return back()->with('error','No students found for batch: '.$batch);
+        }
+        // Ensure each has an ID number before printing
+        foreach($students as $s){
+            if(empty($s->id_card_number)){
+                $s->id_card_number = $this->generateCardNumber($s);
+                $s->id_card_status = 'Issued';
+                $s->id_card_issued_at = now();
+                $s->save();
+            }
+        }
+        return view('admin.idcard_print_batch',[ 'students' => $students, 'batch' => $batch ]);
+    }
+
+    /**
+     * Regenerate ID card numbers for a selected batch (old format or empty only)
+     */
+    public function regenerateIdCards(Request $requ){
+        $requ->validate(['batch' => 'required|string']);
+        $batch = trim($requ->batch);
+        $students = studentRegister::where(function($q) use ($batch){
+            $q->where('batch',$batch)
+              ->orWhere(function($qq) use ($batch){ $qq->whereNull('batch')->where('department',$batch); });
+        })->orderBy('id','ASC')->get();
+        if($students->isEmpty()){
+            return back()->with('error','No students found for batch: '.$batch);
+        }
+        $updated = 0; $skipped = 0;
+        foreach($students as $s){
+            $old = $s->id_card_number ?? '';
+            // Only update when old CPI format or empty
+            if(empty($old) || str_starts_with($old,'CPI-R-')){
+                $s->id_card_number = $this->generateCardNumber($s);
+                if(empty($s->id_card_status)){
+                    $s->id_card_status = 'Issued';
+                    $s->id_card_issued_at = now();
+                }
+                if($s->save()) $updated++; else $skipped++;
+            } else {
+                $skipped++;
+            }
+        }
+        return back()->with('success',"Batch '$batch': Regenerated $updated ID(s); Skipped $skipped.");
+    }
+
+    /**
+     * Regenerate all old-format/empty ID card numbers across students
+     */
+    public function regenerateIdCardsAllOld(Request $requ){
+        $students = studentRegister::where(function($q){
+            $q->whereNull('id_card_number')
+              ->orWhere('id_card_number','like','CPI-R-%');
+        })->orderBy('id','ASC')->get();
+        if($students->isEmpty()){
+            return back()->with('error','No students with old/empty ID found');
+        }
+        $updated = 0; $failed = 0;
+        foreach($students as $s){
+            $s->id_card_number = $this->generateCardNumber($s);
+            if(empty($s->id_card_status)){
+                $s->id_card_status = 'Issued';
+                $s->id_card_issued_at = now();
+            }
+            if($s->save()) $updated++; else $failed++;
+        }
+        return back()->with('success',"Regenerated $updated ID(s); Failed $failed.");
+    }
+
     /* ===================== CSV Import ===================== */
     public function importForm(){
         return view('admin.importStudents');
@@ -739,35 +849,60 @@ class AdminPanel extends Controller
         }
         $created = 0; $updated = 0; $skipped = 0; $log = [];
 
+        // Helper to ensure strings are valid UTF-8 before DB insert
+        $toUtf8 = function($s){
+            if($s === null) return $s;
+            if(!is_string($s)) return $s;
+            // fast path
+            if(mb_check_encoding($s, 'UTF-8')){ return $s; }
+            // try common encodings (Windows CSV often cp1252)
+            // Use only encodings supported by mbstring on Windows builds
+            $encodings = ['UTF-8','Windows-1252','ISO-8859-1','ISO-8859-15','ASCII'];
+            $enc = @mb_detect_encoding($s, $encodings, true);
+            if($enc && strtoupper($enc) !== 'UTF-8'){
+                $converted = @mb_convert_encoding($s, 'UTF-8', $enc);
+                if($converted !== false){ return $converted; }
+            }
+            // iconv fallback
+            $converted = @iconv('WINDOWS-1252', 'UTF-8//IGNORE', $s);
+            return $converted !== false ? $converted : $s;
+        };
+
         $header = fgetcsv($handle,0,',');
         if(!$header){ fclose($handle); return back()->with('error','CSV header missing'); }
         // Normalize headers
         $normalize = function($h){
             $h = preg_replace('/^\xEF\xBB\xBF/','',$h); // strip BOM
-            return strtolower(trim($h));
+            $h = strtolower(trim($h));
+            return $h;
         };
-        $header = array_map($normalize,$header);
+        $header = array_map(function($h) use ($toUtf8, $normalize){
+            return $normalize($toUtf8($h));
+        }, $header);
 
-        // Map synonyms to model fields
+        // Map synonyms to model fields (including your requested headers)
         $mapKey = function($key){
             switch($key){
                 case 'name': case 'studentname': return 'studentName';
-                case 'dept': case 'department': return 'department';
+                case 'dept': case 'department': case 'batch': return 'department';
                 case 'shift': return 'shift';
                 case 'phone': case 'mobile': return 'phone';
                 case 'email': case 'emailaddress': return 'emailAddress';
                 case 'gender': return 'gender';
-                case 'blood': case 'bloodgroup': case 'blgroup': return 'blGroup';
-                case 'tshirt': case 'tshirtsize': return 'tShirtSize';
-                case 'address': case 'currentaddress': return 'currentAddress';
+                case 'blood': case 'bloodgroup': case 'blgroup': case 'blood group': return 'blGroup';
+                case 'tshirt': case 'tshirtsize': case 't-shirt size': case 't shirt size': case 'tshirt size': return 'tShirtSize';
+                case 'address': case 'currentaddress': case 'villege': return 'currentAddress';
                 case 'profession': case 'professiondetails': return 'professionDetails';
                 case 'experience': return 'experience';
-                case 'guestcount': case 'totalattend': return 'totalAttend';
+                case 'guestcount': case 'totalattend': case 'total member': return 'totalAttend';
                 case 'paymentby': case 'paytype': return 'paymentBy';
                 case 'paymentid': case 'payid': case 'txn': case 'txnid': return 'paymentId';
                 case 'amount': case 'paymentamount': case 'payamount': return 'paymentAmount';
                 case 'status': return 'status';
-                case 'roll': case 'rollno': return 'rollNo';
+                case 'roll': case 'rollno': case 'form no': return 'rollNo';
+                case 'father name': case 'fathername': return 'fatherName';
+                case 'sl no': case 'sl': return 'slNo';
+                case 'batch (csv)': return 'batch';
                 default: return null;
             }
         };
@@ -778,6 +913,7 @@ class AdminPanel extends Controller
             $data = [];
             $raw = [];
             foreach($row as $i => $value){
+                $value = $toUtf8($value);
                 $key = $fieldKeys[$i] ?? null;
                 if(!$key){ continue; }
                 $data[$key] = is_string($value) ? trim($value) : $value;
@@ -785,10 +921,15 @@ class AdminPanel extends Controller
                 $rawKey = $header[$i] ?? null;
                 if($rawKey !== null){ $raw[$rawKey] = is_string($value) ? trim($value) : $value; }
             }
-            // Minimal validation
-            if(empty($data['studentName']) || empty($data['department']) || empty($data['shift'])){
-                $skipped++; $log[] = 'Skipped: missing required fields (name/dept/shift)'; continue;
+            // Minimal validation aligned with requested CSV (require Name + Mobile)
+            if(empty($data['studentName']) || empty($data['phone'])){
+                $skipped++; $log[] = 'Skipped: missing required fields (Name/Mobile)'; continue;
             }
+
+            // Enrich from raw for special headers not captured by map (fallbacks)
+            if(empty($data['fatherName']) && !empty($raw['father name'])){ $data['fatherName'] = $raw['father name']; }
+            if(empty($data['slNo']) && !empty($raw['sl no'])){ $data['slNo'] = $raw['sl no']; }
+            if(empty($data['batch']) && !empty($raw['batch'])){ $data['batch'] = $raw['batch']; }
             // Normalize status
             $status = $data['status'] ?? $defaultStatus;
             if(!in_array($status,['PendingVerify','Verified','Rejected'])){ $status = $defaultStatus; }
@@ -838,6 +979,13 @@ class AdminPanel extends Controller
                 $existing->paymentAmount     = $data['paymentAmount'] ?? $existing->paymentAmount;
                 $existing->rollNo            = $data['rollNo'] ?? $existing->rollNo;
                 $existing->status            = $status;
+                $existing->fatherName        = $data['fatherName'] ?? $existing->fatherName;
+                $existing->slNo              = $data['slNo'] ?? $existing->slNo;
+                $existing->batch             = $data['batch'] ?? $existing->batch;
+                // Preserve/append comment
+                if(!empty($data['comment'])){
+                    $existing->comment = trim(($existing->comment ?? '').(empty($existing->comment) ? '' : "\n").$data['comment']);
+                }
                 if($existing->save()){
                     // handle guests according to behavior
                     if(!empty($guests)){
@@ -878,6 +1026,10 @@ class AdminPanel extends Controller
                 $student->paymentAmount         = $data['paymentAmount'] ?? null;
                 $student->rollNo                = $data['rollNo'] ?? null;
                 $student->status                = $status;
+                $student->fatherName            = $data['fatherName'] ?? null;
+                $student->slNo                  = $data['slNo'] ?? null;
+                $student->batch                 = $data['batch'] ?? null;
+                if(!empty($data['comment'])){ $student->comment = $data['comment']; }
                 if($student->save()){
                     // create guests if present
                     if(!empty($guests)){

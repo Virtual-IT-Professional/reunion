@@ -10,7 +10,7 @@ class SiteSetting extends Model
     use HasFactory;
 
     protected $fillable = [
-        'site_name','tagline','contact_email','contact_phone','address',
+        'site_name','tagline','brand_color','contact_email','contact_phone','address',
         'facebook','twitter','instagram','youtube',
         'hero_title','hero_subtitle','event_date','logo','favicon','hero_image','extras','registration_open',
         'venue','participate_fee','guest_fee','bkash_number','nagad_number','payment_reference','emergency_phone',

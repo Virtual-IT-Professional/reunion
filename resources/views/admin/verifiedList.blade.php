@@ -21,18 +21,30 @@ Verified Student
                 </div>
                 @endif
                 <a href="{{ route('inviteSent') }}" class="btn btn-success">Sent Invitation</a>
-                <table class="table table-bordered text-center" id="dataTable">
+                <style>
+                    @font-face {
+                        font-family: 'SutonnyMJ';
+                        src: local('SutonnyMJ'),
+                             url('{{ asset('public/fonts/SutonnyMJ.woff2') }}') format('woff2'),
+                             url('{{ asset('public/fonts/SutonnyMJ.woff') }}') format('woff'),
+                             url('{{ asset('public/fonts/SutonnyMJ.ttf') }}') format('truetype');
+                        font-display: swap;
+                    }
+                    .bn-text { font-family: 'SutonnyMJ', Segoe UI, Roboto, Arial, sans-serif; }
+                </style>
+                <table class="table table-bordered text-center datatable" id="dataTable">
                     <thead>
                         <th>SL</th>
                         <th>Name</th>
-                        <th>Department</th>
+                        <th>Batch</th>
+                        <th>Village</th>
                         <th>Total Guest</th>
                         <th>Method</th>
                         <th>Amout</th>
                         <th>Verify Date</th>
                         <th>Action</th>
                     </thead>
-                    <thead>
+                    <tbody>
                         @if(!empty($verifiedList) && count($verifiedList)>0)
                             @php
                                 $x = 1;
@@ -40,10 +52,12 @@ Verified Student
                             @foreach($verifiedList as $verify)
                                 <tr>
                                     <td class="align-middle text-center">{{ $x }}</td>
-                                    <td class="align-middle text-center">{{ $verify->studentName }}</td>
-                                    <td class="align-middle text-center">{{ $verify->department  }}
-                                        <br> ({{ $verify->shift  }} Shift)
+                                    <td class="align-middle text-center"><span class="bn-text">{{ $verify->studentName }}</span></td>
+                                    <td class="align-middle text-center">
+                                        <span>{{ $verify->batch ?? $verify->department }}</span>
+                                        <br> ({{ $verify->shift }} Shift)
                                     </td>
+                                    <td class="align-middle text-center"><span class="bn-text">{{ $verify->currentAddress }}</span></td>
                                     <td class="align-middle text-center">{{ $verify->totalAttend  }}</td>
                                     <td class="align-middle text-center">@if($verify->paymentBy==1) Bkash @endif @if($verify->paymentBy==2) Nagad @endif</td>
                                     <td class="align-middle text-center">{{ $verify->paymentAmount }} BDT<br>TXN ID: {{ $verify->paymentId }}</td>
@@ -66,7 +80,7 @@ Verified Student
                                 <td colspan="9" class="text-center py-2">Sorry! No data found</td>
                             </tr>
                         @endif
-                    </thead>
+                    </tbody>
                 </table>
                 <a href="{{ route('pendingList') }}" class="btn btn-warning fw-bold"><i class="fa-sharp fa-regular fa-calendar-clock"></i> Pending List</a>
                 <a href="{{ route('rejectedList') }}" class="btn btn-danger fw-bold"><i class="fa-regular fa-shuffle"></i> Rejected List</a>

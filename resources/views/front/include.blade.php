@@ -43,6 +43,16 @@
                 font-weight: 400;
                 font-style: normal;
             }
+            /* Bengali font support */
+            @font-face {
+                font-family: 'SutonnyMJ';
+                src: local('SutonnyMJ'),
+                     url('{{ asset('public/fonts/SutonnyMJ.woff2') }}') format('woff2'),
+                     url('{{ asset('public/fonts/SutonnyMJ.woff') }}') format('woff'),
+                     url('{{ asset('public/fonts/SutonnyMJ.ttf') }}') format('truetype');
+                font-display: swap;
+            }
+            .bn-text { font-family: 'SutonnyMJ','Nikosh','SolaimanLipi','Kalpurush','AdorshoLipi','Bangla','Bangla MN','Noto Sans Bengali', Segoe UI, Roboto, Arial, sans-serif; }
             header a.logo img {
                 max-height: 120px;
                 width: 120px !important;
@@ -176,7 +186,7 @@
                     <div class="col-md-6 text-center text-small alt-font sm-margin-10px-bottom">
                         &copy; {{ date('Y') }} {{ $siteName }}. All rights reserved.
                         @if($tagline)
-                            <div class="small text-muted">{{ $tagline }}</div>
+                            <div class="small text-muted bn-text">{{ $tagline }}</div>
                         @endif
                         <div class="mt-1">Website developed by <a href="#" target="_blank" title="Virtual IT Professional">Virtual IT Professional</a></div>
                     </div>

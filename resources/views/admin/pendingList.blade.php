@@ -20,17 +20,29 @@ Pending Student
                     {{ Session::get('error') }}
                 </div>
                 @endif
-                <table class="table table-bordered text-center" id="pending">
+                <style>
+                    @font-face {
+                        font-family: 'SutonnyMJ';
+                        src: local('SutonnyMJ'),
+                             url('{{ asset('public/fonts/SutonnyMJ.woff2') }}') format('woff2'),
+                             url('{{ asset('public/fonts/SutonnyMJ.woff') }}') format('woff'),
+                             url('{{ asset('public/fonts/SutonnyMJ.ttf') }}') format('truetype');
+                        font-display: swap;
+                    }
+                    .bn-text { font-family: 'SutonnyMJ', Segoe UI, Roboto, Arial, sans-serif; }
+                </style>
+                <table class="table table-bordered text-center datatable" id="pending">
                     <thead>
                         <th>SL</th>
                         <th>Name</th>
-                        <th>Department</th>
+                        <th>Batch</th>
+                        <th>Village</th>
                         <th>Total Guest</th>
                         <th>Method</th>
                         <th>Amount</th>
                         <th>Action</th>
                     </thead>
-                    <thead>
+                    <tbody>
                         @if(!empty($pendingList) && count($pendingList)>0)
                             @php
                                 $x = 1;
@@ -38,10 +50,12 @@ Pending Student
                             @foreach($pendingList as $pending)
                                 <tr>
                                     <td class="align-middle text-center">{{ $x }}</td>
-                                    <td class="align-middle text-center">{{ $pending->studentName }}</td>
-                                    <td class="align-middle text-center">{{ $pending->department  }}
-                                        <br> ({{ $pending->shift  }} Shift)
+                                    <td class="align-middle text-center"><span class="bn-text">{{ $pending->studentName }}</span></td>
+                                    <td class="align-middle text-center">
+                                        <span>{{ $pending->batch ?? $pending->department }}</span>
+                                        <br> ({{ $pending->shift }} Shift)
                                     </td>
+                                    <td class="align-middle text-center"><span class="bn-text">{{ $pending->currentAddress }}</span></td>
                                     <td class="align-middle text-center">{{ $pending->totalAttend  }}</td>
                                     <td class="align-middle text-center">@if($pending->paymentBy==1) Bkash @endif @if($pending->paymentBy==2) Nagad @endif</td>
                                     <td class="align-middle text-center">{{ $pending->paymentAmount }} BDT<br>TXN ID: {{ $pending->paymentId }}</td>
@@ -66,7 +80,7 @@ Pending Student
                                 <td colspan="9" class="text-center py-2">Sorry! No data found</td>
                             </tr>
                         @endif
-                    </thead>
+                    </tbody>
                 </table>
                 <a href="{{ route('verifiedList') }}" class="btn btn-success fw-bold"><i class="fa-duotone fa-solid fa-check-to-slot"></i> Verified List</a>
                 <a href="{{ route('rejectedList') }}" class="btn btn-danger fw-bold"><i class="fa-regular fa-shuffle"></i> Rejected List</a>
@@ -75,9 +89,7 @@ Pending Student
     </div>
 </div><!-- end row -->
 <script>
-$(document).ready( function () {
-    $('#pending').DataTable();
-} );
+$(function(){ if (!$.fn.dataTable.isDataTable('#pending')) { $('#pending').DataTable(); } });
 </script>
 
 @endsection
